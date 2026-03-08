@@ -69,16 +69,12 @@ export const AboutTemplate: React.FC<AboutTemplateProps> = ({
         content={familyContent}
       />
 
-      <div className="about-template__mission">
-        <div className="about-template__mission-inner">
-          <ContentSection
-            heading="Our Mission"
-            content={mission}
-            centered
-            navy
-          />
-        </div>
-      </div>
+      <ContentSection
+        heading="Our Mission"
+        content={mission}
+        centered
+        dark
+      />
 
       <ContentSection
         heading="Our Vision"

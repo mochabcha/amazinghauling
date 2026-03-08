@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 
-export function useScrollAnimation(threshold = 0.15) {
+export function useScrollAnimation(threshold = 0.12) {
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -18,13 +18,16 @@ export function useScrollAnimation(threshold = 0.15) {
           }
         })
       },
-      { threshold, rootMargin: '0px 0px -50px 0px' }
+      { threshold, rootMargin: '0px 0px -40px 0px' }
     )
 
-    const animatedElements = element.querySelectorAll(
-      '.animate-on-scroll, .animate-fade-up, .animate-fade-down, .animate-fade-left, .animate-fade-right, .animate-scale-in, .animate-slide-reveal, .animate-counter, .animate-draw-line, .animate-gold-line'
-    )
+    const selectors = [
+      '.anim-reveal', '.anim-lines', '.anim-up', '.anim-down',
+      '.anim-left', '.anim-right', '.anim-clip-up', '.anim-clip-left',
+      '.anim-clip-right', '.anim-counter', '.anim-accent-bar',
+    ]
 
+    const animatedElements = element.querySelectorAll(selectors.join(', '))
     animatedElements.forEach((el) => observer.observe(el))
 
     return () => {

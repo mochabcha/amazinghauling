@@ -1,0 +1,54 @@
+export const serviceAreasPageSeed = {
+  title: 'Service Areas',
+  slug: 'service-areas',
+  layout: [
+    {
+      blockType: 'hero',
+      badge: 'Where We Work',
+      headingLine1: 'Service Areas',
+      description: 'Hauling Services Across Northeast Florida',
+      primaryCta: 'Request a Quote',
+      primaryCtaLink: '/contact',
+      short: true,
+    },
+    {
+      blockType: 'textBlock',
+      heading: 'Hauling Services Across Northeast Florida',
+      body: 'Amazing Hauling of North Florida proudly provides dependable dump truck and materials hauling services throughout Jacksonville and the surrounding Northeast Florida region. Our fleet supports contractors, construction crews, and development teams across multiple counties, helping move the materials that keep projects on schedule. While Jacksonville is our primary service area, our trucks regularly operate across nearby counties and cities throughout Northeast Florida.',
+      centered: true,
+      background: 'white',
+    },
+    {
+      blockType: 'areaCards',
+      heading: 'Our Service Areas',
+      items: [
+        { name: 'Jacksonville, Florida', description: 'Jacksonville is the center of our operations and where the majority of our hauling work takes place. With constant road construction, development projects, and infrastructure improvements across the city, contractors rely on dependable hauling partners to keep projects moving efficiently.', services: [{ service: 'Asphalt paving projects' }, { service: 'Road construction operations' }, { service: 'Dirt hauling for development sites' }, { service: 'Aggregate and rock delivery' }, { service: 'Construction site material transport' }] },
+        { name: 'Duval County', description: 'Duval County continues to see major construction and infrastructure growth. Amazing Hauling provides hauling services throughout Duval County for contractors working on road construction, residential development, commercial construction, and infrastructure improvements.', services: [{ service: 'Road construction and resurfacing' }, { service: 'Residential development' }, { service: 'Commercial construction' }, { service: 'Infrastructure improvements' }] },
+        { name: 'Clay County', description: "Clay County's continued growth has created strong demand for construction and development services. Amazing Hauling supports contractors across Clay County by providing reliable hauling services for dirt, rock, asphalt, and construction materials.", services: [{ service: 'Residential developments' }, { service: 'Road construction projects' }, { service: 'Materials transport' }] },
+        { name: 'Nassau County', description: 'Nassau County continues to experience development and infrastructure expansion, particularly around Fernandina Beach and surrounding communities.', services: [{ service: 'Development site preparation' }, { service: 'Infrastructure construction' }, { service: 'Roadway improvements' }, { service: 'Construction site logistics' }] },
+        { name: 'St. Johns County', description: 'St. Johns County has become one of the fastest-growing areas in Northeast Florida. Amazing Hauling provides hauling support for residential community development, road construction, commercial development, and infrastructure improvements.', services: [{ service: 'Residential community development' }, { service: 'Road construction projects' }, { service: 'Commercial development' }, { service: 'Infrastructure improvements' }] },
+      ],
+      additionalAreas: [{ name: 'Keystone Heights' }, { name: 'Gainesville' }, { name: "St. Mary's, Georgia" }, { name: 'Other areas across Florida' }],
+    },
+    {
+      blockType: 'textBlock',
+      heading: 'Reliable Hauling Where You Need It',
+      body: 'No matter where your job site is located in Northeast Florida, Amazing Hauling works hard to provide dependable service and professional hauling support. Contractors rely on us to help move materials safely and efficiently so their projects can continue moving forward.',
+      centered: true,
+      background: 'cream',
+    },
+    {
+      blockType: 'ctaBanner',
+      heading: 'Schedule Hauling for Your Project',
+      description: 'If your construction project needs reliable hauling services in Jacksonville or anywhere in Northeast Florida, Amazing Hauling is ready to help. Request a quote today to schedule hauling services for your job site.',
+      primaryCta: 'Request a Quote',
+      primaryCtaLink: '/contact',
+      secondaryCta: 'Call Now',
+      secondaryCtaLink: 'tel:',
+    },
+  ],
+  meta: {
+    title: 'Service Areas',
+    description: 'Amazing Hauling serves contractors throughout Jacksonville, Duval County, Clay County, Nassau County, and St. Johns County with dependable dump truck hauling services.',
+  },
+}

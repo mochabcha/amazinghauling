@@ -1,462 +1,287 @@
 /* ===========================
    BUTTON ATOMS
+   McCarthy: bold, uppercase, sharp edges, orange primary
    =========================== */
-
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  font-family: var(--font-body);
-  font-weight: var(--weight-semibold);
-  font-size: var(--text-base);
-  line-height: var(--leading-none);
-  padding: var(--space-3) var(--space-6);
-  border-radius: var(--radius-md);
+  font-family: var(--font-primary);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-sm);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  padding: var(--space-4) var(--space-8);
   border: var(--border-medium) solid transparent;
   cursor: pointer;
   text-decoration: none;
   white-space: nowrap;
   transition:
-    background-color var(--duration-normal) var(--ease-default),
-    color var(--duration-normal) var(--ease-default),
-    border-color var(--duration-normal) var(--ease-default),
-    box-shadow var(--duration-normal) var(--ease-default),
-    transform var(--duration-fast) var(--ease-default);
+    background-color var(--duration-normal) var(--ease-out),
+    color var(--duration-normal) var(--ease-out),
+    border-color var(--duration-normal) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
 }
+.btn:active { transform: scale(0.97); }
+.btn:focus-visible { outline: 2px solid var(--color-orange); outline-offset: 2px; }
 
-.btn:active {
-  transform: scale(0.98);
-}
+.btn--primary { background: var(--color-orange); color: var(--color-white); border-color: var(--color-orange); }
+.btn--primary:hover { background: var(--color-orange-dark); border-color: var(--color-orange-dark); }
 
-.btn:focus-visible {
-  outline: 2px solid var(--color-brand-gold);
-  outline-offset: 2px;
-}
+.btn--secondary { background: var(--color-black); color: var(--color-white); border-color: var(--color-black); }
+.btn--secondary:hover { background: var(--color-charcoal); border-color: var(--color-charcoal); }
 
-.btn--primary {
-  background-color: var(--color-brand-gold);
-  color: var(--color-brand-navy);
-  border-color: var(--color-brand-gold);
-}
+.btn--outline { background: transparent; color: var(--color-black); border-color: var(--color-black); }
+.btn--outline:hover { background: var(--color-black); color: var(--color-white); }
 
-.btn--primary:hover {
-  background-color: var(--color-brand-gold-dark);
-  border-color: var(--color-brand-gold-dark);
-  box-shadow: var(--shadow-gold);
-}
+.btn--outline-white { background: transparent; color: var(--color-white); border-color: var(--color-white); }
+.btn--outline-white:hover { background: var(--color-white); color: var(--color-black); }
 
-.btn--secondary {
-  background-color: var(--color-brand-navy);
-  color: var(--color-white);
-  border-color: var(--color-brand-navy);
-}
+.btn--ghost { background: transparent; color: var(--color-orange); border-color: transparent; padding-left: 0; padding-right: 0; }
+.btn--ghost:hover { color: var(--color-orange-dark); }
 
-.btn--secondary:hover {
-  background-color: var(--color-brand-navy-light);
-  border-color: var(--color-brand-navy-light);
-  box-shadow: var(--shadow-navy);
-}
-
-.btn--outline {
-  background-color: transparent;
-  color: var(--color-brand-gold);
-  border-color: var(--color-brand-gold);
-}
-
-.btn--outline:hover {
-  background-color: var(--color-brand-gold);
-  color: var(--color-brand-navy);
-}
-
-.btn--outline-white {
-  background-color: transparent;
-  color: var(--color-white);
-  border-color: var(--color-white);
-}
-
-.btn--outline-white:hover {
-  background-color: var(--color-white);
-  color: var(--color-brand-navy);
-}
-
-.btn--ghost {
-  background-color: transparent;
-  color: var(--color-brand-navy);
-  border-color: transparent;
-}
-
-.btn--ghost:hover {
-  background-color: var(--color-gray-100);
-}
-
-.btn--lg {
-  font-size: var(--text-lg);
-  padding: var(--space-4) var(--space-8);
-}
-
-.btn--sm {
-  font-size: var(--text-sm);
-  padding: var(--space-2) var(--space-4);
-}
-
-.btn--icon {
-  padding: var(--space-3);
-}
-
-.btn--full {
-  width: 100%;
-}
+.btn--lg { font-size: var(--text-base); padding: var(--space-5) var(--space-10); }
+.btn--sm { font-size: var(--text-xs); padding: var(--space-2) var(--space-5); }
+.btn--full { width: 100%; }
 
 /* ===========================
    HEADING ATOMS
+   McCarthy: all-caps, black, ultra-bold, tight leading
    =========================== */
-
 .heading {
-  font-family: var(--font-heading);
-  color: var(--color-brand-navy);
+  font-family: var(--font-primary);
+  color: var(--color-black);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+  font-weight: var(--weight-black);
 }
+.heading--1 { font-size: var(--text-4xl); }
+.heading--2 { font-size: var(--text-3xl); }
+.heading--3 { font-size: var(--text-2xl); }
+.heading--4 { font-size: var(--text-xl); }
+.heading--5 { font-size: var(--text-lg); }
+.heading--6 { font-size: var(--text-md); font-weight: var(--weight-bold); }
 
-.heading--1 {
-  font-size: var(--text-6xl);
-  font-weight: var(--weight-bold);
-}
-
-.heading--2 {
-  font-size: var(--text-5xl);
-  font-weight: var(--weight-bold);
-}
-
-.heading--3 {
-  font-size: var(--text-4xl);
-  font-weight: var(--weight-semibold);
-}
-
-.heading--4 {
-  font-size: var(--text-3xl);
-  font-weight: var(--weight-semibold);
-}
-
-.heading--5 {
-  font-size: var(--text-2xl);
-  font-weight: var(--weight-medium);
-}
-
-.heading--6 {
-  font-size: var(--text-xl);
-  font-weight: var(--weight-medium);
-}
-
-.heading--white {
-  color: var(--color-white);
-}
-
-.heading--gold {
-  color: var(--color-brand-gold);
-}
+.heading--white { color: var(--color-white); }
+.heading--orange { color: var(--color-orange); }
+.heading--cream { color: var(--color-cream); }
+.heading--no-caps { text-transform: none; }
+.heading--italic { font-style: italic; }
+.heading--light { font-weight: var(--weight-regular); }
 
 /* ===========================
-   TEXT ATOMS
+   TEXT / BODY COPY ATOMS
    =========================== */
-
 .text {
-  font-family: var(--font-body);
-  color: var(--color-gray-700);
+  font-family: var(--font-primary);
+  color: var(--color-gray-600);
   line-height: var(--leading-relaxed);
+  font-size: var(--text-base);
 }
-
+.text--xs { font-size: var(--text-xs); }
 .text--sm { font-size: var(--text-sm); }
 .text--base { font-size: var(--text-base); }
+.text--md { font-size: var(--text-md); }
 .text--lg { font-size: var(--text-lg); }
 .text--xl { font-size: var(--text-xl); }
 
 .text--white { color: var(--color-white); }
-.text--navy { color: var(--color-brand-navy); }
-.text--gold { color: var(--color-brand-gold); }
-.text--gray { color: var(--color-gray-500); }
+.text--black { color: var(--color-black); }
+.text--orange { color: var(--color-orange); }
+.text--cream { color: var(--color-cream); }
+.text--gray { color: var(--color-gray-400); }
 .text--bold { font-weight: var(--weight-bold); }
 .text--semibold { font-weight: var(--weight-semibold); }
-.text--uppercase {
+
+.text--label {
   text-transform: uppercase;
   letter-spacing: var(--tracking-widest);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-semibold);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
 }
 
 /* ===========================
    IMAGE ATOMS
    =========================== */
-
-.img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-.img--rounded { border-radius: var(--radius-lg); }
-.img--circle { border-radius: var(--radius-full); }
-.img--cover {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.img--contain {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
+.img { display: block; max-width: 100%; height: auto; }
+.img--cover { width: 100%; height: 100%; object-fit: cover; }
+.img--contain { width: 100%; height: 100%; object-fit: contain; }
 
 /* ===========================
    ICON ATOMS
    =========================== */
-
-.icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
+.icon { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .icon--sm { width: 16px; height: 16px; }
 .icon--md { width: 24px; height: 24px; }
 .icon--lg { width: 32px; height: 32px; }
 .icon--xl { width: 48px; height: 48px; }
-
-.icon--gold { color: var(--color-brand-gold); }
-.icon--navy { color: var(--color-brand-navy); }
+.icon--2xl { width: 64px; height: 64px; }
+.icon--orange { color: var(--color-orange); }
+.icon--black { color: var(--color-black); }
 .icon--white { color: var(--color-white); }
-.icon--orange { color: var(--color-brand-orange); }
 
 /* ===========================
    INPUT ATOMS
    =========================== */
-
 .input {
   display: block;
   width: 100%;
-  font-family: var(--font-body);
+  font-family: var(--font-primary);
   font-size: var(--text-base);
-  color: var(--color-gray-800);
-  background-color: var(--color-white);
+  color: var(--color-black);
+  background: var(--color-white);
   border: var(--border-thin) solid var(--color-gray-300);
-  border-radius: var(--radius-md);
-  padding: var(--space-3) var(--space-4);
-  transition:
-    border-color var(--duration-normal) var(--ease-default),
-    box-shadow var(--duration-normal) var(--ease-default);
+  padding: var(--space-4);
+  transition: border-color var(--duration-normal) var(--ease-out);
 }
-
-.input::placeholder {
-  color: var(--color-gray-400);
-}
-
-.input:focus {
-  outline: none;
-  border-color: var(--color-brand-gold);
-  box-shadow: 0 0 0 3px rgba(212, 168, 67, 0.15);
-}
-
-.input--error {
-  border-color: var(--color-error);
-}
-
-.input--error:focus {
-  box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.15);
-}
+.input::placeholder { color: var(--color-gray-400); }
+.input:focus { outline: none; border-color: var(--color-orange); }
+.input--error { border-color: var(--color-error); }
 
 /* ===========================
    TEXTAREA ATOMS
    =========================== */
-
 .textarea {
   display: block;
   width: 100%;
-  font-family: var(--font-body);
+  font-family: var(--font-primary);
   font-size: var(--text-base);
-  color: var(--color-gray-800);
-  background-color: var(--color-white);
+  color: var(--color-black);
+  background: var(--color-white);
   border: var(--border-thin) solid var(--color-gray-300);
-  border-radius: var(--radius-md);
-  padding: var(--space-3) var(--space-4);
+  padding: var(--space-4);
   resize: vertical;
-  min-height: 120px;
-  transition:
-    border-color var(--duration-normal) var(--ease-default),
-    box-shadow var(--duration-normal) var(--ease-default);
+  min-height: 140px;
+  transition: border-color var(--duration-normal) var(--ease-out);
 }
-
-.textarea:focus {
-  outline: none;
-  border-color: var(--color-brand-gold);
-  box-shadow: 0 0 0 3px rgba(212, 168, 67, 0.15);
-}
+.textarea:focus { outline: none; border-color: var(--color-orange); }
 
 /* ===========================
    SELECT ATOMS
    =========================== */
-
 .select {
   display: block;
   width: 100%;
-  font-family: var(--font-body);
+  font-family: var(--font-primary);
   font-size: var(--text-base);
-  color: var(--color-gray-800);
-  background-color: var(--color-white);
+  color: var(--color-black);
+  background: var(--color-white);
   border: var(--border-thin) solid var(--color-gray-300);
-  border-radius: var(--radius-md);
-  padding: var(--space-3) var(--space-4);
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234A4A4A' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right var(--space-3) center;
+  padding: var(--space-4);
   padding-right: var(--space-10);
-  transition:
-    border-color var(--duration-normal) var(--ease-default),
-    box-shadow var(--duration-normal) var(--ease-default);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-4) center;
+  transition: border-color var(--duration-normal) var(--ease-out);
 }
-
-.select:focus {
-  outline: none;
-  border-color: var(--color-brand-gold);
-  box-shadow: 0 0 0 3px rgba(212, 168, 67, 0.15);
-}
+.select:focus { outline: none; border-color: var(--color-orange); }
 
 /* ===========================
    LABEL ATOMS
    =========================== */
-
 .label {
   display: block;
-  font-family: var(--font-body);
+  font-family: var(--font-primary);
   font-size: var(--text-sm);
-  font-weight: var(--weight-semibold);
-  color: var(--color-gray-700);
+  font-weight: var(--weight-bold);
+  color: var(--color-black);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
   margin-bottom: var(--space-2);
 }
-
-.label--required::after {
-  content: ' *';
-  color: var(--color-error);
-}
+.label--required::after { content: ' *'; color: var(--color-orange); }
 
 /* ===========================
-   BADGE ATOMS
+   BADGE / TAG ATOMS
    =========================== */
-
 .badge {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
-  font-family: var(--font-body);
+  font-family: var(--font-primary);
   font-size: var(--text-xs);
-  font-weight: var(--weight-semibold);
+  font-weight: var(--weight-bold);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wider);
   padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-full);
 }
-
-.badge--gold {
-  background-color: rgba(212, 168, 67, 0.15);
-  color: var(--color-brand-gold-dark);
-}
-
-.badge--navy {
-  background-color: rgba(10, 22, 40, 0.1);
-  color: var(--color-brand-navy);
-}
-
-.badge--orange {
-  background-color: rgba(232, 124, 46, 0.15);
-  color: var(--color-brand-orange-dark);
-}
-
-.badge--white {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: var(--color-white);
-}
+.badge--orange { background: var(--color-orange); color: var(--color-white); }
+.badge--black { background: var(--color-black); color: var(--color-white); }
+.badge--outline { background: transparent; border: 1px solid var(--color-gray-300); color: var(--color-gray-600); }
+.badge--white { background: rgba(255,255,255,0.2); color: var(--color-white); }
 
 /* ===========================
    LOGO ATOMS
    =========================== */
-
-.logo {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-3);
-  text-decoration: none;
-}
-
-.logo__image {
-  height: 48px;
-  width: auto;
-}
-
+.logo { display: inline-flex; align-items: center; gap: var(--space-3); text-decoration: none; }
+.logo__image { height: 48px; width: auto; }
 .logo__image--sm { height: 32px; }
 .logo__image--lg { height: 64px; }
-
 .logo__text {
-  font-family: var(--font-heading);
-  font-size: var(--text-xl);
-  font-weight: var(--weight-bold);
-  color: var(--color-brand-navy);
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-black);
+  color: var(--color-black);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
 }
-
-.logo__text--white {
-  color: var(--color-white);
-}
+.logo__text--white { color: var(--color-white); }
 
 /* ===========================
-   DIVIDER ATOMS
+   DIVIDER / RULE ATOMS
    =========================== */
-
-.divider {
-  border: none;
-  height: 1px;
-  background-color: var(--color-gray-200);
-}
-
-.divider--gold {
-  height: 3px;
-  width: 80px;
-  background-color: var(--color-brand-gold);
-}
-
-.divider--navy {
-  background-color: var(--color-brand-navy);
-}
-
-.divider--thick {
-  height: 4px;
-}
-
-.divider--spacious {
-  margin: var(--space-8) 0;
-}
+.divider { border: none; height: 1px; background: var(--color-gray-200); }
+.divider--orange { height: 4px; width: 64px; background: var(--color-orange); }
+.divider--thick { height: 4px; }
+.divider--full { width: 100%; }
 
 /* ===========================
    CONTAINER ATOMS
    =========================== */
-
 .container {
   width: 100%;
   max-width: var(--container-max);
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--section-padding-x);
-  padding-right: var(--section-padding-x);
+  padding-left: var(--section-px);
+  padding-right: var(--section-px);
 }
+.container--wide { max-width: var(--container-wide); }
+.container--narrow { max-width: var(--container-narrow); }
+.container--text { max-width: var(--container-text); }
+.container--full { max-width: none; padding: 0; }
 
-.container--wide {
-  max-width: var(--container-wide);
+/* ===========================
+   SECTION WRAPPER ATOM
+   =========================== */
+.section {
+  padding-top: var(--section-py);
+  padding-bottom: var(--section-py);
+  position: relative;
 }
+.section--sm { padding-top: var(--section-py-sm); padding-bottom: var(--section-py-sm); }
+.section--black { background: var(--color-black); }
+.section--near-black { background: var(--color-near-black); }
+.section--cream { background: var(--color-cream); }
+.section--off-white { background: var(--color-off-white); }
+.section--white { background: var(--color-white); }
+.section--orange { background: var(--color-orange); }
+.section--full-bleed { padding-left: 0; padding-right: 0; }
+.section--no-pad-top { padding-top: 0; }
+.section--no-pad-bottom { padding-bottom: 0; }
 
-.container--narrow {
-  max-width: var(--container-narrow);
+/* ===========================
+   ACCENT BAR ATOM
+   =========================== */
+.accent-bar {
+  display: block;
+  width: 64px;
+  height: 4px;
+  background: var(--color-orange);
 }
-
-.container--prose {
-  max-width: var(--container-prose);
-}
+.accent-bar--white { background: var(--color-white); }
+.accent-bar--gold { background: var(--color-gold); }

@@ -21,7 +21,7 @@ export const CTAButtonGroup: React.FC<CTAButtonGroupProps> = ({
   secondaryHref,
   primaryVariant = 'primary',
   secondaryVariant = 'outline',
-  size = 'lg',
+  size = 'md',
   centered = false,
   className = '',
 }) => {
@@ -39,7 +39,6 @@ export const CTAButtonGroup: React.FC<CTAButtonGroupProps> = ({
         variant={primaryVariant}
         size={size}
         href={primaryHref}
-        pulseGlow
         icon={<Icon name="ArrowRight" size="sm" />}
         iconPosition="right"
       >
@@ -50,8 +49,6 @@ export const CTAButtonGroup: React.FC<CTAButtonGroupProps> = ({
           variant={secondaryVariant}
           size={size}
           href={secondaryHref}
-          icon={<Icon name="Phone" size="sm" />}
-          iconPosition="left"
         >
           {secondaryLabel}
         </Button>

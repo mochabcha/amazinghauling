@@ -57,10 +57,9 @@ export const HomeTemplate: React.FC<HomeTemplateProps> = ({
     <div className="home-template">
       <HeroSection
         heading={hero.heading}
-        subheading={hero.subheading}
+        headingLines={[hero.heading]}
         description={hero.description}
         backgroundImage={hero.backgroundImage}
-        certifications={hero.certifications}
         primaryCTA={{ label: 'Request a Quote', href: '/contact' }}
         secondaryCTA={{ label: 'Call Now', href: 'tel:' }}
       />
@@ -68,7 +67,7 @@ export const HomeTemplate: React.FC<HomeTemplateProps> = ({
       <ContentSection
         heading={introHeading}
         content={introContent}
-        showCTA={false}
+        centered
       />
 
       <ServicesGrid
@@ -110,8 +109,9 @@ export const HomeTemplate: React.FC<HomeTemplateProps> = ({
         heading={commitment.heading}
         content={commitment.content}
         centered
-        navy
-        showCTA
+        dark
+        ctaLabel="Request a Quote"
+        ctaHref="/contact"
       />
 
       <CTABanner

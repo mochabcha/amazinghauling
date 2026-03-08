@@ -12,7 +12,6 @@ export interface ButtonProps {
   className?: string
   onClick?: () => void
   disabled?: boolean
-  pulseGlow?: boolean
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -27,14 +26,12 @@ export const Button: React.FC<ButtonProps> = ({
   className = '',
   onClick,
   disabled = false,
-  pulseGlow = false,
 }) => {
   const classes = [
     'btn',
     `btn--${variant}`,
     size !== 'md' ? `btn--${size}` : '',
     fullWidth ? 'btn--full' : '',
-    pulseGlow ? 'animate-pulse-glow' : '',
     className,
   ]
     .filter(Boolean)
