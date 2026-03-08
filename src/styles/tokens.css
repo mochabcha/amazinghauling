@@ -1,0 +1,162 @@
+:root {
+  /* ===========================
+     COLOR TOKENS
+     =========================== */
+  --color-brand-navy: #0A1628;
+  --color-brand-navy-light: #132240;
+  --color-brand-blue: #1B3A5C;
+  --color-brand-blue-light: #2A5080;
+  --color-brand-gold: #D4A843;
+  --color-brand-gold-light: #E8C96A;
+  --color-brand-gold-dark: #B8912E;
+  --color-brand-orange: #E87C2E;
+  --color-brand-orange-dark: #C4601A;
+  --color-brand-orange-light: #F09A56;
+  --color-white: #FFFFFF;
+  --color-off-white: #F5F3EF;
+  --color-gray-50: #FAFAF8;
+  --color-gray-100: #F0EDE8;
+  --color-gray-200: #E8E6E1;
+  --color-gray-300: #D1CFC9;
+  --color-gray-400: #A8A6A0;
+  --color-gray-500: #8A8A8A;
+  --color-gray-600: #6B6B6B;
+  --color-gray-700: #4A4A4A;
+  --color-gray-800: #2D2D2D;
+  --color-gray-900: #1A1A1A;
+  --color-black: #111111;
+  --color-success: #2E7D32;
+  --color-error: #C62828;
+  --color-warning: #F9A825;
+
+  /* ===========================
+     TYPOGRAPHY TOKENS
+     =========================== */
+  --font-heading: 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
+
+  --leading-none: 1;
+  --leading-tight: 1.15;
+  --leading-snug: 1.3;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+  --leading-loose: 2;
+
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
+
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+
+  /* ===========================
+     SPACING TOKENS
+     =========================== */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+  --space-40: 10rem;
+
+  --section-padding-y: var(--space-24);
+  --section-padding-y-sm: var(--space-16);
+  --section-padding-x: var(--space-6);
+
+  /* ===========================
+     LAYOUT TOKENS
+     =========================== */
+  --container-max: 1280px;
+  --container-wide: 1440px;
+  --container-narrow: 960px;
+  --container-prose: 720px;
+
+  /* ===========================
+     BORDER TOKENS
+     =========================== */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  --border-thin: 1px;
+  --border-medium: 2px;
+  --border-thick: 4px;
+
+  /* ===========================
+     SHADOW TOKENS
+     =========================== */
+  --shadow-sm: 0 1px 2px rgba(10, 22, 40, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(10, 22, 40, 0.07), 0 2px 4px -2px rgba(10, 22, 40, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(10, 22, 40, 0.08), 0 4px 6px -4px rgba(10, 22, 40, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(10, 22, 40, 0.1), 0 8px 10px -6px rgba(10, 22, 40, 0.05);
+  --shadow-2xl: 0 25px 50px -12px rgba(10, 22, 40, 0.2);
+  --shadow-gold: 0 4px 14px rgba(212, 168, 67, 0.3);
+  --shadow-navy: 0 4px 14px rgba(10, 22, 40, 0.4);
+
+  /* ===========================
+     TRANSITION TOKENS
+     =========================== */
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-slower: 800ms;
+  --duration-slowest: 1200ms;
+
+  /* ===========================
+     Z-INDEX TOKENS
+     =========================== */
+  --z-behind: -1;
+  --z-base: 0;
+  --z-above: 10;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding-y: var(--space-16);
+    --section-padding-y-sm: var(--space-10);
+    --text-6xl: 2.5rem;
+    --text-7xl: 3rem;
+    --text-5xl: 2.25rem;
+    --text-4xl: 1.875rem;
+  }
+}
