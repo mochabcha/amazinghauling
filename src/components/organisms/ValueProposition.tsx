@@ -1,7 +1,9 @@
 'use client'
 
 import React from 'react'
+import { SectionWrapper } from '../molecules/SectionWrapper'
 import { ValueCard } from '../molecules/ValueCard'
+import { SectionHeader } from '../molecules/SectionHeader'
 import { useScrollAnimation } from '@/lib/useScrollAnimation'
 
 export interface ValueItem {
@@ -14,7 +16,7 @@ export interface ValuePropositionProps {
   heading?: string
   description?: string
   values: ValueItem[]
-  columns?: 2 | 3 | 5
+  columns?: 2 | 3 | 4
   alt?: boolean
   className?: string
 }
@@ -28,28 +30,22 @@ export const ValueProposition: React.FC<ValuePropositionProps> = ({
   className = '',
 }) => {
   const ref = useScrollAnimation()
-  const classes = [
-    'value-proposition',
-    alt ? 'value-proposition--alt' : '',
-    className,
-  ].filter(Boolean).join(' ')
 
   const gridClass = columns === 2
     ? 'value-proposition__grid--2col'
-    : columns === 5
-      ? 'value-proposition__grid--5col'
+    : columns === 4
+      ? 'value-proposition__grid--4col'
       : 'value-proposition__grid'
 
   return (
-    <section className={classes} ref={ref}>
+    <SectionWrapper background={alt ? 'cream' : 'white'} className={className} ref={ref} noContainer>
       <div className="value-proposition__inner">
-        <div className="value-proposition__header animate-on-scroll animate-gold-line">
-          <h2 className="heading heading--2 mb-4">{heading}</h2>
-          {description && <p className="text text--lg">{description}</p>}
+        <div className="value-proposition__header anim-reveal anim-accent-bar">
+          <SectionHeader heading={heading} description={description} centered />
         </div>
-        <div className={`${gridClass} animate-stagger`}>
+        <div className={`${gridClass} anim-stagger`}>
           {values.map((value, index) => (
-            <div key={index} className="animate-on-scroll">
+            <div key={index} className="anim-reveal">
               <ValueCard
                 title={value.title}
                 description={value.description}
@@ -59,6 +55,6 @@ export const ValueProposition: React.FC<ValuePropositionProps> = ({
           ))}
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   )
 }

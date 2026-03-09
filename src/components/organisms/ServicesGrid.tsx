@@ -1,7 +1,9 @@
 'use client'
 
 import React from 'react'
+import { SectionWrapper } from '../molecules/SectionWrapper'
 import { ServiceCard } from '../molecules/ServiceCard'
+import { SectionHeader } from '../molecules/SectionHeader'
 import { CTAButtonGroup } from '../molecules/CTAButtonGroup'
 import { useScrollAnimation } from '@/lib/useScrollAnimation'
 
@@ -30,24 +32,16 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({
   className = '',
 }) => {
   const ref = useScrollAnimation()
-  const classes = ['services-grid', className].filter(Boolean).join(' ')
 
   return (
-    <section className={classes} ref={ref}>
+    <SectionWrapper className={className} ref={ref} noContainer>
       <div className="services-grid__inner">
-        <div className="services-grid__header animate-on-scroll">
-          {subheading && (
-            <p className="text text--uppercase text--gold mb-4">{subheading}</p>
-          )}
-          <h2 className="heading heading--2 mb-4">{heading}</h2>
-          {description && (
-            <p className="text text--lg">{description}</p>
-          )}
-          <div className="divider divider--gold mx-auto mt-6 animate-draw-line" />
+        <div className="services-grid__header anim-reveal">
+          <SectionHeader badge={subheading} heading={heading} description={description} accentBar />
         </div>
-        <div className="services-grid__grid animate-stagger">
+        <div className="services-grid__grid anim-stagger">
           {services.map((service, index) => (
-            <div key={index} className="animate-on-scroll">
+            <div key={index} className="anim-reveal">
               <ServiceCard
                 title={service.title}
                 description={service.description}
@@ -58,11 +52,11 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({
           ))}
         </div>
         {showCTA && (
-          <div className="text-center mt-16 animate-on-scroll">
+          <div className="text-center mt-16 anim-reveal">
             <CTAButtonGroup centered />
           </div>
         )}
       </div>
-    </section>
+    </SectionWrapper>
   )
 }

@@ -1,7 +1,10 @@
 'use client'
 
 import React from 'react'
+import { SectionWrapper } from '../molecules/SectionWrapper'
+import { AreaListHeader } from '../molecules/AreaListHeader'
 import { AreaCard } from '../molecules/AreaCard'
+import { AdditionalAreas } from '../molecules/AdditionalAreas'
 import { CTAButtonGroup } from '../molecules/CTAButtonGroup'
 import { useScrollAnimation } from '@/lib/useScrollAnimation'
 
@@ -33,13 +36,9 @@ export const ServiceAreasList: React.FC<ServiceAreasListProps> = ({
   const classes = ['service-areas-list', className].filter(Boolean).join(' ')
 
   return (
-    <section className={classes} ref={ref}>
+    <SectionWrapper className={classes} ref={ref} noContainer>
       <div className="service-areas-list__inner">
-        <div className="service-areas-list__header animate-on-scroll">
-          <h2 className="heading heading--2 mb-4">{heading}</h2>
-          {description && <p className="text text--lg">{description}</p>}
-          <div className="divider divider--gold mx-auto mt-6 animate-draw-line" />
-        </div>
+        <AreaListHeader heading={heading} description={description} className="service-areas-list__header animate-on-scroll" />
         <div className="service-areas-list__grid animate-stagger">
           {areas.map((area, index) => (
             <div key={index} className="animate-on-scroll">
@@ -53,17 +52,7 @@ export const ServiceAreasList: React.FC<ServiceAreasListProps> = ({
           ))}
         </div>
         {additionalAreas && additionalAreas.length > 0 && (
-          <div className="service-areas-list__additional animate-on-scroll">
-            <h3 className="heading heading--4 mb-4">Additional Areas We Serve</h3>
-            <div className="flex flex-wrap gap-3">
-              {additionalAreas.map((area, index) => (
-                <span key={index} className="badge badge--navy">{area}</span>
-              ))}
-            </div>
-            <p className="text text--base mt-4">
-              For long-term or large-scale projects, we are able to travel beyond our core region when scheduling and logistics allow.
-            </p>
-          </div>
+          <AdditionalAreas areas={additionalAreas} className="animate-on-scroll" />
         )}
         {showCTA && (
           <div className="text-center mt-16 animate-on-scroll">
@@ -71,6 +60,6 @@ export const ServiceAreasList: React.FC<ServiceAreasListProps> = ({
           </div>
         )}
       </div>
-    </section>
+    </SectionWrapper>
   )
 }

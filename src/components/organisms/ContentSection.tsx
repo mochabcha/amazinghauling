@@ -1,13 +1,11 @@
 'use client'
 
 import React from 'react'
-import { Section } from '../atoms/Section'
-import { Container } from '../atoms/Container'
-import { Heading } from '../atoms/Heading'
-import { Text } from '../atoms/Text'
-import { AccentBar } from '../atoms/AccentBar'
+import { SectionWrapper } from '../molecules/SectionWrapper'
 import { SectionHeader } from '../molecules/SectionHeader'
 import { ContentBody } from '../molecules/ContentBody'
+import { ContentSplitBody } from '../molecules/ContentSplitBody'
+import { SplitLayout } from '../molecules/SplitLayout'
 import { ImagePlaceholder } from '../molecules/ImagePlaceholder'
 import { useScrollAnimation } from '@/lib/useScrollAnimation'
 
@@ -44,60 +42,46 @@ export const ContentSection: React.FC<ContentSectionProps> = ({
 }) => {
   const ref = useScrollAnimation()
   const bg = dark ? 'black' : alt ? 'cream' : 'white'
+  const resolvedContent = typeof content === 'string' ? <>{content}</> : content
 
   if (centered) {
     return (
-      <Section background={bg} className={className} ref={ref}>
-        <Container>
-          <div className="max-w-3xl mx-auto text-center anim-reveal">
-            <SectionHeader
-              badge={badge}
-              heading={heading}
-              headingLevel={3}
-              centered
-              light={dark}
-            />
-            <Text as="div" size="md" color={dark ? 'cream' : 'default'}>
-              {typeof content === 'string' ? <>{content}</> : content}
-            </Text>
-            {ctaLabel && (
-              <ContentBody ctaLabel={ctaLabel} ctaHref={ctaHref} ctaVariant={dark ? 'primary' : 'outline'}>
-                {null}
-              </ContentBody>
-            )}
-          </div>
-        </Container>
-      </Section>
+      <SectionWrapper background={bg} className={className} ref={ref}>
+        <div className="max-w-3xl mx-auto text-center anim-reveal">
+          <SectionHeader
+            badge={badge}
+            heading={heading}
+            headingLevel={3}
+            centered
+            light={dark}
+          />
+          <ContentBody light={dark} ctaLabel={ctaLabel} ctaHref={ctaHref} ctaVariant={dark ? 'primary' : 'outline'}>
+            {resolvedContent}
+          </ContentBody>
+        </div>
+      </SectionWrapper>
     )
   }
 
-  const splitClasses = [
-    'content-split',
-    reverse ? 'content-split--reverse' : '',
-    overlap ? 'content-split--overlap' : '',
-    dark ? 'content-split--dark' : '',
-  ].filter(Boolean).join(' ')
-
   return (
-    <Section background={bg} noPadTop noPadBottom className={className} ref={ref}>
-      <div className={splitClasses}>
-        <div className="content-split__media anim-clip-up">
-          <ImagePlaceholder src={imageSrc} alt={imageAlt || heading} label="Section Image" />
-        </div>
-        <div className="content-split__body anim-reveal">
-          {badge && <Text as="p" size="xs" color="orange" uppercase>{badge}</Text>}
-          <AccentBar variant={dark ? 'white' : 'orange'} />
-          <Heading level={3} color={dark ? 'white' : 'default'}>{heading}</Heading>
-          <Text as="div" size="md" color={dark ? 'cream' : 'default'}>
-            {typeof content === 'string' ? <>{content}</> : content}
-          </Text>
-          {ctaLabel && (
-            <ContentBody ctaLabel={ctaLabel} ctaHref={ctaHref} ctaVariant={dark ? 'primary' : 'outline'}>
-              {null}
-            </ContentBody>
-          )}
-        </div>
-      </div>
-    </Section>
+    <SectionWrapper background={bg} noPadTop noPadBottom noContainer className={className} ref={ref}>
+      <SplitLayout
+        reverse={reverse}
+        overlap={overlap}
+        dark={dark}
+        media={<ImagePlaceholder src={imageSrc} alt={imageAlt || heading} label="Section Image" gradient={dark ? 'warm' : 'primary'} />}
+        body={
+          <ContentSplitBody
+            badge={badge}
+            heading={heading}
+            dark={dark}
+            ctaLabel={ctaLabel}
+            ctaHref={ctaHref}
+          >
+            {resolvedContent}
+          </ContentSplitBody>
+        }
+      />
+    </SectionWrapper>
   )
 }

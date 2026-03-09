@@ -1,12 +1,10 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Logo } from '../atoms/Logo'
-import { Icon } from '../atoms/Icon'
-import { Text } from '../atoms/Text'
-import { Button } from '../atoms/Button'
+import { HeaderBrand } from '../molecules/HeaderBrand'
 import { NavLink } from '../molecules/NavLink'
-import { CTAButtonGroup } from '../molecules/CTAButtonGroup'
+import { HeaderActions } from '../molecules/HeaderActions'
+import { MobileMenu } from '../molecules/MobileMenu'
 
 export interface HeaderNavItem {
   label: string
@@ -39,7 +37,7 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className={classes}>
       <div className="header__inner">
-        <Logo src={logoSrc} companyName={companyName} white href="/" />
+        <HeaderBrand src={logoSrc} companyName={companyName} />
 
         <nav className="header__nav">
           {navItems.map((item, index) => (
@@ -52,39 +50,22 @@ export const Header: React.FC<HeaderProps> = ({
           ))}
         </nav>
 
-        <div className="header__actions">
-          {phone && (
-            <Button variant="ghost" href={`tel:${phone}`} className="header__phone" icon={<Icon name="Phone" size="sm" color="white" />}>
-              <Text as="span" size="xs" color="white" uppercase>{phone}</Text>
-            </Button>
-          )}
-          <CTAButtonGroup
-            primaryLabel={ctaLabel}
-            primaryHref={ctaHref}
-            size="sm"
-          />
-          <Button
-            variant="ghost"
-            className="header__mobile-toggle"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            icon={<Icon name={mobileOpen ? 'X' : 'Menu'} size="md" color="white" />}
-          >
-            <Text as="span" className="sr-only">{mobileOpen ? 'Close' : 'Menu'}</Text>
-          </Button>
-        </div>
-      </div>
-
-      <div className={`header__mobile-menu ${mobileOpen ? 'is-open' : ''}`}>
-        {navItems.map((item, index) => (
-          <NavLink key={index} label={item.label} href={item.href} />
-        ))}
-        <CTAButtonGroup
-          primaryLabel={ctaLabel}
-          primaryHref={ctaHref}
-          secondaryLabel={phone ? `Call ${phone}` : undefined}
-          secondaryHref={phone ? `tel:${phone}` : undefined}
+        <HeaderActions
+          phone={phone}
+          ctaLabel={ctaLabel}
+          ctaHref={ctaHref}
+          mobileOpen={mobileOpen}
+          onMobileToggle={() => setMobileOpen(!mobileOpen)}
         />
       </div>
+
+      <MobileMenu
+        navItems={navItems}
+        isOpen={mobileOpen}
+        ctaLabel={ctaLabel}
+        ctaHref={ctaHref}
+        phone={phone}
+      />
     </header>
   )
 }

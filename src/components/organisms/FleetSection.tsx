@@ -1,11 +1,11 @@
 'use client'
 
 import React from 'react'
-import { Section } from '../atoms/Section'
-import { Container } from '../atoms/Container'
+import { SectionWrapper } from '../molecules/SectionWrapper'
 import { SectionHeader } from '../molecules/SectionHeader'
 import { ContentBody } from '../molecules/ContentBody'
-import { MetricDisplay } from '../molecules/MetricDisplay'
+import { MetricsGrid } from '../molecules/MetricsGrid'
+import { SplitLayout } from '../molecules/SplitLayout'
 import { ImagePlaceholder } from '../molecules/ImagePlaceholder'
 import { useScrollAnimation } from '@/lib/useScrollAnimation'
 
@@ -32,33 +32,21 @@ export const FleetSection: React.FC<FleetSectionProps> = ({
   const ref = useScrollAnimation()
 
   return (
-    <Section background="cream" className={className} ref={ref}>
-      <Container>
-        <div className="content-split">
-          <div className="content-split__body anim-left">
+    <SectionWrapper background="cream" className={className} ref={ref}>
+      <SplitLayout
+        mediaAnimClass="anim-clip-up"
+        bodyAnimClass="anim-left"
+        media={<ImagePlaceholder src={imageSrc} label="Fleet Image" alt="Amazing Hauling Fleet" gradient="warm" />}
+        body={
+          <>
             <SectionHeader badge="Our Equipment" heading={heading} accentBar />
-            <ContentBody
-              ctaLabel="Request a Quote"
-              ctaHref="/contact"
-            >
+            <ContentBody ctaLabel="Request a Quote" ctaHref="/contact">
               {description}
             </ContentBody>
-            <div className="fleet-section__metrics" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-6)', marginTop: 'var(--space-4)' }}>
-              {metrics.map((metric, index) => (
-                <MetricDisplay
-                  key={index}
-                  iconName={metric.iconName}
-                  value={metric.value}
-                  label={metric.label}
-                />
-              ))}
-            </div>
-          </div>
-          <div className="content-split__media anim-clip-up">
-            <ImagePlaceholder src={imageSrc} label="Fleet Image" alt="Amazing Hauling Fleet" />
-          </div>
-        </div>
-      </Container>
-    </Section>
+            <MetricsGrid metrics={metrics} />
+          </>
+        }
+      />
+    </SectionWrapper>
   )
 }

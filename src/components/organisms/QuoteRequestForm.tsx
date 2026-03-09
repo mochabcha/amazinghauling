@@ -1,9 +1,12 @@
 'use client'
 
 import React from 'react'
+import { SectionWrapper } from '../molecules/SectionWrapper'
+import { FormHeader } from '../molecules/FormHeader'
 import { FormField } from '../molecules/FormField'
 import { CTAButtonGroup } from '../molecules/CTAButtonGroup'
 import { ContactInfoItem } from '../molecules/ContactInfoItem'
+import { ContentBody } from '../molecules/ContentBody'
 import { useScrollAnimation } from '@/lib/useScrollAnimation'
 
 export interface QuoteRequestFormProps {
@@ -28,13 +31,10 @@ export const QuoteRequestForm: React.FC<QuoteRequestFormProps> = ({
   const classes = ['quote-form', className].filter(Boolean).join(' ')
 
   return (
-    <section className={classes} ref={ref}>
+    <SectionWrapper className={classes} ref={ref} noContainer>
       <div className="quote-form__inner">
         <div className="quote-form__content animate-fade-left">
-          <div>
-            <h2 className="heading heading--2 mb-4">{heading}</h2>
-            <p className="text text--lg">{description}</p>
-          </div>
+          <FormHeader heading={heading} description={description} />
 
           {contactInfo && (
             <div className="contact-template__info">
@@ -53,16 +53,26 @@ export const QuoteRequestForm: React.FC<QuoteRequestFormProps> = ({
             </div>
           )}
 
-          <div className="contact-template__hours">
-            <h4 className="heading heading--5 mb-3">Service Areas</h4>
-            <p className="text text--base">Jacksonville, Duval County, Clay County, Nassau County, St. Johns County, St. Mary&apos;s Georgia</p>
-            <p className="text text--sm text--gray mt-2">For larger projects, our fleet can travel throughout Florida when scheduling allows.</p>
-          </div>
+          <FormHeader
+            heading="Service Areas"
+            headingLevel={5}
+            description="Jacksonville, Duval County, Clay County, Nassau County, St. Johns County, St. Mary's Georgia"
+            descriptionSize="base"
+            className="contact-template__hours"
+          />
+          <ContentBody>
+            <small>For larger projects, our fleet can travel throughout Florida when scheduling allows.</small>
+          </ContentBody>
         </div>
 
         <form className="quote-form__form animate-fade-right" action="/api/form-submissions" method="POST">
-          <h3 className="heading heading--4">Request a Quote</h3>
-          <p className="text text--sm text--gray">Please provide the details of your hauling needs so we can give you an accurate estimate.</p>
+          <FormHeader
+            heading="Request a Quote"
+            headingLevel={4}
+            description="Please provide the details of your hauling needs so we can give you an accurate estimate."
+            descriptionSize="sm"
+            descriptionColor="gray"
+          />
 
           <div className="quote-form__form-row">
             <FormField name="name" label="Name" required />
@@ -106,6 +116,6 @@ export const QuoteRequestForm: React.FC<QuoteRequestFormProps> = ({
           />
         </form>
       </div>
-    </section>
+    </SectionWrapper>
   )
 }

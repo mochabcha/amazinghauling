@@ -143,6 +143,16 @@
   --overlap-sm: 3rem;
   --overlap-md: 5rem;
   --overlap-lg: 8rem;
+
+  /* ===========================
+     BRANDED GRADIENTS
+     =========================== */
+  --gradient-brand-primary: linear-gradient(135deg, var(--color-orange) 0%, var(--color-amber) 50%, var(--color-orange-dark) 100%);
+  --gradient-brand-dark: linear-gradient(135deg, var(--color-near-black) 0%, var(--color-charcoal) 40%, var(--color-gray-700) 100%);
+  --gradient-brand-warm: linear-gradient(135deg, var(--color-orange-dark) 0%, var(--color-orange) 50%, var(--color-gold) 100%);
+  --gradient-brand-cream: linear-gradient(135deg, var(--color-cream) 0%, var(--color-off-white) 50%, var(--color-gray-100) 100%);
+  --gradient-brand-hero: linear-gradient(135deg, var(--color-black) 0%, var(--color-near-black) 40%, var(--color-charcoal) 100%);
+  --gradient-brand-accent: linear-gradient(90deg, var(--color-orange) 0%, var(--color-gold) 100%);
 }
 
 @media (max-width: 1024px) {

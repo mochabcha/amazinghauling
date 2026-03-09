@@ -1,7 +1,8 @@
 'use client'
 
 import React from 'react'
-import { StatItem } from '../molecules/StatItem'
+import { SectionWrapper } from '../molecules/SectionWrapper'
+import { StatsBarGrid } from '../molecules/StatsBarGrid'
 import { useScrollAnimation } from '@/lib/useScrollAnimation'
 
 export interface StatsBarProps {
@@ -17,14 +18,10 @@ export const StatsBar: React.FC<StatsBarProps> = ({
   const classes = ['stats-bar', className].filter(Boolean).join(' ')
 
   return (
-    <section className={classes} ref={ref}>
+    <SectionWrapper className={classes} ref={ref} noContainer background="black">
       <div className="stats-bar__inner">
-        <div className="stats-bar__grid animate-stagger">
-          {stats.map((stat, index) => (
-            <StatItem key={index} value={stat.value} label={stat.label} white />
-          ))}
-        </div>
+        <StatsBarGrid stats={stats} white />
       </div>
-    </section>
+    </SectionWrapper>
   )
 }

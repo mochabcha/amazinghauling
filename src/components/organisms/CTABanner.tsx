@@ -1,7 +1,8 @@
 'use client'
 
 import React from 'react'
-import { CTAButtonGroup } from '../molecules/CTAButtonGroup'
+import { SectionWrapper } from '../molecules/SectionWrapper'
+import { CTABannerContent } from '../molecules/CTABannerContent'
 import { useScrollAnimation } from '@/lib/useScrollAnimation'
 
 export interface CTABannerProps {
@@ -27,22 +28,15 @@ export const CTABanner: React.FC<CTABannerProps> = ({
   const classes = ['cta-banner', className].filter(Boolean).join(' ')
 
   return (
-    <section className={classes} ref={ref}>
-      <div className="cta-banner__inner animate-on-scroll">
-        <h2 className="heading heading--2 heading--white cta-banner__title">{heading}</h2>
-        <p className="text text--xl cta-banner__description" style={{ color: 'rgba(255,255,255,0.8)' }}>
-          {description}
-        </p>
-        <CTAButtonGroup
-          primaryLabel={primaryLabel}
-          primaryHref={primaryHref}
-          secondaryLabel={secondaryLabel}
-          secondaryHref={secondaryHref}
-          centered
-          primaryVariant="primary"
-          secondaryVariant="outline-white"
-        />
-      </div>
-    </section>
+    <SectionWrapper className={classes} ref={ref} noContainer background="black">
+      <CTABannerContent
+        heading={heading}
+        description={description}
+        primaryLabel={primaryLabel}
+        primaryHref={primaryHref}
+        secondaryLabel={secondaryLabel}
+        secondaryHref={secondaryHref}
+      />
+    </SectionWrapper>
   )
 }

@@ -1,10 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Heading } from '../atoms/Heading'
-import { Text } from '../atoms/Text'
-import { Container } from '../atoms/Container'
-import { CTAButtonGroup } from '../molecules/CTAButtonGroup'
+import { HeroContent } from '../molecules/HeroContent'
 import { ImagePlaceholder } from '../molecules/ImagePlaceholder'
 import { useScrollAnimation } from '@/lib/useScrollAnimation'
 
@@ -38,40 +35,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section className={classes} ref={ref}>
       <div className="hero__bg">
-        <ImagePlaceholder src={backgroundImage} label="" alt="" minHeight="100%" />
+        <ImagePlaceholder src={backgroundImage} label="" alt="" minHeight="100%" gradient="hero" />
         <div className="hero__bg-overlay" />
       </div>
-      <Container className="hero__inner">
-        <div className="hero__content">
-          {badge && (
-            <div className="anim-hero-badge mb-6">
-              <Text as="span" size="xs" color="orange" uppercase>{badge}</Text>
-            </div>
-          )}
-          <Heading level={1} color="white" className="mb-8">
-            {lines.map((line, i) => (
-              <Text key={i} as="span" className={`block anim-hero-line-${Math.min(i + 1, 3)}`}>
-                {line}
-              </Text>
-            ))}
-          </Heading>
-          {description && (
-            <Text as="p" size="md" color="cream" className="anim-hero-body mb-8" style={{ maxWidth: '600px' }}>
-              {description}
-            </Text>
-          )}
-          <div className="anim-hero-cta">
-            <CTAButtonGroup
-              primaryLabel={primaryCTA.label}
-              primaryHref={primaryCTA.href}
-              secondaryLabel={secondaryCTA?.label}
-              secondaryHref={secondaryCTA?.href}
-              primaryVariant="primary"
-              secondaryVariant="outline-white"
-            />
-          </div>
-        </div>
-      </Container>
+      <div className="container hero__inner">
+        <HeroContent
+          badge={badge}
+          headingLines={lines}
+          description={description}
+          primaryCTA={primaryCTA}
+          secondaryCTA={secondaryCTA}
+        />
+      </div>
     </section>
   )
 }

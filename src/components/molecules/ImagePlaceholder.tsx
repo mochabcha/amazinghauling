@@ -1,12 +1,23 @@
 import React from 'react'
 import { Text } from '../atoms/Text'
 
+export type GradientVariant = 'primary' | 'dark' | 'warm' | 'cream' | 'hero'
+
 export interface ImagePlaceholderProps {
   label?: string
   src?: string
   alt?: string
   minHeight?: string
+  gradient?: GradientVariant
   className?: string
+}
+
+const gradientMap: Record<GradientVariant, string> = {
+  primary: 'var(--gradient-brand-primary)',
+  dark: 'var(--gradient-brand-dark)',
+  warm: 'var(--gradient-brand-warm)',
+  cream: 'var(--gradient-brand-cream)',
+  hero: 'var(--gradient-brand-hero)',
 }
 
 export const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({
@@ -14,6 +25,7 @@ export const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({
   src,
   alt,
   minHeight = '500px',
+  gradient = 'dark',
   className = '',
 }) => {
   if (src) {
@@ -27,9 +39,9 @@ export const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({
   return (
     <div
       className={`w-full h-full flex items-center justify-center ${className}`}
-      style={{ minHeight, background: 'linear-gradient(135deg, #111 0%, #333 100%)' }}
+      style={{ minHeight, background: gradientMap[gradient] }}
     >
-      <Text color="white" size="sm">{label}</Text>
+      {label && <Text color={gradient === 'cream' ? 'gray' : 'white'} size="sm">{label}</Text>}
     </div>
   )
 }
