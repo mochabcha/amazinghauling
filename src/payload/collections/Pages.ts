@@ -149,6 +149,7 @@ const AreaCardsBlock = {
     { name: 'items', type: 'array' as const, fields: [
       { name: 'name', type: 'text' as const },
       { name: 'description', type: 'textarea' as const },
+      { name: 'href', type: 'text' as const, label: 'Link URL' },
       { name: 'services', type: 'array' as const, fields: [
         { name: 'service', type: 'text' as const },
       ]},

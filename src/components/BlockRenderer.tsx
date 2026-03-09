@@ -168,7 +168,7 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks }) => {
             )
 
           case 'areaCards': {
-            const items = (block.items as Array<{ name?: string; description?: string; services?: Array<{ service?: string }> }>) || []
+            const items = (block.items as Array<{ name?: string; description?: string; href?: string; services?: Array<{ service?: string }> }>) || []
             const additionalAreas = (block.additionalAreas as Array<{ name?: string }>) || []
             return (
               <ServiceAreasList
@@ -178,6 +178,7 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks }) => {
                 areas={items.map((item) => ({
                   name: item.name || '',
                   description: item.description,
+                  href: item.href,
                   services: item.services?.map((s) => s.service || ''),
                 }))}
                 additionalAreas={additionalAreas.map((a) => a.name || '')}
