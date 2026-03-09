@@ -6,10 +6,13 @@
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: var(--z-sticky);
-  background: transparent;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 100%);
   transition: background var(--duration-normal) var(--ease-out);
 }
-.header--solid { background: var(--color-black); }
+.header--solid {
+  background: var(--color-black);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.4);
+}
 .header__inner {
   display: flex;
   align-items: center;

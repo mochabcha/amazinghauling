@@ -1,6 +1,7 @@
 import React from 'react'
 import { Heading } from '../atoms/Heading'
 import { Text } from '../atoms/Text'
+import { Link } from '../atoms/Link'
 
 export interface FooterContactProps {
   address?: string
@@ -31,14 +32,10 @@ export const FooterContact: React.FC<FooterContactProps> = ({
       </div>
       <div>
         {phone && (
-          <Text size="sm">
-            <a href={`tel:${phone}`} className="footer-column__link">{phone}</a>
-          </Text>
+          <Link href={`tel:${phone}`} variant="footer">{phone}</Link>
         )}
         {email && (
-          <Text size="sm">
-            <a href={`mailto:${email}`} className="footer-column__link">{email}</a>
-          </Text>
+          <Link href={`mailto:${email}`} variant="footer">{email}</Link>
         )}
       </div>
     </div>

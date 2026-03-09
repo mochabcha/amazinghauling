@@ -42,3 +42,6 @@ export type { SectionProps } from './Section'
 
 export { AccentBar } from './AccentBar'
 export type { AccentBarProps } from './AccentBar'
+
+export { Link } from './Link'
+export type { LinkProps } from './Link'

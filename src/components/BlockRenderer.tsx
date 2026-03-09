@@ -93,20 +93,21 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks }) => {
           case 'valuesGrid': {
             const items = (block.items as Array<{ icon?: string; title?: string; description?: string }>) || []
             const bg = block.background as string
+            const colCount = parseInt(block.columns as string || '3', 10)
+            const validColumns = ([2, 3, 4].includes(colCount) ? colCount : 3) as 2 | 3 | 4
             return (
-              <div key={key} className={bg === 'cream' ? 'section--cream' : ''}>
-                <ValueProposition
-                  heading={block.heading as string}
-                  description={block.description as string}
-                  values={items.map((item) => ({
-                    title: item.title || '',
-                    description: item.description || '',
-                    iconName: item.icon,
-                  }))}
-                  columns={(parseInt(block.columns as string || '3', 10) as 2 | 3) || 3}
-                  alt={bg === 'cream'}
-                />
-              </div>
+              <ValueProposition
+                key={key}
+                heading={block.heading as string}
+                description={block.description as string}
+                values={items.map((item) => ({
+                  title: item.title || '',
+                  description: item.description || '',
+                  iconName: item.icon,
+                }))}
+                columns={validColumns}
+                alt={bg === 'cream'}
+              />
             )
           }
 

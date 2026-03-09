@@ -1,5 +1,6 @@
 import React from 'react'
 import { Text } from '../atoms/Text'
+import { Link } from '../atoms/Link'
 
 export interface FooterBottomProps {
   copyright?: string
@@ -15,9 +16,7 @@ export const FooterBottom: React.FC<FooterBottomProps> = ({
   return (
     <div className={classes}>
       <Text as="span" size="xs" color="gray">{copyright}</Text>
-      <Text as="span" size="xs">
-        <a href="/privacy" className="footer-column__link">Privacy Policy</a>
-      </Text>
+      <Link href="/privacy" variant="footer">Privacy Policy</Link>
     </div>
   )
 }

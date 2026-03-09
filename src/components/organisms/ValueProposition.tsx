@@ -31,11 +31,11 @@ export const ValueProposition: React.FC<ValuePropositionProps> = ({
 }) => {
   const ref = useScrollAnimation()
 
-  const gridClass = columns === 2
+  const gridModifier = columns === 2
     ? 'value-proposition__grid--2col'
     : columns === 4
       ? 'value-proposition__grid--4col'
-      : 'value-proposition__grid'
+      : ''
 
   return (
     <SectionWrapper background={alt ? 'cream' : 'white'} className={className} ref={ref} noContainer>
@@ -43,7 +43,7 @@ export const ValueProposition: React.FC<ValuePropositionProps> = ({
         <div className="value-proposition__header anim-reveal anim-accent-bar">
           <SectionHeader heading={heading} description={description} centered />
         </div>
-        <div className={`${gridClass} anim-stagger`}>
+        <div className={['value-proposition__grid', gridModifier, 'anim-stagger'].filter(Boolean).join(' ')}>
           {values.map((value, index) => (
             <div key={index} className="anim-reveal">
               <ValueCard

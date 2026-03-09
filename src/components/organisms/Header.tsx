@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { HeaderBrand } from '../molecules/HeaderBrand'
-import { NavLink } from '../molecules/NavLink'
+import { NavBar } from '../molecules/NavBar'
 import { HeaderActions } from '../molecules/HeaderActions'
 import { MobileMenu } from '../molecules/MobileMenu'
 
@@ -32,24 +32,22 @@ export const Header: React.FC<HeaderProps> = ({
   className = '',
 }) => {
   const [mobileOpen, setMobileOpen] = useState(false)
-  const classes = ['header', className].filter(Boolean).join(' ')
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const classes = ['header', scrolled ? 'header--solid' : '', className].filter(Boolean).join(' ')
 
   return (
     <header className={classes}>
       <div className="header__inner">
         <HeaderBrand src={logoSrc} companyName={companyName} />
-
-        <nav className="header__nav">
-          {navItems.map((item, index) => (
-            <NavLink
-              key={index}
-              label={item.label}
-              href={item.href}
-              hasDropdown={!!item.children?.length}
-            />
-          ))}
-        </nav>
-
+        <NavBar navItems={navItems} />
         <HeaderActions
           phone={phone}
           ctaLabel={ctaLabel}
@@ -58,7 +56,6 @@ export const Header: React.FC<HeaderProps> = ({
           onMobileToggle={() => setMobileOpen(!mobileOpen)}
         />
       </div>
-
       <MobileMenu
         navItems={navItems}
         isOpen={mobileOpen}

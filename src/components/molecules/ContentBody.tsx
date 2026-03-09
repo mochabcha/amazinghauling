@@ -4,6 +4,7 @@ import { CTAButtonGroup } from './CTAButtonGroup'
 
 export interface ContentBodyProps {
   children: React.ReactNode
+  note?: string
   ctaLabel?: string
   ctaHref?: string
   ctaVariant?: 'primary' | 'outline' | 'outline-white'
@@ -13,6 +14,7 @@ export interface ContentBodyProps {
 
 export const ContentBody: React.FC<ContentBodyProps> = ({
   children,
+  note,
   ctaLabel,
   ctaHref,
   ctaVariant = 'outline',
@@ -26,6 +28,9 @@ export const ContentBody: React.FC<ContentBodyProps> = ({
       <Text as="div" size="md" color={light ? 'cream' : 'default'}>
         {children}
       </Text>
+      {note && (
+        <Text as="p" size="sm" color="gray">{note}</Text>
+      )}
       {ctaLabel && ctaHref && (
         <CTAButtonGroup
           primaryLabel={ctaLabel}

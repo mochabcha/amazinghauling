@@ -4,6 +4,7 @@ import React from 'react'
 import { SectionWrapper } from '../molecules/SectionWrapper'
 import { FormHeader } from '../molecules/FormHeader'
 import { FormField } from '../molecules/FormField'
+import { FormShell } from '../molecules/FormShell'
 import { CTAButtonGroup } from '../molecules/CTAButtonGroup'
 import { ContactInfoItem } from '../molecules/ContactInfoItem'
 import { ContentBody } from '../molecules/ContentBody'
@@ -60,12 +61,12 @@ export const QuoteRequestForm: React.FC<QuoteRequestFormProps> = ({
             descriptionSize="base"
             className="contact-template__hours"
           />
-          <ContentBody>
-            <small>For larger projects, our fleet can travel throughout Florida when scheduling allows.</small>
+          <ContentBody note="For larger projects, our fleet can travel throughout Florida when scheduling allows.">
+            {null}
           </ContentBody>
         </div>
 
-        <form className="quote-form__form animate-fade-right" action="/api/form-submissions" method="POST">
+        <FormShell action="/api/form-submissions" method="POST">
           <FormHeader
             heading="Request a Quote"
             headingLevel={4}
@@ -114,7 +115,7 @@ export const QuoteRequestForm: React.FC<QuoteRequestFormProps> = ({
             primaryLabel="Submit Request"
             primaryHref="#"
           />
-        </form>
+        </FormShell>
       </div>
     </SectionWrapper>
   )
