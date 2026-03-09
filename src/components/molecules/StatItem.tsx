@@ -26,7 +26,7 @@ export const StatItem: React.FC<StatItemProps> = ({
 
   return (
     <div className={classes}>
-      <Heading level={2} as="span" color={white ? 'gold' : 'gold'} className="stat-item__value">
+      <Heading level={2} as="span" color={white ? 'orange' : 'orange'} className="stat-item__value">
         {value}
       </Heading>
       <Text as="span" size="sm" color={white ? 'white' : 'gray'} uppercase className="stat-item__label">

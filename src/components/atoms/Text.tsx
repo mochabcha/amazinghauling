@@ -2,12 +2,13 @@ import React from 'react'
 
 export interface TextProps {
   children: React.ReactNode
-  size?: 'sm' | 'base' | 'lg' | 'xl'
-  color?: 'default' | 'white' | 'navy' | 'gold' | 'gray'
+  size?: 'xs' | 'sm' | 'base' | 'md' | 'lg' | 'xl'
+  color?: 'default' | 'white' | 'black' | 'orange' | 'cream' | 'gray'
   weight?: 'normal' | 'semibold' | 'bold'
   uppercase?: boolean
   className?: string
   as?: 'p' | 'span' | 'div'
+  style?: React.CSSProperties
 }
 
 export const Text: React.FC<TextProps> = ({
@@ -18,6 +19,7 @@ export const Text: React.FC<TextProps> = ({
   uppercase = false,
   className = '',
   as: Tag = 'p',
+  style,
 }) => {
   const classes = [
     'text',
@@ -25,11 +27,11 @@ export const Text: React.FC<TextProps> = ({
     color !== 'default' ? `text--${color}` : '',
     weight === 'semibold' ? 'text--semibold' : '',
     weight === 'bold' ? 'text--bold' : '',
-    uppercase ? 'text--uppercase' : '',
+    uppercase ? 'text--label' : '',
     className,
   ]
     .filter(Boolean)
     .join(' ')
 
-  return <Tag className={classes}>{children}</Tag>
+  return <Tag className={classes} style={style}>{children}</Tag>
 }

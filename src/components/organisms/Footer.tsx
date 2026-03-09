@@ -2,9 +2,13 @@
 
 import React from 'react'
 import { FooterColumn } from '../molecules/FooterColumn'
-import { ContactInfoItem } from '../molecules/ContactInfoItem'
+import { SectionHeader } from '../molecules/SectionHeader'
 import { CTAButtonGroup } from '../molecules/CTAButtonGroup'
 import type { FooterLink } from '../molecules/FooterColumn'
+import { Heading } from '../atoms/Heading'
+import { Text } from '../atoms/Text'
+import { Logo } from '../atoms/Logo'
+import { Badge } from '../atoms/Badge'
 
 export interface FooterProps {
   companyName?: string
@@ -36,18 +40,42 @@ export const Footer: React.FC<FooterProps> = ({
 
   return (
     <footer className={classes}>
+      <div className="footer__cta">
+        <div className="footer__cta-left">
+          <SectionHeader
+            heading="Let's Haul Together"
+            headingLevel={2}
+            light
+          />
+          <CTAButtonGroup
+            primaryLabel="View Our Services"
+            primaryHref="/services"
+            secondaryLabel="Contact Us"
+            secondaryHref="/contact"
+            primaryVariant="primary"
+            secondaryVariant="outline-white"
+          />
+        </div>
+        <div className="footer__cta-right">
+          <Text size="xs" color="gray" uppercase>Need to reach us?</Text>
+          <CTAButtonGroup
+            primaryLabel="Contact Us"
+            primaryHref="/contact"
+            primaryVariant="primary"
+            centered
+          />
+        </div>
+      </div>
+
       <div className="footer__inner">
-        <div className="footer__top">
+        <div className="footer__grid">
           <div className="footer__brand">
-            <a href="/" className="logo">
-              <span className="logo__text logo__text--white">{companyName}</span>
-            </a>
-            <p className="text text--base" style={{ color: 'rgba(255,255,255,0.7)' }}>
-              {tagline}
-            </p>
-            <p className="footer__brand-description">{description}</p>
-            <div className="footer__certifications">
-              <span className="badge badge--gold">{certifications}</span>
+            <Logo companyName={companyName} white href="/" />
+            <Text size="sm" color="gray">{tagline}</Text>
+            <Text size="sm" className="footer__brand-description">{description}</Text>
+            <Badge variant="orange">{certifications}</Badge>
+            <div className="footer__social">
+              <Text as="span" size="sm" color="gray">Follow Us</Text>
             </div>
           </div>
 
@@ -57,45 +85,26 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         {contactInfo && (
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 py-12 border-b border-white/10">
-            {contactInfo.address && (
-              <ContactInfoItem iconName="MapPin" label="Location" value={contactInfo.address} />
-            )}
-            {contactInfo.phone && (
-              <ContactInfoItem iconName="Phone" label="Phone" value={contactInfo.phone} href={`tel:${contactInfo.phone}`} />
-            )}
-            {contactInfo.email && (
-              <ContactInfoItem iconName="Mail" label="Email" value={contactInfo.email} href={`mailto:${contactInfo.email}`} />
-            )}
-            {contactInfo.hours && (
-              <ContactInfoItem iconName="Clock" label="Hours" value={contactInfo.hours} />
-            )}
+          <div className="footer__grid" style={{ paddingTop: 'var(--space-8)', paddingBottom: 'var(--space-8)', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+            <div className="footer__brand">
+              <Heading level={6} color="white" className="mb-2">Contact</Heading>
+              {contactInfo.address && <Text size="sm" color="gray">{contactInfo.address}</Text>}
+              {contactInfo.hours && <Text size="sm" color="gray">{contactInfo.hours}</Text>}
+            </div>
+            <div>
+              {contactInfo.phone && (
+                <Text size="sm"><a href={`tel:${contactInfo.phone}`} className="footer-column__link">{contactInfo.phone}</a></Text>
+              )}
+              {contactInfo.email && (
+                <Text size="sm"><a href={`mailto:${contactInfo.email}`} className="footer-column__link">{contactInfo.email}</a></Text>
+              )}
+            </div>
           </div>
         )}
 
-        <div className="cta-banner py-12 border-b border-white/10" style={{ background: 'transparent', padding: '3rem 0' }}>
-          <div className="text-center">
-            <h3 className="heading heading--3 heading--white mb-4">Let&apos;s Build Together</h3>
-            <p className="text text--lg text--white mb-8" style={{ color: 'rgba(255,255,255,0.7)' }}>
-              Ready to start your next project? Contact us today.
-            </p>
-            <CTAButtonGroup
-              primaryLabel="Request a Quote"
-              primaryHref="/contact"
-              secondaryLabel="Call Now"
-              secondaryHref={contactInfo?.phone ? `tel:${contactInfo.phone}` : '#'}
-              centered
-              primaryVariant="primary"
-              secondaryVariant="outline-white"
-            />
-          </div>
-        </div>
-
         <div className="footer__bottom">
-          <p className="footer__copyright">{copyright}</p>
-          <div className="flex gap-4">
-            <a href="/privacy" className="text text--sm" style={{ color: 'rgba(255,255,255,0.5)' }}>Privacy Policy</a>
-          </div>
+          <Text as="span" size="xs" color="gray">{copyright}</Text>
+          <Text as="span" size="xs"><a href="/privacy" className="footer-column__link">Privacy Policy</a></Text>
         </div>
       </div>
     </footer>

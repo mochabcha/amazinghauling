@@ -3,7 +3,7 @@ import React from 'react'
 export interface HeadingProps {
   children: React.ReactNode
   level?: 1 | 2 | 3 | 4 | 5 | 6
-  color?: 'default' | 'white' | 'gold'
+  color?: 'default' | 'white' | 'orange' | 'cream'
   className?: string
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'p'
 }

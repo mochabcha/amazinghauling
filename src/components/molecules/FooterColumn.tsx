@@ -21,7 +21,7 @@ export const FooterColumn: React.FC<FooterColumnProps> = ({
 
   return (
     <div className={classes}>
-      <Heading level={6} as="h4" color="gold" className="footer-column__title">
+      <Heading level={6} as="h4" color="orange" className="footer-column__title">
         {title}
       </Heading>
       <ul className="footer-column__links">

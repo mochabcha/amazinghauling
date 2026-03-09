@@ -30,3 +30,12 @@ export type { MetricDisplayProps } from './MetricDisplay'
 
 export { FooterColumn } from './FooterColumn'
 export type { FooterColumnProps, FooterLink } from './FooterColumn'
+
+export { SectionHeader } from './SectionHeader'
+export type { SectionHeaderProps } from './SectionHeader'
+
+export { ContentBody } from './ContentBody'
+export type { ContentBodyProps } from './ContentBody'
+
+export { ImagePlaceholder } from './ImagePlaceholder'
+export type { ImagePlaceholderProps } from './ImagePlaceholder'

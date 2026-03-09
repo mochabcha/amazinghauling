@@ -73,29 +73,20 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks }) => {
 
           case 'textBlock': {
             const bg = block.background as string
-            const badgeText = block.badge as string | undefined
-            const headingText = block.heading as string | undefined
-            const bodyText = block.body as string | undefined
-            const ctaLabelText = block.ctaLabel as string | undefined
-            const ctaLinkText = block.ctaLink as string | undefined
-            const isCentered = block.centered as boolean
+            const isDark = bg === 'black'
+            const isAlt = bg === 'cream' || bg === 'offWhite'
             return (
-              <section key={key} className={`section ${bg === 'black' ? 'section--black' : bg === 'cream' ? 'section--cream' : bg === 'offWhite' ? 'section--off-white' : 'section--white'}`}>
-                <div className={`container ${isCentered ? 'text-center' : ''}`}>
-                  <div className={`${isCentered ? 'max-w-3xl mx-auto' : 'max-w-2xl'}`}>
-                    {badgeText && <p className="text text--label text--orange mb-4">{badgeText}</p>}
-                    {headingText && <h2 className={`heading heading--3 ${bg === 'black' ? 'heading--white' : ''} mb-6`}>{headingText}</h2>}
-                    {bodyText && <p className={`text text--md ${bg === 'black' ? 'text--cream' : ''}`}>{bodyText}</p>}
-                    {ctaLabelText && (
-                      <div className="mt-8">
-                        <a href={ctaLinkText || '#'} className={`btn ${bg === 'black' ? 'btn--primary' : 'btn--outline'}`}>
-                          {ctaLabelText}
-                        </a>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </section>
+              <ContentSection
+                key={key}
+                badge={block.badge as string}
+                heading={block.heading as string || ''}
+                content={block.body as string || ''}
+                centered={block.centered as boolean}
+                dark={isDark}
+                alt={isAlt}
+                ctaLabel={block.ctaLabel as string}
+                ctaHref={block.ctaLink as string}
+              />
             )
           }
 

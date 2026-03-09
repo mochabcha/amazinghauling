@@ -1,8 +1,12 @@
 'use client'
 
 import React from 'react'
+import { Section } from '../atoms/Section'
+import { Container } from '../atoms/Container'
+import { SectionHeader } from '../molecules/SectionHeader'
+import { ContentBody } from '../molecules/ContentBody'
 import { MetricDisplay } from '../molecules/MetricDisplay'
-import { CTAButtonGroup } from '../molecules/CTAButtonGroup'
+import { ImagePlaceholder } from '../molecules/ImagePlaceholder'
 import { useScrollAnimation } from '@/lib/useScrollAnimation'
 
 export interface FleetSectionProps {
@@ -26,41 +30,35 @@ export const FleetSection: React.FC<FleetSectionProps> = ({
   className = '',
 }) => {
   const ref = useScrollAnimation()
-  const classes = ['fleet-section', className].filter(Boolean).join(' ')
 
   return (
-    <section className={classes} ref={ref}>
-      <div className="fleet-section__inner">
-        <div className="fleet-section__content animate-fade-left">
-          <h2 className="heading heading--2">{heading}</h2>
-          <p className="text text--lg">{description}</p>
-          <div className="fleet-section__metrics">
-            {metrics.map((metric, index) => (
-              <MetricDisplay
-                key={index}
-                iconName={metric.iconName}
-                value={metric.value}
-                label={metric.label}
-              />
-            ))}
-          </div>
-          <CTAButtonGroup
-            primaryLabel="Request a Quote"
-            primaryHref="/contact"
-            secondaryLabel="View Projects"
-            secondaryHref="/projects"
-          />
-        </div>
-        <div className="fleet-section__image animate-fade-right">
-          {imageSrc ? (
-            <img src={imageSrc} alt="Amazing Hauling Fleet" className="img img--cover img--rounded" />
-          ) : (
-            <div className="w-full h-full bg-gradient-to-br from-brand-navy to-brand-blue rounded-xl flex items-center justify-center min-h-[400px]">
-              <span className="text text--white text--lg">Fleet Image</span>
+    <Section background="cream" className={className} ref={ref}>
+      <Container>
+        <div className="content-split">
+          <div className="content-split__body anim-left">
+            <SectionHeader badge="Our Equipment" heading={heading} accentBar />
+            <ContentBody
+              ctaLabel="Request a Quote"
+              ctaHref="/contact"
+            >
+              {description}
+            </ContentBody>
+            <div className="fleet-section__metrics" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-6)', marginTop: 'var(--space-4)' }}>
+              {metrics.map((metric, index) => (
+                <MetricDisplay
+                  key={index}
+                  iconName={metric.iconName}
+                  value={metric.value}
+                  label={metric.label}
+                />
+              ))}
             </div>
-          )}
+          </div>
+          <div className="content-split__media anim-clip-up">
+            <ImagePlaceholder src={imageSrc} label="Fleet Image" alt="Amazing Hauling Fleet" />
+          </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

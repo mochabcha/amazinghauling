@@ -36,3 +36,9 @@ export type { DividerProps } from './Divider'
 
 export { Container } from './Container'
 export type { ContainerProps } from './Container'
+
+export { Section } from './Section'
+export type { SectionProps } from './Section'
+
+export { AccentBar } from './AccentBar'
+export type { AccentBarProps } from './AccentBar'

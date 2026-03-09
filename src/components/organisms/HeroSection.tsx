@@ -1,7 +1,11 @@
 'use client'
 
 import React from 'react'
+import { Heading } from '../atoms/Heading'
+import { Text } from '../atoms/Text'
+import { Container } from '../atoms/Container'
 import { CTAButtonGroup } from '../molecules/CTAButtonGroup'
+import { ImagePlaceholder } from '../molecules/ImagePlaceholder'
 import { useScrollAnimation } from '@/lib/useScrollAnimation'
 
 export interface HeroSectionProps {
@@ -34,29 +38,27 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section className={classes} ref={ref}>
       <div className="hero__bg">
-        {backgroundImage && (
-          <img src={backgroundImage} alt="" className="img img--cover" />
-        )}
+        <ImagePlaceholder src={backgroundImage} label="" alt="" minHeight="100%" />
         <div className="hero__bg-overlay" />
       </div>
-      <div className="hero__inner">
+      <Container className="hero__inner">
         <div className="hero__content">
           {badge && (
             <div className="anim-hero-badge mb-6">
-              <span className="text text--label text--orange">{badge}</span>
+              <Text as="span" size="xs" color="orange" uppercase>{badge}</Text>
             </div>
           )}
-          <h1 className="heading heading--1 heading--white mb-8">
+          <Heading level={1} color="white" className="mb-8">
             {lines.map((line, i) => (
-              <span key={i} className={`block anim-hero-line-${Math.min(i + 1, 3)}`}>
+              <Text key={i} as="span" className={`block anim-hero-line-${Math.min(i + 1, 3)}`}>
                 {line}
-              </span>
+              </Text>
             ))}
-          </h1>
+          </Heading>
           {description && (
-            <p className="text text--md text--cream anim-hero-body mb-8" style={{ maxWidth: '600px' }}>
+            <Text as="p" size="md" color="cream" className="anim-hero-body mb-8" style={{ maxWidth: '600px' }}>
               {description}
-            </p>
+            </Text>
           )}
           <div className="anim-hero-cta">
             <CTAButtonGroup
@@ -69,7 +71,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             />
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

@@ -1,7 +1,14 @@
 'use client'
 
 import React from 'react'
-import { CTAButtonGroup } from '../molecules/CTAButtonGroup'
+import { Section } from '../atoms/Section'
+import { Container } from '../atoms/Container'
+import { Heading } from '../atoms/Heading'
+import { Text } from '../atoms/Text'
+import { AccentBar } from '../atoms/AccentBar'
+import { SectionHeader } from '../molecules/SectionHeader'
+import { ContentBody } from '../molecules/ContentBody'
+import { ImagePlaceholder } from '../molecules/ImagePlaceholder'
 import { useScrollAnimation } from '@/lib/useScrollAnimation'
 
 export interface ContentSectionProps {
@@ -36,31 +43,31 @@ export const ContentSection: React.FC<ContentSectionProps> = ({
   className = '',
 }) => {
   const ref = useScrollAnimation()
+  const bg = dark ? 'black' : alt ? 'cream' : 'white'
 
   if (centered) {
-    const bgClass = dark ? 'section--black' : alt ? 'section--cream' : 'section--white'
     return (
-      <section className={`section ${bgClass} ${className}`} ref={ref}>
-        <div className="container">
+      <Section background={bg} className={className} ref={ref}>
+        <Container>
           <div className="max-w-3xl mx-auto text-center anim-reveal">
-            {badge && <p className="text text--label text--orange mb-4">{badge}</p>}
-            <h2 className={`heading heading--3 mb-6 ${dark ? 'heading--white' : ''}`}>{heading}</h2>
-            <div className={`text text--md ${dark ? 'text--cream' : ''}`}>
-              {typeof content === 'string' ? <p>{content}</p> : content}
-            </div>
+            <SectionHeader
+              badge={badge}
+              heading={heading}
+              headingLevel={3}
+              centered
+              light={dark}
+            />
+            <Text as="div" size="md" color={dark ? 'cream' : 'default'}>
+              {typeof content === 'string' ? <>{content}</> : content}
+            </Text>
             {ctaLabel && (
-              <div className="mt-8">
-                <CTAButtonGroup
-                  primaryLabel={ctaLabel}
-                  primaryHref={ctaHref || '/contact'}
-                  primaryVariant={dark ? 'primary' : 'outline'}
-                  centered
-                />
-              </div>
+              <ContentBody ctaLabel={ctaLabel} ctaHref={ctaHref} ctaVariant={dark ? 'primary' : 'outline'}>
+                {null}
+              </ContentBody>
             )}
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
     )
   }
 
@@ -71,34 +78,26 @@ export const ContentSection: React.FC<ContentSectionProps> = ({
     dark ? 'content-split--dark' : '',
   ].filter(Boolean).join(' ')
 
-  const bgClass = alt ? 'section--cream' : 'section--white'
-
   return (
-    <section className={`section section--no-pad-top section--no-pad-bottom ${bgClass} ${className}`} ref={ref}>
+    <Section background={bg} noPadTop noPadBottom className={className} ref={ref}>
       <div className={splitClasses}>
         <div className="content-split__media anim-clip-up">
-          {imageSrc ? (
-            <img src={imageSrc} alt={imageAlt || heading} className="img img--cover" />
-          ) : (
-            <div style={{ width: '100%', height: '100%', minHeight: '500px', background: 'linear-gradient(135deg, #111 0%, #333 100%)' }} />
-          )}
+          <ImagePlaceholder src={imageSrc} alt={imageAlt || heading} label="Section Image" />
         </div>
         <div className="content-split__body anim-reveal">
-          {badge && <p className="text text--label text--orange">{badge}</p>}
-          <div className="accent-bar" />
-          <h2 className={`heading heading--3 ${dark ? 'heading--white' : ''}`}>{heading}</h2>
-          <div className={`text text--md ${dark ? 'text--cream' : ''}`}>
-            {typeof content === 'string' ? <p>{content}</p> : content}
-          </div>
+          {badge && <Text as="p" size="xs" color="orange" uppercase>{badge}</Text>}
+          <AccentBar variant={dark ? 'white' : 'orange'} />
+          <Heading level={3} color={dark ? 'white' : 'default'}>{heading}</Heading>
+          <Text as="div" size="md" color={dark ? 'cream' : 'default'}>
+            {typeof content === 'string' ? <>{content}</> : content}
+          </Text>
           {ctaLabel && (
-            <CTAButtonGroup
-              primaryLabel={ctaLabel}
-              primaryHref={ctaHref || '/contact'}
-              primaryVariant={dark ? 'primary' : 'outline'}
-            />
+            <ContentBody ctaLabel={ctaLabel} ctaHref={ctaHref} ctaVariant={dark ? 'primary' : 'outline'}>
+              {null}
+            </ContentBody>
           )}
         </div>
       </div>
-    </section>
+    </Section>
   )
 }
