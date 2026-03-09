@@ -93,3 +93,6 @@ export type { NavBarProps, NavBarItem } from './NavBar'
 
 export { FormShell } from './FormShell'
 export type { FormShellProps } from './FormShell'
+
+export { HeroShell } from './HeroShell'
+export type { HeroShellProps } from './HeroShell'

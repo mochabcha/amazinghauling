@@ -8,6 +8,7 @@ export interface ImagePlaceholderProps {
   src?: string
   alt?: string
   minHeight?: string
+  fill?: boolean
   gradient?: GradientVariant
   className?: string
 }
@@ -25,21 +26,26 @@ export const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({
   src,
   alt,
   minHeight = '500px',
+  fill = false,
   gradient = 'dark',
   className = '',
 }) => {
+  const fillStyle: React.CSSProperties = fill
+    ? { position: 'absolute', inset: 0, width: '100%', height: '100%' }
+    : { minHeight }
+
   if (src) {
     return (
-      <div className={`w-full h-full ${className}`}>
-        <img src={src} alt={alt || label} className="img img--cover" style={{ minHeight }} />
+      <div className={className} style={fillStyle}>
+        <img src={src} alt={alt || label} className="img img--cover" style={{ width: '100%', height: '100%' }} />
       </div>
     )
   }
 
   return (
     <div
-      className={`w-full h-full flex items-center justify-center ${className}`}
-      style={{ minHeight, background: gradientMap[gradient] }}
+      className={`flex items-center justify-center ${className}`}
+      style={{ ...fillStyle, background: gradientMap[gradient] }}
     >
       {label && <Text color={gradient === 'cream' ? 'gray' : 'white'} size="sm">{label}</Text>}
     </div>

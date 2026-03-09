@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
+import { HeroShell } from '../molecules/HeroShell'
 import { HeroContent } from '../molecules/HeroContent'
-import { ImagePlaceholder } from '../molecules/ImagePlaceholder'
 import { useScrollAnimation } from '@/lib/useScrollAnimation'
 
 export interface HeroSectionProps {
@@ -29,24 +29,23 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   className = '',
 }) => {
   const ref = useScrollAnimation()
-  const classes = ['hero', short ? 'hero--short' : '', className].filter(Boolean).join(' ')
   const lines = headingLines && headingLines.length > 0 ? headingLines : [heading]
 
   return (
-    <section className={classes} ref={ref}>
-      <div className="hero__bg">
-        <ImagePlaceholder src={backgroundImage} label="" alt="" minHeight="100%" gradient="hero" />
-        <div className="hero__bg-overlay" />
-      </div>
-      <div className="container hero__inner">
-        <HeroContent
-          badge={badge}
-          headingLines={lines}
-          description={description}
-          primaryCTA={primaryCTA}
-          secondaryCTA={secondaryCTA}
-        />
-      </div>
-    </section>
+    <HeroShell
+      backgroundImage={backgroundImage}
+      backgroundGradient="hero"
+      short={short}
+      className={className}
+      innerRef={ref}
+    >
+      <HeroContent
+        badge={badge}
+        headingLines={lines}
+        description={description}
+        primaryCTA={primaryCTA}
+        secondaryCTA={secondaryCTA}
+      />
+    </HeroShell>
   )
 }

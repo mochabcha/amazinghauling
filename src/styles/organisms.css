@@ -6,13 +6,18 @@
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: var(--z-sticky);
-  background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 100%);
-  transition: background var(--duration-normal) var(--ease-out);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 100%);
+  transition: background var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
 }
 .header--solid {
-  background: var(--color-black);
-  box-shadow: 0 2px 24px rgba(0,0,0,0.4);
+  background: var(--color-white);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
 }
+.header--solid .nav-link { color: var(--color-black); }
+.header--solid .nav-link:hover { color: var(--color-black); }
+.header--solid .nav-link::after { background: var(--color-orange); }
+.header--solid .logo__text { color: var(--color-black); }
+.header--solid .header__phone { color: var(--color-black); }
 .header__inner {
   display: flex;
   align-items: center;

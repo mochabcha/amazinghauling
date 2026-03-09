@@ -30,7 +30,6 @@
   transition: transform var(--duration-normal) var(--ease-out);
 }
 .nav-link:hover::after, .nav-link--active::after { transform: scaleX(1); }
-.nav-link--dark { color: var(--color-black); }
 .nav-link--active { color: var(--color-white); }
 
 /* ===========================
