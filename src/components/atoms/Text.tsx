@@ -6,6 +6,7 @@ export interface TextProps {
   color?: 'default' | 'white' | 'black' | 'orange' | 'cream' | 'gray'
   weight?: 'normal' | 'semibold' | 'bold'
   uppercase?: boolean
+  noBase?: boolean
   className?: string
   as?: 'p' | 'span' | 'div'
   style?: React.CSSProperties
@@ -17,13 +18,14 @@ export const Text: React.FC<TextProps> = ({
   color = 'default',
   weight,
   uppercase = false,
+  noBase = false,
   className = '',
   as: Tag = 'p',
   style,
 }) => {
   const classes = [
-    'text',
-    `text--${size}`,
+    noBase ? '' : 'text',
+    noBase ? '' : `text--${size}`,
     color !== 'default' ? `text--${color}` : '',
     weight === 'semibold' ? 'text--semibold' : '',
     weight === 'bold' ? 'text--bold' : '',

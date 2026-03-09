@@ -36,7 +36,7 @@ export const HeroContent: React.FC<HeroContentProps> = ({
       )}
       <Heading level={1} color="white" className="mb-8">
         {headingLines.map((line, i) => (
-          <Text key={i} as="span" color="white" className={`block anim-hero-line-${Math.min(i + 1, 3)}`}>
+          <Text key={i} as="span" noBase className={`block anim-hero-line-${Math.min(i + 1, 3)}`}>
             {line}
           </Text>
         ))}

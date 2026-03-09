@@ -308,6 +308,7 @@ export interface Page {
               | {
                   name?: string | null;
                   description?: string | null;
+                  href?: string | null;
                   services?:
                     | {
                         service?: string | null;
@@ -874,6 +875,7 @@ export interface PagesSelect<T extends boolean = true> {
                 | {
                     name?: T;
                     description?: T;
+                    href?: T;
                     services?:
                       | T
                       | {
