@@ -34,7 +34,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <HeroShell
       backgroundImage={backgroundImage}
-      backgroundGradient="hero"
+      backgroundGradient="primary"
       short={short}
       className={className}
       innerRef={ref}
