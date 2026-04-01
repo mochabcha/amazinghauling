@@ -58,7 +58,7 @@ export const Header: React.FC<HeaderProps> = ({
           ctaHref={ctaHref}
           mobileOpen={mobileOpen}
           onMobileToggle={() => setMobileOpen(!mobileOpen)}
-          className="header__actions--desktop"
+          className="header__actions header__actions--desktop"
         />
       </div>
       <MobileMenu

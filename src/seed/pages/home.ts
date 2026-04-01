@@ -18,6 +18,7 @@ export const homePageSeed = {
     },
     {
       blockType: 'textBlock',
+      imageKey: 'convoyAlt',
       badge: 'Why Amazing Hauling',
       heading: 'Built for Contractors Who Need Reliable Hauling',
       body: 'Construction projects move fast, and delays cost money. Amazing Hauling exists to make sure your hauling partner is never the reason a project slows down. Our fleet supports contractors across Jacksonville and surrounding counties with dependable dump truck hauling and materials transport. Whether you\'re moving dirt, hauling asphalt, delivering aggregates, or clearing debris from a job site, Amazing Hauling delivers professional service backed by clear communication and dependable scheduling.',

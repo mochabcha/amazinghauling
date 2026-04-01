@@ -209,6 +209,7 @@ export interface Page {
             badge?: string | null;
             heading?: string | null;
             body?: string | null;
+            image?: (string | null) | Media;
             ctaLabel?: string | null;
             ctaLink?: string | null;
             centered?: boolean | null;
@@ -371,6 +372,7 @@ export interface Media {
   caption?: string | null;
   cloudinaryPublicId?: string | null;
   cloudinaryVersion?: string | null;
+  prefix?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -771,6 +773,7 @@ export interface PagesSelect<T extends boolean = true> {
               badge?: T;
               heading?: T;
               body?: T;
+              image?: T;
               ctaLabel?: T;
               ctaLink?: T;
               centered?: T;
@@ -1046,6 +1049,7 @@ export interface MediaSelect<T extends boolean = true> {
   caption?: T;
   cloudinaryPublicId?: T;
   cloudinaryVersion?: T;
+  prefix?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;

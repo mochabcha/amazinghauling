@@ -45,6 +45,7 @@ const TextBlock = {
     { name: 'badge', type: 'text' as const, label: 'Eyebrow' },
     { name: 'heading', type: 'text' as const },
     { name: 'body', type: 'textarea' as const },
+    { name: 'image', type: 'upload' as const, relationTo: 'media' as const },
     { name: 'ctaLabel', type: 'text' as const },
     { name: 'ctaLink', type: 'text' as const },
     { name: 'centered', type: 'checkbox' as const, defaultValue: false },

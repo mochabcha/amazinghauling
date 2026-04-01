@@ -1,4 +1,7 @@
+import path from 'path'
 import fs from 'fs/promises'
+
+import { v2 as cloudinary } from 'cloudinary'
 
 interface CloudinaryConfig {
   apiKey: string
@@ -17,7 +20,7 @@ export interface CloudinaryUploadResult {
   resourceType?: string
 }
 
-function getCloudinaryConfig(): CloudinaryConfig | null {
+export function getCloudinaryConfig(): CloudinaryConfig | null {
   const value = process.env.CLOUDINARY_URL
 
   if (!value) {
@@ -36,17 +39,73 @@ function getCloudinaryConfig(): CloudinaryConfig | null {
   return { apiKey, apiSecret, cloudName }
 }
 
-function getMimeType(filePath: string) {
-  const lower = filePath.toLowerCase()
+export function getCloudinaryClient() {
+  const config = getCloudinaryConfig()
 
-  if (lower.endsWith('.png')) return 'image/png'
-  if (lower.endsWith('.jpg') || lower.endsWith('.jpeg')) return 'image/jpeg'
-  if (lower.endsWith('.webp')) return 'image/webp'
-  if (lower.endsWith('.gif')) return 'image/gif'
-  if (lower.endsWith('.svg')) return 'image/svg+xml'
-  if (lower.endsWith('.pdf')) return 'application/pdf'
+  if (!config) {
+    return null
+  }
 
-  return 'application/octet-stream'
+  cloudinary.config({
+    cloud_name: config.cloudName,
+    api_key: config.apiKey,
+    api_secret: config.apiSecret,
+    secure: true,
+  })
+
+  return cloudinary
+}
+
+function normalizeUploadResult(result: {
+  secure_url?: string
+  public_id?: string
+  version?: number
+  width?: number
+  height?: number
+  bytes?: number
+  format?: string
+  resource_type?: string
+}): CloudinaryUploadResult {
+  return {
+    secureUrl: result.secure_url || '',
+    publicId: result.public_id || '',
+    version: result.version || 0,
+    width: result.width,
+    height: result.height,
+    bytes: result.bytes,
+    format: result.format,
+    resourceType: result.resource_type,
+  }
+}
+
+export async function uploadBufferToCloudinary(
+  buffer: Buffer,
+  options: {
+    folder?: string
+    publicId?: string
+    filename?: string
+    mimeType?: string
+    overwrite?: boolean
+    tags?: string[]
+  } = {},
+): Promise<CloudinaryUploadResult | null> {
+  const client = getCloudinaryClient()
+
+  if (!client) {
+    return null
+  }
+
+  const dataUri = `data:${options.mimeType || 'application/octet-stream'};base64,${buffer.toString('base64')}`
+  const result = await client.uploader.upload(dataUri, {
+    resource_type: 'auto',
+    folder: options.folder,
+    public_id: options.publicId,
+    overwrite: options.overwrite ?? true,
+    filename_override: options.filename,
+    tags: options.tags,
+  })
+
+  return normalizeUploadResult(result)
 }
 
 export async function uploadFileToCloudinary(
@@ -57,56 +116,55 @@ export async function uploadFileToCloudinary(
     tags?: string[]
   } = {},
 ): Promise<CloudinaryUploadResult | null> {
-  const config = getCloudinaryConfig()
+  const buffer = await fs.readFile(filePath)
+  const fileName = path.basename(filePath)
+  const lower = fileName.toLowerCase()
+  const mimeType = lower.endsWith('.png')
+    ? 'image/png'
+    : lower.endsWith('.jpg') || lower.endsWith('.jpeg')
+      ? 'image/jpeg'
+      : lower.endsWith('.webp')
+        ? 'image/webp'
+        : lower.endsWith('.svg')
+          ? 'image/svg+xml'
+          : lower.endsWith('.pdf')
+            ? 'application/pdf'
+            : 'application/octet-stream'
 
-  if (!config) {
-    return null
-  }
-
-  const formData = new FormData()
-  const fileBuffer = await fs.readFile(filePath)
-  const mimeType = getMimeType(filePath)
-  const fileName = filePath.split('/').pop() || 'upload'
-
-  formData.append('file', new Blob([fileBuffer], { type: mimeType }), fileName)
-
-  if (options.folder) {
-    formData.append('folder', options.folder)
-  }
-
-  if (options.publicId) {
-    formData.append('public_id', options.publicId)
-    formData.append('overwrite', 'true')
-  }
-
-  if (options.tags?.length) {
-    formData.append('tags', options.tags.join(','))
-  }
-
-  const authHeader = Buffer.from(`${config.apiKey}:${config.apiSecret}`).toString('base64')
-  const response = await fetch(`https://api.cloudinary.com/v1_1/${config.cloudName}/auto/upload`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Basic ${authHeader}`,
-    },
-    body: formData,
+  return uploadBufferToCloudinary(buffer, {
+    ...options,
+    filename: fileName,
+    mimeType,
   })
+}
 
-  if (!response.ok) {
-    const body = await response.text()
-    throw new Error(`Cloudinary upload failed (${response.status}): ${body}`)
+export async function destroyCloudinaryAsset(publicId: string, resourceType: 'image' | 'raw' | 'video' = 'image') {
+  const client = getCloudinaryClient()
+
+  if (!client) {
+    return
   }
 
-  const json = await response.json()
+  await client.uploader.destroy(publicId, {
+    resource_type: resourceType,
+    invalidate: true,
+  })
+}
 
-  return {
-    secureUrl: json.secure_url,
-    publicId: json.public_id,
-    version: json.version,
-    width: json.width,
-    height: json.height,
-    bytes: json.bytes,
-    format: json.format,
-    resourceType: json.resource_type,
+export function buildCloudinaryUrl(args: {
+  publicId: string
+  resourceType?: 'image' | 'raw' | 'video'
+  version?: string | number
+}) {
+  const client = getCloudinaryClient()
+
+  if (!client) {
+    return ''
   }
+
+  return client.url(args.publicId, {
+    secure: true,
+    resource_type: args.resourceType || 'image',
+    version: args.version,
+  })
 }

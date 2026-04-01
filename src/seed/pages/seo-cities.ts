@@ -5,6 +5,7 @@ function createSeoPage(slug: string, city: string, county: string, heading: stri
     layout: [
       {
         blockType: 'hero',
+        imageKey: slug === 'jacksonville' ? 'convoy' : slug === 'fernandina-beach' ? 'dirtHaul' : slug === 'orange-park' ? 'replacementTruck' : slug === 'st-augustine' ? 'materialsHauling' : 'convoyAlt',
         badge: 'Service Area',
         headingLine1: heading,
         description,
@@ -51,6 +52,7 @@ function createSeoPage(slug: string, city: string, county: string, heading: stri
     meta: {
       title: `${heading} | Amazing Hauling of North Florida`,
       description,
+      imageKey: slug === 'jacksonville' ? 'convoy' : slug === 'fernandina-beach' ? 'dirtHaul' : slug === 'orange-park' ? 'replacementTruck' : slug === 'st-augustine' ? 'materialsHauling' : 'convoyAlt',
     },
   }
 }

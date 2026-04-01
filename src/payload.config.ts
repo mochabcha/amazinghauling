@@ -2,7 +2,9 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import { buildConfig } from 'payload'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
+import { cloudStoragePlugin } from '@payloadcms/plugin-cloud-storage'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { cloudinaryStorageAdapter } from './lib/cloudinaryAdapter'
 
 import { Pages } from './payload/collections/Pages'
 import { Services } from './payload/collections/Services'
@@ -62,5 +64,17 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.MONGODB_URI || 'mongodb://localhost:27017/amazing-hauling',
   }),
-  plugins: [],
+  plugins: [
+    cloudStoragePlugin({
+      enabled: Boolean(process.env.CLOUDINARY_URL),
+      collections: {
+        media: {
+          adapter: cloudinaryStorageAdapter as any,
+          disableLocalStorage: true,
+          disablePayloadAccessControl: true,
+          prefix: 'amazing-hauling',
+        },
+      },
+    }),
+  ],
 })

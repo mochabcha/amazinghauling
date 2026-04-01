@@ -88,6 +88,8 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks }) => {
                 centered={block.centered as boolean}
                 dark={isDark}
                 alt={isAlt}
+                imageSrc={resolveMediaUrl(block.image)}
+                imageAlt={resolveMediaAlt(block.image, (block.heading as string) || 'Section image')}
                 ctaLabel={block.ctaLabel as string}
                 ctaHref={block.ctaLink as string}
               />
