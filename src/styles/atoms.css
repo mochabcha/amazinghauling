@@ -218,9 +218,9 @@
    LOGO ATOMS
    =========================== */
 .logo { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-3); text-decoration: none; }
-.logo__image { height: 64px; width: auto; }
-.logo__image--sm { height: 32px; }
-.logo__image--lg { height: 64px; }
+.logo__image { height: 88px; width: auto; }
+.logo__image--sm { height: 56px; }
+.logo__image--lg { height: 108px; }
 .logo__text {
   font-family: var(--font-primary);
   font-size: var(--text-lg);

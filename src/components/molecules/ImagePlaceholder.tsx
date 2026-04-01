@@ -32,12 +32,17 @@ export const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({
 }) => {
   const fillStyle: React.CSSProperties = fill
     ? { position: 'absolute', inset: 0, width: '100%', height: '100%' }
-    : { minHeight }
+    : { width: '100%', minHeight, height: '100%' }
 
   if (src) {
     return (
       <div className={className} style={fillStyle}>
-        <img src={src} alt={alt || label} className="img img--cover" style={{ width: '100%', height: '100%' }} />
+        <img
+          src={src}
+          alt={alt || label}
+          className="img img--cover"
+          style={{ display: 'block', width: '100%', height: '100%', minHeight }}
+        />
       </div>
     )
   }

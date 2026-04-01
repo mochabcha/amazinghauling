@@ -68,22 +68,61 @@
    CLIP REVEAL (full element wipe)
    =========================== */
 .anim-clip-up {
+  opacity: 0;
+  transform: translateY(40px) scale(1.01);
   clip-path: inset(100% 0 0 0);
-  transition: clip-path var(--duration-slowest) var(--ease-out);
+  -webkit-clip-path: inset(100% 0 0 0);
+  will-change: opacity, transform, clip-path;
+  transition:
+    opacity var(--duration-slower) var(--ease-out),
+    transform var(--duration-slower) var(--ease-out),
+    clip-path var(--duration-slower) var(--ease-out),
+    -webkit-clip-path var(--duration-slower) var(--ease-out);
 }
-.anim-clip-up.is-visible { clip-path: inset(0 0 0 0); }
+.anim-clip-up.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  clip-path: inset(0 0 0 0);
+  -webkit-clip-path: inset(0 0 0 0);
+}
 
 .anim-clip-left {
+  opacity: 0;
+  transform: translateX(-40px) scale(1.01);
   clip-path: inset(0 100% 0 0);
-  transition: clip-path var(--duration-slowest) var(--ease-out);
+  -webkit-clip-path: inset(0 100% 0 0);
+  will-change: opacity, transform, clip-path;
+  transition:
+    opacity var(--duration-slower) var(--ease-out),
+    transform var(--duration-slower) var(--ease-out),
+    clip-path var(--duration-slower) var(--ease-out),
+    -webkit-clip-path var(--duration-slower) var(--ease-out);
 }
-.anim-clip-left.is-visible { clip-path: inset(0 0 0 0); }
+.anim-clip-left.is-visible {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  clip-path: inset(0 0 0 0);
+  -webkit-clip-path: inset(0 0 0 0);
+}
 
 .anim-clip-right {
+  opacity: 0;
+  transform: translateX(40px) scale(1.01);
   clip-path: inset(0 0 0 100%);
-  transition: clip-path var(--duration-slowest) var(--ease-out);
+  -webkit-clip-path: inset(0 0 0 100%);
+  will-change: opacity, transform, clip-path;
+  transition:
+    opacity var(--duration-slower) var(--ease-out),
+    transform var(--duration-slower) var(--ease-out),
+    clip-path var(--duration-slower) var(--ease-out),
+    -webkit-clip-path var(--duration-slower) var(--ease-out);
 }
-.anim-clip-right.is-visible { clip-path: inset(0 0 0 0); }
+.anim-clip-right.is-visible {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  clip-path: inset(0 0 0 0);
+  -webkit-clip-path: inset(0 0 0 0);
+}
 
 /* ===========================
    HERO ANIMATIONS

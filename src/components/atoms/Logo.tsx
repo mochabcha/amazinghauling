@@ -23,6 +23,11 @@ export const Logo: React.FC<LogoProps> = ({
   const classes = ['logo', className].filter(Boolean).join(' ')
   const imgClass = `logo__image ${size !== 'md' ? `logo__image--${size}` : ''}`
   const textClass = `logo__text ${white ? 'logo__text--white' : ''}`
+  const dimensions = size === 'sm'
+    ? { width: 120, height: 85 }
+    : size === 'lg'
+      ? { width: 220, height: 156 }
+      : { width: 180, height: 127 }
 
   const content = (
     <>
@@ -30,8 +35,10 @@ export const Logo: React.FC<LogoProps> = ({
         <NextImage
           src={src}
           alt={companyName}
-          width={size === 'sm' ? 32 : size === 'lg' ? 64 : 48}
-          height={size === 'sm' ? 32 : size === 'lg' ? 64 : 48}
+          width={dimensions.width}
+          height={dimensions.height}
+          sizes={size === 'lg' ? '220px' : size === 'sm' ? '120px' : '180px'}
+          priority
           className={imgClass}
         />
       )}
