@@ -11,6 +11,7 @@ import { CTABanner } from './organisms/CTABanner'
 import { FleetSection } from './organisms/FleetSection'
 import { ServiceAreasList } from './organisms/ServiceAreasList'
 import { QuoteRequestForm } from './organisms/QuoteRequestForm'
+import { resolveMediaAlt, resolveMediaUrl } from '@/lib/media'
 
 interface BlockData {
   blockType: string
@@ -49,6 +50,7 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks }) => {
                 description={block.description as string}
                 primaryCTA={block.primaryCta ? { label: block.primaryCta as string, href: block.primaryCtaLink as string || '/contact' } : undefined}
                 secondaryCTA={block.secondaryCta ? { label: block.secondaryCta as string, href: block.secondaryCtaLink as string || '#' } : undefined}
+                backgroundImage={resolveMediaUrl(block.image)}
                 short={block.short as boolean}
               />
             )
@@ -65,6 +67,8 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks }) => {
                 ctaHref={block.ctaLink as string}
                 reverse={block.reverse as boolean}
                 overlap={block.overlap as boolean}
+                imageSrc={resolveMediaUrl(block.image)}
+                imageAlt={resolveMediaAlt(block.image, block.heading as string)}
                 dark={bg === 'black'}
                 alt={bg === 'cream'}
               />
@@ -139,7 +143,7 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks }) => {
           }
 
           case 'projectGrid': {
-            const items = (block.items as Array<{ title?: string; category?: string; location?: string; description?: string; services?: Array<{ service?: string }> }>) || []
+            const items = (block.items as Array<{ title?: string; category?: string; location?: string; description?: string; image?: unknown; services?: Array<{ service?: string }> }>) || []
             return (
               <ProjectShowcase
                 key={key}
@@ -149,6 +153,8 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks }) => {
                   category: item.category || '',
                   location: item.location,
                   description: item.description,
+                  imageSrc: resolveMediaUrl(item.image),
+                  imageAlt: resolveMediaAlt(item.image, item.title || 'Project image'),
                   services: item.services?.map((s) => s.service || ''),
                 }))}
               />
@@ -203,6 +209,7 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks }) => {
                 key={key}
                 heading={block.heading as string}
                 description={block.body as string}
+                imageSrc={resolveMediaUrl(block.image)}
                 metrics={metrics.map((m) => ({
                   iconName: m.icon || 'Truck',
                   value: m.value || '',

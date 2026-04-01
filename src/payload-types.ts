@@ -369,6 +369,8 @@ export interface Media {
   id: string;
   alt: string;
   caption?: string | null;
+  cloudinaryPublicId?: string | null;
+  cloudinaryVersion?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -1042,6 +1044,8 @@ export interface SeoPagesSelect<T extends boolean = true> {
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
   caption?: T;
+  cloudinaryPublicId?: T;
+  cloudinaryVersion?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;

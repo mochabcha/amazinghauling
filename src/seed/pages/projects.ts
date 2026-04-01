@@ -4,6 +4,7 @@ export const projectsPageSeed = {
   layout: [
     {
       blockType: 'hero',
+      imageKey: 'convoy',
       badge: 'Our Work',
       headingLine1: 'Projects &',
       headingLine2: 'Work Gallery',
@@ -23,14 +24,15 @@ export const projectsPageSeed = {
       blockType: 'projectGrid',
       heading: 'Our Work',
       items: [
-        { title: 'Road Construction Support', category: 'Road Construction', location: 'Jacksonville, FL', description: 'Road construction requires precise coordination between contractors, paving crews, and hauling partners. Amazing Hauling regularly supports roadway construction projects by transporting asphalt, hauling aggregates, and removing construction debris from active job sites.', services: [{ service: 'Asphalt hauling' }, { service: 'Milling debris removal' }, { service: 'Aggregate transport' }, { service: 'Jobsite material delivery' }, { service: 'Roadway cleanup hauling' }] },
-        { title: 'Asphalt Paving Operations', category: 'Asphalt Paving', location: 'Duval County, FL', description: 'Asphalt paving projects depend on reliable hauling to keep paving crews working without interruption. Amazing Hauling helps transport asphalt materials from plants to job sites and assists with hauling asphalt debris during resurfacing operations.', services: [{ service: 'Hot asphalt transport' }, { service: 'Debris removal' }, { service: 'Resurfacing support' }] },
-        { title: 'Dirt Hauling for Development', category: 'Site Development', location: 'Northeast Florida', description: 'Land development projects require consistent hauling to move dirt and fill material between excavation areas and job sites. By providing efficient dirt hauling, we help development projects stay on schedule.', services: [{ service: 'Residential development' }, { service: 'Commercial construction' }, { service: 'Land clearing' }, { service: 'Grading and excavation' }] },
-        { title: 'Materials Transport', category: 'Materials Transport', location: 'Clay County, FL', description: 'Construction sites require a steady flow of materials to keep crews productive. Amazing Hauling helps move aggregates, gravel, rock, and other construction materials needed to support infrastructure and building projects.', services: [{ service: 'Aggregate delivery' }, { service: 'Gravel transport' }, { service: 'Rock hauling' }] },
+        { title: 'Road Construction Support', category: 'Road Construction', location: 'Jacksonville, FL', description: 'Road construction requires precise coordination between contractors, paving crews, and hauling partners. Amazing Hauling regularly supports roadway construction projects by transporting asphalt, hauling aggregates, and removing construction debris from active job sites.', services: [{ service: 'Asphalt hauling' }, { service: 'Milling debris removal' }, { service: 'Aggregate transport' }, { service: 'Jobsite material delivery' }, { service: 'Roadway cleanup hauling' }], imageKey: 'convoy' },
+        { title: 'Asphalt Paving Operations', category: 'Asphalt Paving', location: 'Duval County, FL', description: 'Asphalt paving projects depend on reliable hauling to keep paving crews working without interruption. Amazing Hauling helps transport asphalt materials from plants to job sites and assists with hauling asphalt debris during resurfacing operations.', services: [{ service: 'Hot asphalt transport' }, { service: 'Debris removal' }, { service: 'Resurfacing support' }], imageKey: 'asphaltPaving' },
+        { title: 'Dirt Hauling for Development', category: 'Site Development', location: 'Northeast Florida', description: 'Land development projects require consistent hauling to move dirt and fill material between excavation areas and job sites. By providing efficient dirt hauling, we help development projects stay on schedule.', services: [{ service: 'Residential development' }, { service: 'Commercial construction' }, { service: 'Land clearing' }, { service: 'Grading and excavation' }], imageKey: 'dirtHaul' },
+        { title: 'Materials Transport', category: 'Materials Transport', location: 'Clay County, FL', description: 'Construction sites require a steady flow of materials to keep crews productive. Amazing Hauling helps move aggregates, gravel, rock, and other construction materials needed to support infrastructure and building projects.', services: [{ service: 'Aggregate delivery' }, { service: 'Gravel transport' }, { service: 'Rock hauling' }], imageKey: 'materialsHauling' },
       ],
     },
     {
       blockType: 'contentSplit',
+      imageKey: 'worksite',
       badge: 'Regional Growth',
       heading: "Supporting Jacksonville's Growth",
       body: "Jacksonville and Northeast Florida continue to experience strong growth in construction and infrastructure development. Amazing Hauling is proud to support the contractors and crews responsible for building roads, preparing land, and delivering materials that help shape the region's future. Our trucks can often be seen working throughout Jacksonville, Duval County, Clay County, Nassau County, and St. Johns County.",
@@ -40,6 +42,7 @@ export const projectsPageSeed = {
     },
     {
       blockType: 'fleet',
+      imageKey: 'fleet',
       heading: 'Our Fleet',
       body: 'Amazing Hauling currently operates three dump trucks, with plans to expand as demand continues to grow. Our fleet is maintained to professional standards and operated by experienced drivers who understand the demands of construction and infrastructure projects. We focus on providing reliable equipment, professional drivers, safe operations, and consistent service.',
       metrics: [
@@ -51,6 +54,7 @@ export const projectsPageSeed = {
     },
     {
       blockType: 'contentSplit',
+      imageKey: 'replacementTruckAlt',
       badge: 'Our Story',
       heading: 'Built Through Hard Work',
       body: 'Amazing Hauling started with one truck and a commitment to doing the job right. Through hard work, reliability, and word-of-mouth referrals, the company has grown into a trusted hauling partner for contractors throughout the Jacksonville area. Every project we support helps strengthen our reputation for dependable service.',
@@ -73,5 +77,6 @@ export const projectsPageSeed = {
   meta: {
     title: 'Projects & Work Gallery',
     description: 'View our hauling projects across Northeast Florida. Road construction, asphalt paving, dirt hauling, and materials transport for contractors throughout Jacksonville.',
+    imageKey: 'siteDetail',
   },
 }

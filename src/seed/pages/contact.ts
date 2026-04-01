@@ -4,6 +4,7 @@ export const contactPageSeed = {
   layout: [
     {
       blockType: 'hero',
+      imageKey: 'worksite',
       badge: 'Get In Touch',
       headingLine1: 'Contact &',
       headingLine2: 'Request a Quote',
@@ -41,5 +42,6 @@ export const contactPageSeed = {
   meta: {
     title: 'Contact & Request a Quote',
     description: 'Request hauling services from Amazing Hauling. Get a quote for dirt hauling, asphalt transport, aggregate delivery, and construction site materials in Jacksonville and Northeast Florida.',
+    imageKey: 'worksite',
   },
 }

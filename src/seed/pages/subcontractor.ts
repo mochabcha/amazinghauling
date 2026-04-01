@@ -4,6 +4,7 @@ export const subcontractorPageSeed = {
   layout: [
     {
       blockType: 'hero',
+      imageKey: 'replacementTruckAlt',
       badge: 'Partner With Us',
       headingLine1: 'Subcontractor',
       headingLine2: 'Resources',
@@ -33,6 +34,7 @@ export const subcontractorPageSeed = {
     },
     {
       blockType: 'contentSplit',
+      imageKey: 'fleetAlt',
       badge: 'Requirements',
       heading: 'Subcontractor Requirements',
       body: 'To ensure safe and reliable operations, subcontract drivers working with Amazing Hauling should meet standard industry requirements. Typical requirements include: Valid commercial driver\'s license (CDL) if required, properly insured trucks and equipment, compliance with safety regulations, professional jobsite conduct, and ability to communicate clearly with dispatch and project supervisors. Additional documentation may be required depending on project requirements.',
@@ -42,6 +44,7 @@ export const subcontractorPageSeed = {
     },
     {
       blockType: 'contentSplit',
+      imageKey: 'siteDetail',
       badge: 'Get Started',
       heading: 'Subcontractor Packet',
       body: 'If you are interested in working with Amazing Hauling, please download and complete our subcontractor packet. The packet includes forms and information necessary to begin working with our team. After completing the forms, please submit the packet to info@amazinghauling.com.',
@@ -69,5 +72,6 @@ export const subcontractorPageSeed = {
   meta: {
     title: 'Subcontractor Resources',
     description: 'Partner with Amazing Hauling. Download our subcontractor packet and learn about opportunities for dump truck owners and trucking companies in Northeast Florida.',
+    imageKey: 'replacementTruckAlt',
   },
 }

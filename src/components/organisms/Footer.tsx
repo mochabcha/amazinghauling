@@ -12,6 +12,7 @@ import type { FooterLink } from '../molecules/FooterColumn'
 
 export interface FooterProps {
   companyName?: string
+  logoSrc?: string
   tagline?: string
   description?: string
   columns?: Array<{ title: string; links: FooterLink[] }>
@@ -28,6 +29,7 @@ export interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({
   companyName = 'Amazing Hauling of North Florida',
+  logoSrc,
   tagline = 'Dump Truck & Materials Hauling Services',
   description = 'Serving Duval, Clay, Nassau, and St. Johns Counties',
   columns = [],
@@ -73,6 +75,7 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="footer__grid">
           <FooterBrand
             companyName={companyName}
+            logoSrc={logoSrc}
             tagline={tagline}
             description={description}
             certifications={certifications}

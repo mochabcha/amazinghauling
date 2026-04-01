@@ -4,6 +4,7 @@ export const servicesPageSeed = {
   layout: [
     {
       blockType: 'hero',
+      imageKey: 'asphaltAction',
       badge: 'Our Services',
       headingLine1: 'Reliable Materials',
       headingLine2: 'Hauling Services',
@@ -33,6 +34,7 @@ export const servicesPageSeed = {
     },
     {
       blockType: 'contentSplit',
+      imageKey: 'worksite',
       badge: 'Industries We Support',
       heading: 'Working Across Multiple Industries',
       body: 'Amazing Hauling regularly works with professionals across multiple industries including road construction contractors, asphalt paving companies, site development companies, residential developers, commercial construction teams, and municipal infrastructure projects. Our experience working with these industries allows us to understand jobsite expectations and deliver dependable service.',
@@ -42,6 +44,7 @@ export const servicesPageSeed = {
     },
     {
       blockType: 'contentSplit',
+      imageKey: 'fleetAlt',
       badge: 'Safety First',
       heading: 'Safety & Professional Standards',
       body: 'Safety is a core part of how Amazing Hauling operates. Our drivers follow strict safety practices while operating on job sites, roadways, and construction environments. We are committed to professional jobsite conduct, safe equipment operation, compliance with industry standards, and protecting crews and communities. Contractors can trust that Amazing Hauling operates with professionalism and responsibility on every project.',
@@ -64,5 +67,6 @@ export const servicesPageSeed = {
   meta: {
     title: 'Hauling Services | Amazing Hauling of North Florida',
     description: 'Dependable dump truck hauling services for contractors in Jacksonville and Northeast Florida. Dirt, asphalt, aggregates, milling debris, and construction materials hauling.',
+    imageKey: 'asphaltPaving',
   },
 }

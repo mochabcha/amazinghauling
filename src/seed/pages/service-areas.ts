@@ -4,6 +4,7 @@ export const serviceAreasPageSeed = {
   layout: [
     {
       blockType: 'hero',
+      imageKey: 'convoyAlt',
       badge: 'Where We Work',
       headingLine1: 'Service Areas',
       description: 'Hauling Services Across Northeast Florida',
@@ -50,5 +51,6 @@ export const serviceAreasPageSeed = {
   meta: {
     title: 'Service Areas',
     description: 'Amazing Hauling serves contractors throughout Jacksonville, Duval County, Clay County, Nassau County, and St. Johns County with dependable dump truck hauling services.',
+    imageKey: 'convoyAlt',
   },
 }

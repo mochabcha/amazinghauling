@@ -7,6 +7,7 @@ export interface LogoProps {
   size?: 'sm' | 'md' | 'lg'
   white?: boolean
   href?: string
+  showText?: boolean
   className?: string
 }
 
@@ -16,6 +17,7 @@ export const Logo: React.FC<LogoProps> = ({
   size = 'md',
   white = false,
   href = '/',
+  showText = !src,
   className = '',
 }) => {
   const classes = ['logo', className].filter(Boolean).join(' ')
@@ -33,7 +35,7 @@ export const Logo: React.FC<LogoProps> = ({
           className={imgClass}
         />
       )}
-      <span className={textClass}>{companyName}</span>
+      {showText && <span className={textClass}>{companyName}</span>}
     </>
   )
 

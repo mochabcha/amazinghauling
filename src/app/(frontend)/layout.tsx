@@ -1,8 +1,12 @@
 import React from 'react'
 import { Header } from '@/components/organisms/Header'
 import { Footer } from '@/components/organisms/Footer'
+import { resolveMediaUrl } from '@/lib/media'
+import { getPayloadClient } from '@/lib/payload'
 
-const navItems = [
+export const dynamic = 'force-dynamic'
+
+const fallbackNavItems = [
   { label: 'Services', href: '/services' },
   { label: 'Projects', href: '/projects' },
   { label: 'About', href: '/about' },
@@ -11,7 +15,7 @@ const navItems = [
   { label: 'Contact', href: '/contact' },
 ]
 
-const footerColumns = [
+const fallbackFooterColumns = [
   {
     title: 'Services',
     links: [
@@ -44,30 +48,45 @@ const footerColumns = [
   },
 ]
 
-export default function FrontendLayout({ children }: { children: React.ReactNode }) {
+export default async function FrontendLayout({ children }: { children: React.ReactNode }) {
+  const payload = await getPayloadClient()
+  const [header, footer] = await Promise.all([
+    payload.findGlobal({ slug: 'header', depth: 1 }).catch(() => null),
+    payload.findGlobal({ slug: 'footer', depth: 1 }).catch(() => null),
+  ])
+
+  const footerColumns = (footer?.columns || fallbackFooterColumns).map((column) => ({
+    title: column.title,
+    links: column.links || [],
+  }))
+
   return (
     <div className="template">
       <Header
-        companyName="Amazing Hauling"
-        navItems={navItems}
-        ctaLabel="Request a Quote"
-        ctaHref="/contact"
+        logoSrc={resolveMediaUrl(header?.logo) || '/brand/amazing-hauling-logo.png'}
+        companyName={header?.companyName || 'Amazing Hauling'}
+        navItems={header?.navItems || fallbackNavItems}
+        ctaLabel={header?.ctaLabel || 'Request a Quote'}
+        ctaHref={header?.ctaHref || '/contact'}
+        phone={header?.phone || undefined}
       />
       <main className="template__main">
         {children}
       </main>
       <Footer
-        companyName="Amazing Hauling of North Florida"
-        tagline="Dump Truck & Materials Hauling Services"
-        description="Serving Duval, Clay, Nassau, and St. Johns Counties"
+        logoSrc={resolveMediaUrl(header?.logo) || '/brand/amazing-hauling-logo.png'}
+        companyName={footer?.companyName || 'Amazing Hauling of North Florida'}
+        tagline={footer?.tagline || 'Dump Truck & Materials Hauling Services'}
+        description={footer?.description || 'Serving Duval, Clay, Nassau, and St. Johns Counties'}
         columns={footerColumns}
         contactInfo={{
-          address: 'Jacksonville, Florida',
-          email: 'info@amazinghauling.com',
-          hours: 'Monday – Friday, 6:00 AM – 6:00 PM',
+          address: footer?.contactInfo?.address || 'Jacksonville, Florida',
+          phone: footer?.contactInfo?.phone || undefined,
+          email: footer?.contactInfo?.email || 'info@amazinghauling.com',
+          hours: footer?.contactInfo?.hours || 'Monday - Friday, 6:00 AM - 6:00 PM',
         }}
-        certifications="Licensed & Insured"
-        copyright="© 2026 Amazing Hauling of North Florida. All Rights Reserved."
+        certifications={footer?.certifications || 'Licensed & Insured'}
+        copyright={footer?.copyright || '© 2026 Amazing Hauling of North Florida. All Rights Reserved.'}
       />
     </div>
   )

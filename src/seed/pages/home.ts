@@ -4,6 +4,7 @@ export const homePageSeed = {
   layout: [
     {
       blockType: 'hero',
+      imageKey: 'homeHero',
       badge: 'Amazing Hauling of North Florida',
       headingLine1: 'Reliable Dump Truck',
       headingLine2: '& Materials Hauling',
@@ -61,6 +62,7 @@ export const homePageSeed = {
     },
     {
       blockType: 'fleet',
+      imageKey: 'fleet',
       heading: 'Our Fleet',
       body: 'Amazing Hauling currently operates three professional dump trucks, with plans to expand to four trucks as demand continues to grow. Our drivers bring experience and professionalism to every jobsite, ensuring safe and efficient operations. Whether it\'s a one-day haul or a long-term project, we have the capability to support your work.',
       metrics: [
@@ -74,9 +76,9 @@ export const homePageSeed = {
       blockType: 'projectGrid',
       heading: 'Recent Project Work',
       items: [
-        { title: 'Road Construction Support', category: 'Road Construction', location: 'Jacksonville, FL', description: 'Supporting roadway construction projects by transporting asphalt, hauling aggregates, and removing construction debris from active job sites.', services: [{ service: 'Asphalt Hauling' }, { service: 'Aggregate Transport' }, { service: 'Debris Removal' }] },
-        { title: 'Asphalt Paving Operations', category: 'Asphalt Paving', location: 'Duval County, FL', description: 'Helping transport asphalt materials from plants to job sites and assisting with hauling asphalt debris during resurfacing operations.', services: [{ service: 'Asphalt Hauling' }, { service: 'Milling Debris' }] },
-        { title: 'Site Development Projects', category: 'Site Development', location: 'Northeast Florida', description: 'Supporting developers and contractors with dependable dirt hauling services for residential and commercial construction.', services: [{ service: 'Dirt Hauling' }, { service: 'Grading Support' }] },
+        { title: 'Road Construction Support', category: 'Road Construction', location: 'Jacksonville, FL', description: 'Supporting roadway construction projects by transporting asphalt, hauling aggregates, and removing construction debris from active job sites.', services: [{ service: 'Asphalt Hauling' }, { service: 'Aggregate Transport' }, { service: 'Debris Removal' }], imageKey: 'convoy' },
+        { title: 'Asphalt Paving Operations', category: 'Asphalt Paving', location: 'Duval County, FL', description: 'Helping transport asphalt materials from plants to job sites and assisting with hauling asphalt debris during resurfacing operations.', services: [{ service: 'Asphalt Hauling' }, { service: 'Milling Debris' }], imageKey: 'asphaltAction' },
+        { title: 'Site Development Projects', category: 'Site Development', location: 'Northeast Florida', description: 'Supporting developers and contractors with dependable dirt hauling services for residential and commercial construction.', services: [{ service: 'Dirt Hauling' }, { service: 'Grading Support' }], imageKey: 'dirtHaul' },
       ],
     },
     {
@@ -94,14 +96,23 @@ export const homePageSeed = {
     },
     {
       blockType: 'contentSplit',
-      badge: 'Our Commitment',
-      heading: 'Reliable Service Builds Lasting Relationships',
-      body: 'Amazing Hauling was built on a simple belief: Reliable service builds lasting relationships. Our goal is to become the hauling partner contractors trust when the job must be done right. Every project we support reflects our commitment to professionalism, safety, and dependable service.',
+      imageKey: 'materialsHauling',
+      badge: 'Our Mission',
+      heading: 'Built on Honest Work and Family Values',
+      body: 'Our mission at Amazing Hauling of North Florida is to provide safe, dependable, and efficient dump truck hauling services with a personal, family-driven commitment to excellence. We proudly serve North Florida by delivering honest work, timely service, and strong relationships with our customers, contractors, and communities.',
       ctaLabel: 'Request a Quote',
       ctaLink: '/contact',
       reverse: false,
       overlap: true,
       background: 'white',
+    },
+    {
+      blockType: 'textBlock',
+      badge: 'Our Vision',
+      heading: 'The Standard for Dependable Hauling in North Florida',
+      body: 'To set the standard for dependable hauling in North Florida through hard work, family values, and unmatched customer service.',
+      centered: true,
+      background: 'cream',
     },
     {
       blockType: 'ctaBanner',
@@ -116,5 +127,6 @@ export const homePageSeed = {
   meta: {
     title: 'Amazing Hauling of North Florida | Reliable Dump Truck & Materials Hauling',
     description: 'Dependable dump truck and materials hauling services for contractors throughout Jacksonville and Northeast Florida. Dirt, asphalt, aggregates, and construction site hauling.',
+    imageKey: 'worksite',
   },
 }

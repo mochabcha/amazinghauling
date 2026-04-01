@@ -4,6 +4,7 @@ export const aboutPageSeed = {
   layout: [
     {
       blockType: 'hero',
+      imageKey: 'convoyWide',
       badge: 'About Us',
       headingLine1: 'Built on Hard Work,',
       headingLine2: 'Reliability,',
@@ -15,6 +16,7 @@ export const aboutPageSeed = {
     },
     {
       blockType: 'contentSplit',
+      imageKey: 'replacementTruck',
       badge: 'Our Story',
       heading: 'From One Truck to a Growing Fleet',
       body: 'Founded by Antoine Pearson, Amazing Hauling began with a single truck and a commitment to doing quality work for every customer. Through dedication, reliability, and strong relationships with contractors, the company has grown into a trusted hauling partner supporting construction and development projects across Northeast Florida. Today, Amazing Hauling continues to expand while maintaining the same values that started the business: dependability, integrity, and service. Before starting the company, Antoine worked in the trucking and construction support field, learning how hauling operations support road construction and development projects throughout the region. With that experience, he launched Amazing Hauling with a vision of building a company known for reliable service and strong work ethic. What started as one truck has grown into a fleet supporting contractors across Jacksonville and the surrounding counties. The company continues to grow through hard work, word-of-mouth referrals, and a commitment to doing every job right.',
@@ -26,6 +28,7 @@ export const aboutPageSeed = {
     },
     {
       blockType: 'contentSplit',
+      imageKey: 'fieldPhoto',
       badge: 'Family Owned',
       heading: 'A Family-Owned Company',
       body: 'Amazing Hauling is more than just a hauling company — it is a family business built on shared values and long-term vision. Antoine and Nikki Pearson work together to operate and grow the company while building a legacy for their family. Their goal is to create a company that represents professionalism, reliability, and strong relationships with clients throughout Northeast Florida. Being family-owned means every project matters, and every client relationship is valued.',
@@ -37,7 +40,7 @@ export const aboutPageSeed = {
       blockType: 'textBlock',
       badge: 'Our Mission',
       heading: 'Our Mission',
-      body: 'To provide dependable hauling services that contractors and construction professionals can rely on to keep their projects moving safely and efficiently.',
+      body: 'Our mission at Amazing Hauling of North Florida is to provide safe, dependable, and efficient dump truck hauling services with a personal, family-driven commitment to excellence. We proudly serve North Florida by delivering honest work, timely service, and strong relationships with our customers, contractors, and communities.',
       centered: true,
       background: 'black',
     },
@@ -45,7 +48,7 @@ export const aboutPageSeed = {
       blockType: 'textBlock',
       badge: 'Our Vision',
       heading: 'Our Vision',
-      body: 'To become one of the most trusted hauling companies in Northeast Florida by delivering consistent service, maintaining strong partnerships, and continuing to grow our fleet and capabilities.',
+      body: 'To set the standard for dependable hauling in North Florida through hard work, family values, and unmatched customer service.',
       centered: true,
       background: 'cream',
     },
@@ -63,6 +66,7 @@ export const aboutPageSeed = {
     },
     {
       blockType: 'contentSplit',
+      imageKey: 'worksite',
       badge: 'Regional Growth',
       heading: 'Growing With Northeast Florida',
       body: 'Jacksonville and the surrounding region continue to grow through new infrastructure, road construction, and development projects. Amazing Hauling is proud to play a role in supporting that growth by providing reliable hauling services that keep construction projects moving forward. As the company continues to expand, our focus remains the same: Deliver dependable service, build strong relationships, and earn the trust of every contractor we work with.',
@@ -72,6 +76,7 @@ export const aboutPageSeed = {
     },
     {
       blockType: 'fleet',
+      imageKey: 'fleetAlt',
       heading: 'Our Fleet',
       body: 'Amazing Hauling currently operates three dump trucks and continues to invest in additional equipment as the business grows. Our goal is to expand our fleet while maintaining the same high standards of reliability and professionalism that our clients expect.',
       metrics: [
@@ -94,5 +99,6 @@ export const aboutPageSeed = {
   meta: {
     title: 'About Amazing Hauling',
     description: 'Learn about Amazing Hauling of North Florida. A family-owned hauling company based in Jacksonville, founded by Antoine Pearson, committed to dependability, integrity, and service.',
+    imageKey: 'fleetAlt',
   },
 }

@@ -33,6 +33,9 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const splitIndex = Math.ceil(navItems.length / 2)
+  const leftNavItems = navItems.slice(0, splitIndex)
+  const rightNavItems = navItems.slice(splitIndex)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -46,14 +49,16 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className={classes}>
       <div className="header__inner">
-        <HeaderBrand src={logoSrc} companyName={companyName} />
-        <NavBar navItems={navItems} />
+        <NavBar navItems={leftNavItems} className="header__nav header__nav--left" />
+        <HeaderBrand src={logoSrc} companyName={companyName} className="header__brand" showText={false} />
+        <NavBar navItems={rightNavItems} className="header__nav header__nav--right" />
         <HeaderActions
           phone={phone}
           ctaLabel={ctaLabel}
           ctaHref={ctaHref}
           mobileOpen={mobileOpen}
           onMobileToggle={() => setMobileOpen(!mobileOpen)}
+          className="header__actions--desktop"
         />
       </div>
       <MobileMenu

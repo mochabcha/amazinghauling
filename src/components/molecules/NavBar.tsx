@@ -16,7 +16,7 @@ export const NavBar: React.FC<NavBarProps> = ({ navItems, className = '' }) => {
   const classes = ['header__nav', className].filter(Boolean).join(' ')
 
   return (
-    <nav className={classes}>
+    <nav className={classes} aria-label="Primary navigation">
       {navItems.map((item, index) => (
         <NavLink
           key={index}

@@ -217,8 +217,8 @@
 /* ===========================
    LOGO ATOMS
    =========================== */
-.logo { display: inline-flex; align-items: center; gap: var(--space-3); text-decoration: none; }
-.logo__image { height: 48px; width: auto; }
+.logo { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-3); text-decoration: none; }
+.logo__image { height: 64px; width: auto; }
 .logo__image--sm { height: 32px; }
 .logo__image--lg { height: 64px; }
 .logo__text {
