@@ -190,6 +190,7 @@ export async function runSeed() {
       companyName: 'Amazing Hauling of North Florida',
       tagline: 'Dump Truck & Materials Hauling Services',
       description: 'Serving Duval, Clay, Nassau, and St. Johns Counties',
+      ctaImage: mediaMap.worksite,
       columns: footerColumns,
       contactInfo: {
         address: 'Jacksonville, Florida',

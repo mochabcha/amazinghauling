@@ -108,6 +108,18 @@
   padding: var(--space-12);
   background: var(--color-charcoal);
 }
+.footer__cta-media {
+  position: absolute;
+  inset: 0;
+}
+.footer__cta-media-frame {
+  position: absolute;
+  inset: 0;
+}
+.footer__cta-right .button-group {
+  position: relative;
+  z-index: 1;
+}
 .footer__inner {
   max-width: var(--container-wide);
   margin: 0 auto;

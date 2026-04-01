@@ -1,13 +1,14 @@
 'use client'
 
 import React from 'react'
+import { useScrollAnimation } from '@/lib/useScrollAnimation'
 import { FooterColumn } from '../molecules/FooterColumn'
 import { FooterBrand } from '../molecules/FooterBrand'
 import { FooterContact } from '../molecules/FooterContact'
 import { FooterBottom } from '../molecules/FooterBottom'
 import { SectionHeader } from '../molecules/SectionHeader'
 import { CTAButtonGroup } from '../molecules/CTAButtonGroup'
-import { ContentBody } from '../molecules/ContentBody'
+import { ImagePlaceholder } from '../molecules/ImagePlaceholder'
 import type { FooterLink } from '../molecules/FooterColumn'
 
 export interface FooterProps {
@@ -15,6 +16,8 @@ export interface FooterProps {
   logoSrc?: string
   tagline?: string
   description?: string
+  ctaImageSrc?: string
+  ctaImageAlt?: string
   columns?: Array<{ title: string; links: FooterLink[] }>
   contactInfo?: {
     address?: string
@@ -32,6 +35,8 @@ export const Footer: React.FC<FooterProps> = ({
   logoSrc,
   tagline = 'Dump Truck & Materials Hauling Services',
   description = 'Serving Duval, Clay, Nassau, and St. Johns Counties',
+  ctaImageSrc,
+  ctaImageAlt,
   columns = [],
   contactInfo,
   certifications = 'Licensed & Insured',
@@ -39,10 +44,11 @@ export const Footer: React.FC<FooterProps> = ({
   className = '',
 }) => {
   const classes = ['footer', className].filter(Boolean).join(' ')
+  const ctaRef = useScrollAnimation()
 
   return (
     <footer className={classes}>
-      <div className="footer__cta">
+      <div ref={ctaRef} className="footer__cta">
         <div className="footer__cta-left">
           <SectionHeader
             heading="Let's Haul Together"
@@ -59,9 +65,17 @@ export const Footer: React.FC<FooterProps> = ({
           />
         </div>
         <div className="footer__cta-right">
-          <ContentBody light>
-            {null}
-          </ContentBody>
+          <div className="footer__cta-media animate-on-scroll">
+            <div className="footer__cta-media-frame anim-clip-right">
+              <ImagePlaceholder
+                src={ctaImageSrc}
+                alt={ctaImageAlt || "Let's Haul Together"}
+                label=""
+                fill
+                gradient="warm"
+              />
+            </div>
+          </div>
           <CTAButtonGroup
             primaryLabel="Contact Us"
             primaryHref="/contact"

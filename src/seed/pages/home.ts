@@ -117,6 +117,7 @@ export const homePageSeed = {
     },
     {
       blockType: 'ctaBanner',
+      imageKey: 'asphaltPaving',
       heading: 'Ready to Start Your Project?',
       description: 'If your job site needs dependable hauling services, Amazing Hauling is ready to help. Request a quote today and let us keep your project moving.',
       primaryCta: 'Request a Quote',

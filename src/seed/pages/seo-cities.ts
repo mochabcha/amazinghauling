@@ -41,6 +41,7 @@ function createSeoPage(slug: string, city: string, county: string, heading: stri
       },
       {
         blockType: 'ctaBanner',
+        imageKey: slug === 'jacksonville' ? 'convoyWide' : slug === 'fernandina-beach' ? 'dirtHaul' : slug === 'orange-park' ? 'replacementTruckAlt' : slug === 'st-augustine' ? 'materialsHauling' : 'convoyAlt',
         heading: `Request Hauling Services in ${city}`,
         description: `If your project needs dependable dump truck hauling in ${city}, Amazing Hauling is ready to help. Call today or request a quote to schedule hauling services for your job site.`,
         primaryCta: 'Request a Quote',

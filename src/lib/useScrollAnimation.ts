@@ -9,11 +9,22 @@ export function useScrollAnimation(threshold = 0.12) {
     const element = ref.current
     if (!element) return
 
+    const selectors = [
+      '.anim-reveal', '.anim-lines', '.anim-up', '.anim-down',
+      '.anim-left', '.anim-right', '.anim-clip-up', '.anim-clip-left',
+      '.anim-clip-right', '.anim-counter', '.anim-accent-bar',
+    ]
+
+    const animatedElements = () => element.querySelectorAll(selectors.join(', '))
+    const revealAll = () => {
+      animatedElements().forEach((animatedElement) => animatedElement.classList.add('is-visible'))
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible')
+            revealAll()
             observer.unobserve(entry.target)
           }
         })
@@ -21,17 +32,10 @@ export function useScrollAnimation(threshold = 0.12) {
       { threshold, rootMargin: '0px 0px -40px 0px' }
     )
 
-    const selectors = [
-      '.anim-reveal', '.anim-lines', '.anim-up', '.anim-down',
-      '.anim-left', '.anim-right', '.anim-clip-up', '.anim-clip-left',
-      '.anim-clip-right', '.anim-counter', '.anim-accent-bar',
-    ]
-
-    const animatedElements = element.querySelectorAll(selectors.join(', '))
-    animatedElements.forEach((el) => observer.observe(el))
+    observer.observe(element)
 
     return () => {
-      animatedElements.forEach((el) => observer.unobserve(el))
+      observer.unobserve(element)
     }
   }, [threshold])
 

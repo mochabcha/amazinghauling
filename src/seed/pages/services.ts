@@ -56,6 +56,7 @@ export const servicesPageSeed = {
     },
     {
       blockType: 'ctaBanner',
+      imageKey: 'asphaltAction',
       heading: 'Need Hauling for Your Project?',
       description: 'Amazing Hauling is ready to support your next project with dependable dump truck services. Request a quote today to schedule hauling services for your job site.',
       primaryCta: 'Request a Quote',

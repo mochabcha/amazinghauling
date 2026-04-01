@@ -12,6 +12,8 @@ export interface CTABannerProps {
   primaryHref?: string
   secondaryLabel?: string
   secondaryHref?: string
+  imageSrc?: string
+  imageAlt?: string
   className?: string
 }
 
@@ -22,6 +24,8 @@ export const CTABanner: React.FC<CTABannerProps> = ({
   primaryHref = '/contact',
   secondaryLabel,
   secondaryHref,
+  imageSrc,
+  imageAlt,
   className = '',
 }) => {
   const ref = useScrollAnimation()
@@ -36,6 +40,8 @@ export const CTABanner: React.FC<CTABannerProps> = ({
         primaryHref={primaryHref}
         secondaryLabel={secondaryLabel}
         secondaryHref={secondaryHref}
+        imageSrc={imageSrc}
+        imageAlt={imageAlt}
       />
     </SectionWrapper>
   )

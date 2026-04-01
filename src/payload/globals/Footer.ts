@@ -22,6 +22,11 @@ export const FooterGlobal: GlobalConfig = {
       defaultValue: 'Serving Duval, Clay, Nassau, and St. Johns Counties',
     },
     {
+      name: 'ctaImage',
+      type: 'upload',
+      relationTo: 'media',
+    },
+    {
       name: 'columns',
       type: 'array',
       label: 'Footer Columns',

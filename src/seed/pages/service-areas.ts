@@ -40,6 +40,7 @@ export const serviceAreasPageSeed = {
     },
     {
       blockType: 'ctaBanner',
+      imageKey: 'convoy',
       heading: 'Schedule Hauling for Your Project',
       description: 'If your construction project needs reliable hauling services in Jacksonville or anywhere in Northeast Florida, Amazing Hauling is ready to help. Request a quote today to schedule hauling services for your job site.',
       primaryCta: 'Request a Quote',

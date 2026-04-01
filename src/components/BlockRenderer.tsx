@@ -173,6 +173,8 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks }) => {
                 primaryHref={block.primaryCtaLink as string}
                 secondaryLabel={block.secondaryCta as string}
                 secondaryHref={block.secondaryCtaLink as string}
+                imageSrc={resolveMediaUrl(block.image)}
+                imageAlt={resolveMediaAlt(block.image, (block.heading as string) || 'CTA image')}
               />
             )
 

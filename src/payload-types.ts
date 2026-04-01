@@ -1185,6 +1185,7 @@ export interface Footer {
   companyName?: string | null;
   tagline?: string | null;
   description?: string | null;
+  ctaImage?: (string | null) | Media;
   columns?:
     | {
         title: string;
@@ -1274,6 +1275,7 @@ export interface FooterSelect<T extends boolean = true> {
   companyName?: T;
   tagline?: T;
   description?: T;
+  ctaImage?: T;
   columns?:
     | T
     | {

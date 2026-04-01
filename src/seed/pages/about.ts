@@ -88,6 +88,7 @@ export const aboutPageSeed = {
     },
     {
       blockType: 'ctaBanner',
+      imageKey: 'fleet',
       heading: 'Work With a Company That Shows Up',
       description: 'Contractors need hauling partners they can depend on. Amazing Hauling is committed to delivering reliable service, clear communication, and professional support for every project. If your project needs dependable hauling, we\'re ready to help.',
       primaryCta: 'Request a Quote',

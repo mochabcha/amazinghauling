@@ -78,6 +78,8 @@ export default async function FrontendLayout({ children }: { children: React.Rea
         companyName={footer?.companyName || 'Amazing Hauling of North Florida'}
         tagline={footer?.tagline || 'Dump Truck & Materials Hauling Services'}
         description={footer?.description || 'Serving Duval, Clay, Nassau, and St. Johns Counties'}
+        ctaImageSrc={resolveMediaUrl(footer?.ctaImage) || undefined}
+        ctaImageAlt="Amazing Hauling dump truck in North Florida"
         columns={footerColumns}
         contactInfo={{
           address: footer?.contactInfo?.address || 'Jacksonville, Florida',

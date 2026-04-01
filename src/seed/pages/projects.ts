@@ -66,6 +66,7 @@ export const projectsPageSeed = {
     },
     {
       blockType: 'ctaBanner',
+      imageKey: 'convoyWide',
       heading: 'Partner With Amazing Hauling',
       description: 'If your project needs reliable hauling support, Amazing Hauling is ready to help. Our team works hard to ensure every project receives dependable service and professional support. Request a quote today to schedule hauling services for your next project.',
       primaryCta: 'Request a Quote',

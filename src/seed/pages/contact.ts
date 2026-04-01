@@ -31,6 +31,7 @@ export const contactPageSeed = {
     },
     {
       blockType: 'ctaBanner',
+      imageKey: 'worksite',
       heading: 'Reliable Hauling When You Need It',
       description: 'Construction projects depend on reliable partners. Amazing Hauling works hard to provide dependable service, clear communication, and professional hauling support for every project. When contractors call Amazing Hauling, they know they are working with a team committed to getting the job done right.',
       primaryCta: 'Call Now',

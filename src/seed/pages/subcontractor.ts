@@ -63,6 +63,7 @@ export const subcontractorPageSeed = {
     },
     {
       blockType: 'ctaBanner',
+      imageKey: 'replacementTruck',
       heading: 'Interested in Partnering With Us?',
       description: 'If you would like to work with Amazing Hauling on upcoming projects, download the subcontractor packet and submit your information today.',
       primaryCta: 'Contact Our Team',
