@@ -13,6 +13,7 @@ export interface ProjectCardProps {
   imageAlt?: string
   services?: string[]
   href?: string
+  tone?: 'light' | 'dark'
   className?: string
 }
 
@@ -25,9 +26,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   imageAlt,
   services,
   href,
+  tone = 'light',
   className = '',
 }) => {
-  const classes = ['project-card', 'animate-card-lift', className].filter(Boolean).join(' ')
+  const classes = ['project-card', `project-card--${tone}`, 'animate-card-lift', className].filter(Boolean).join(' ')
 
   const content = (
     <>

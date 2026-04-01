@@ -4,7 +4,7 @@ import NextImage from 'next/image'
 export interface LogoProps {
   src?: string
   companyName?: string
-  size?: 'sm' | 'md' | 'lg'
+  size?: 'sm' | 'md' | 'lg' | 'xl'
   white?: boolean
   href?: string
   showText?: boolean
@@ -25,6 +25,8 @@ export const Logo: React.FC<LogoProps> = ({
   const textClass = `logo__text ${white ? 'logo__text--white' : ''}`
   const dimensions = size === 'sm'
     ? { width: 120, height: 85 }
+    : size === 'xl'
+      ? { width: 320, height: 227 }
     : size === 'lg'
       ? { width: 220, height: 156 }
       : { width: 180, height: 127 }
@@ -37,7 +39,7 @@ export const Logo: React.FC<LogoProps> = ({
           alt={companyName}
           width={dimensions.width}
           height={dimensions.height}
-          sizes={size === 'lg' ? '220px' : size === 'sm' ? '120px' : '180px'}
+          sizes={size === 'xl' ? '320px' : size === 'lg' ? '220px' : size === 'sm' ? '120px' : '180px'}
           priority
           className={imgClass}
         />

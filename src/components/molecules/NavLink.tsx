@@ -7,6 +7,7 @@ export interface NavLinkProps {
   active?: boolean
   hasDropdown?: boolean
   children?: React.ReactNode
+  onClick?: () => void
   className?: string
 }
 
@@ -16,6 +17,7 @@ export const NavLink: React.FC<NavLinkProps> = ({
   active = false,
   hasDropdown = false,
   children,
+  onClick,
   className = '',
 }) => {
   const classes = [
@@ -28,7 +30,7 @@ export const NavLink: React.FC<NavLinkProps> = ({
 
   return (
     <div className="relative group">
-      <a href={href} className={classes}>
+      <a href={href} className={classes} onClick={onClick}>
         <span>{label}</span>
         {hasDropdown && <Icon name="ChevronDown" size="sm" />}
       </a>

@@ -24,6 +24,7 @@ export interface ProjectShowcaseProps {
   projects: ProjectItem[]
   featured?: boolean
   showCTA?: boolean
+  tone?: 'light' | 'dark'
   className?: string
 }
 
@@ -33,6 +34,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
   projects,
   featured = false,
   showCTA = false,
+  tone = 'light',
   className = '',
 }) => {
   const ref = useScrollAnimation()
@@ -57,6 +59,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
                 imageAlt={project.imageAlt}
                 services={project.services}
                 href={project.href}
+                tone={tone}
               />
             </div>
           ))}

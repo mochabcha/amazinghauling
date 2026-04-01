@@ -221,6 +221,7 @@
 .logo__image { height: 88px; width: auto; }
 .logo__image--sm { height: 56px; }
 .logo__image--lg { height: 108px; }
+.logo__image--xl { height: 176px; }
 .logo__text {
   font-family: var(--font-primary);
   font-size: var(--text-lg);
