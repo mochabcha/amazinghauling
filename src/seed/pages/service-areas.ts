@@ -15,7 +15,7 @@ export const serviceAreasPageSeed = {
     {
       blockType: 'textBlock',
       heading: 'Hauling Services Across Northeast Florida',
-      body: 'Amazing Hauling of North Florida proudly provides dependable dump truck and materials hauling services throughout Jacksonville and the surrounding Northeast Florida region. Our fleet supports contractors, construction crews, and development teams across multiple counties, helping move the materials that keep projects on schedule. While Jacksonville is our primary service area, our trucks regularly operate across nearby counties and cities throughout Northeast Florida.',
+      body: 'Amazing Hauling of North Florida proudly provides dependable dump trucks and material hauling services throughout Jacksonville and the surrounding Northeast Florida region. Our fleet supports contractors, construction crews, and development teams across multiple counties, helping move the materials that keep projects on schedule. While Jacksonville is our primary service area, our trucks regularly operate across nearby counties and cities throughout Northeast Florida.',
       centered: true,
       background: 'white',
     },

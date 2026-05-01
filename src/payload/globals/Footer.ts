@@ -14,7 +14,7 @@ export const FooterGlobal: GlobalConfig = {
     {
       name: 'tagline',
       type: 'text',
-      defaultValue: 'Dump Truck & Materials Hauling Services',
+      defaultValue: 'Dump Trucks & Material Hauling Services',
     },
     {
       name: 'description',

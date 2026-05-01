@@ -33,27 +33,40 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks }) => {
 
         switch (block.blockType) {
           case 'hero':
+            {
+              const headingLine1 = block.headingLine1 === 'Reliable Dump Truck'
+                ? 'Reliable Dump Trucks'
+                : block.headingLine1 as string
+              const headingLine2 = block.headingLine2 === '& Materials Hauling'
+                ? '& Material Hauling'
+                : block.headingLine2 as string
+              const headingLine3 = block.headingLine3 as string
+              const description = block.badge === 'Amazing Hauling of North Florida'
+                ? 'When contractors need dependable hauling, they call Amazing. Amazing Hauling provides responsive, professional hauling support for construction companies, road crews, and development teams throughout Northeast Florida.'
+                : block.description as string
+
             return (
               <HeroSection
                 key={key}
                 badge={block.badge as string}
                 heading={[
-                  block.headingLine1 as string,
-                  block.headingLine2 as string,
-                  block.headingLine3 as string,
+                  headingLine1,
+                  headingLine2,
+                  headingLine3,
                 ].filter(Boolean).join('\n')}
                 headingLines={[
-                  block.headingLine1 as string,
-                  block.headingLine2 as string,
-                  block.headingLine3 as string,
+                  headingLine1,
+                  headingLine2,
+                  headingLine3,
                 ].filter(Boolean)}
-                description={block.description as string}
+                description={description}
                 primaryCTA={block.primaryCta ? { label: block.primaryCta as string, href: block.primaryCtaLink as string || '/contact' } : undefined}
                 secondaryCTA={block.secondaryCta ? { label: block.secondaryCta as string, href: block.secondaryCtaLink as string || '#' } : undefined}
                 backgroundImage={resolveMediaUrl(block.image)}
                 short={block.short as boolean}
               />
             )
+            }
 
           case 'contentSplit': {
             const bg = block.background as string
@@ -122,7 +135,16 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks }) => {
             return (
               <StatsBar
                 key={key}
-                stats={items.map((item) => ({ value: item.value || '', label: item.label || '' }))}
+                stats={items.map((item) => {
+                  const originalLabel = item.label || ''
+                  const label = originalLabel === 'Trucks Planned' ? 'Fast Response' : originalLabel
+                  const value = originalLabel === 'Dump Trucks' && item.value === '3'
+                    ? '4'
+                    : originalLabel === 'Trucks Planned' && item.value === '4+'
+                      ? 'Same-Day'
+                      : item.value || ''
+                  return { value, label }
+                })}
               />
             )
           }
@@ -208,16 +230,22 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks }) => {
 
           case 'fleet': {
             const metrics = (block.metrics as Array<{ icon?: string; value?: string; label?: string }>) || []
+            const description = (block.body as string)?.replace('currently operates three professional dump trucks', 'currently operates four professional dump trucks')
+              .replace('currently operates three dump trucks', 'currently operates four dump trucks')
             return (
               <FleetSection
                 key={key}
                 heading={block.heading as string}
-                description={block.body as string}
+                description={description}
                 imageSrc={resolveMediaUrl(block.image)}
                 metrics={metrics.map((m) => ({
                   iconName: m.icon || 'Truck',
-                  value: m.value || '',
-                  label: m.label || '',
+                  value: m.label === 'Trucks in Operation' && m.value === '3'
+                    ? '4'
+                    : m.label === 'Planned Expansion' && m.value === '4+'
+                      ? 'Same-Day'
+                      : m.value || '',
+                  label: m.label === 'Planned Expansion' ? 'Fast Response' : m.label || '',
                 }))}
               />
             )

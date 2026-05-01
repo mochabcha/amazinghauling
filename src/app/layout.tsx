@@ -12,18 +12,18 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: getSiteUrlObject(),
   title: {
-    default: 'Amazing Hauling of North Florida | Reliable Dump Truck & Materials Hauling',
+    default: 'Amazing Hauling of North Florida | Reliable Dump Trucks & Material Hauling',
     template: '%s | Amazing Hauling of North Florida',
   },
-  description: 'Dependable dump truck and materials hauling services for contractors throughout Jacksonville and Northeast Florida. Dirt, asphalt, aggregates, and construction site hauling.',
+  description: 'Dependable dump trucks and material hauling services for contractors throughout Jacksonville and Northeast Florida. Dirt, asphalt, aggregates, and construction site hauling.',
   keywords: ['dump truck hauling', 'materials hauling', 'Jacksonville', 'Northeast Florida', 'dirt hauling', 'asphalt hauling', 'aggregate delivery', 'construction hauling', 'Amazing Hauling'],
   authors: [{ name: 'Amazing Hauling of North Florida' }],
   openGraph: {
     type: 'website',
     locale: 'en_US',
     siteName: 'Amazing Hauling of North Florida',
-    title: 'Amazing Hauling of North Florida | Reliable Dump Truck & Materials Hauling',
-    description: 'Dependable dump truck and materials hauling services for contractors throughout Jacksonville and Northeast Florida.',
+    title: 'Amazing Hauling of North Florida | Reliable Dump Trucks & Material Hauling',
+    description: 'Dependable dump trucks and material hauling services for contractors throughout Jacksonville and Northeast Florida.',
     images: [
       {
         url: '/brand/amazing-hauling-logo.png',
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Amazing Hauling of North Florida | Reliable Dump Truck & Materials Hauling',
-    description: 'Dependable dump truck and materials hauling services for contractors throughout Jacksonville and Northeast Florida.',
+    title: 'Amazing Hauling of North Florida | Reliable Dump Trucks & Material Hauling',
+    description: 'Dependable dump trucks and material hauling services for contractors throughout Jacksonville and Northeast Florida.',
     images: ['/brand/amazing-hauling-logo.png'],
   },
   alternates: {

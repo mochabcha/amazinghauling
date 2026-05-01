@@ -33,7 +33,7 @@ export interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({
   companyName = 'Amazing Hauling of North Florida',
   logoSrc,
-  tagline = 'Dump Truck & Materials Hauling Services',
+  tagline = 'Dump Trucks & Material Hauling Services',
   description = 'Serving Duval, Clay, Nassau, and St. Johns Counties',
   ctaImageSrc,
   ctaImageAlt,

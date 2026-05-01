@@ -76,7 +76,7 @@ export default async function FrontendLayout({ children }: { children: React.Rea
       <Footer
         logoSrc={resolveMediaUrl(header?.logo) || '/brand/amazing-hauling-logo.png'}
         companyName={footer?.companyName || 'Amazing Hauling of North Florida'}
-        tagline={footer?.tagline || 'Dump Truck & Materials Hauling Services'}
+        tagline={footer?.tagline || 'Dump Trucks & Material Hauling Services'}
         description={footer?.description || 'Serving Duval, Clay, Nassau, and St. Johns Counties'}
         ctaImageSrc={resolveMediaUrl(footer?.ctaImage) || undefined}
         ctaImageAlt="Amazing Hauling dump truck in North Florida"

@@ -19,10 +19,10 @@ export interface FleetSectionProps {
 
 export const FleetSection: React.FC<FleetSectionProps> = ({
   heading = 'Our Fleet',
-  description = 'Amazing Hauling currently operates three professional dump trucks, with plans to expand to four trucks as demand continues to grow.',
+  description = 'Amazing Hauling currently operates four professional dump trucks and continues to invest in additional equipment as demand grows.',
   metrics = [
-    { iconName: 'Truck', value: '3', label: 'Trucks in Operation' },
-    { iconName: 'TrendingUp', value: '4+', label: 'Planned Expansion' },
+    { iconName: 'Truck', value: '4', label: 'Trucks in Operation' },
+    { iconName: 'TrendingUp', value: 'Same-Day', label: 'Fast Response' },
     { iconName: 'MapPin', value: 'NE FL', label: 'Service Region' },
     { iconName: 'Users', value: '100%', label: 'Family-Owned' },
   ],

@@ -44,10 +44,10 @@ export const projectsPageSeed = {
       blockType: 'fleet',
       imageKey: 'fleet',
       heading: 'Our Fleet',
-      body: 'Amazing Hauling currently operates three dump trucks, with plans to expand as demand continues to grow. Our fleet is maintained to professional standards and operated by experienced drivers who understand the demands of construction and infrastructure projects. We focus on providing reliable equipment, professional drivers, safe operations, and consistent service.',
+      body: 'Amazing Hauling currently operates four dump trucks, with plans to continue expanding as demand grows. Our fleet is maintained to professional standards and operated by experienced drivers who understand the demands of construction and infrastructure projects. We focus on providing reliable equipment, professional drivers, safe operations, and consistent service.',
       metrics: [
-        { icon: 'Truck', value: '3', label: 'Trucks in Operation' },
-        { icon: 'TrendingUp', value: '4+', label: 'Planned Expansion' },
+        { icon: 'Truck', value: '4', label: 'Trucks in Operation' },
+        { icon: 'TrendingUp', value: 'Same-Day', label: 'Fast Response' },
         { icon: 'Shield', value: '100%', label: 'Safety Record' },
         { icon: 'Users', value: 'Expert', label: 'Drivers' },
       ],

@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Amazing Hauling of North Florida',
     short_name: 'Amazing Hauling',
-    description: 'Reliable dump truck and materials hauling throughout North Florida.',
+    description: 'Reliable dump trucks and material hauling throughout North Florida.',
     start_url: '/',
     display: 'standalone',
     background_color: '#0A1628',

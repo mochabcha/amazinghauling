@@ -188,7 +188,7 @@ export async function runSeed() {
     slug: 'footer',
     data: {
       companyName: 'Amazing Hauling of North Florida',
-      tagline: 'Dump Truck & Materials Hauling Services',
+      tagline: 'Dump Trucks & Material Hauling Services',
       description: 'Serving Duval, Clay, Nassau, and St. Johns Counties',
       ctaImage: mediaMap.worksite,
       columns: footerColumns,
@@ -208,7 +208,7 @@ export async function runSeed() {
     slug: 'site-settings',
     data: {
       siteName: 'Amazing Hauling of North Florida',
-      siteDescription: 'Reliable dump truck and materials hauling in Jacksonville and Northeast Florida.',
+      siteDescription: 'Reliable dump trucks and material hauling in Jacksonville and Northeast Florida.',
       siteUrl: getSiteUrl(),
       ogImage: mediaMap.worksite,
     },

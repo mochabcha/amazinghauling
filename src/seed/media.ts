@@ -1,8 +1,7 @@
 import path from 'path'
-import fs from 'fs/promises'
 
 import type { Payload } from 'payload'
-import { uploadFileToCloudinary } from '@/lib/cloudinary'
+import { getS3StorageConfig } from '@/lib/mediaStorage'
 
 const imageRoot = path.join(process.cwd(), 'public', 'images')
 const brandRoot = path.join(process.cwd(), 'public', 'brand')
@@ -115,6 +114,7 @@ interface SeedMediaAssetOptions {
 
 export async function seedMediaAssets({ payload, results = [] }: SeedMediaAssetOptions) {
   const mediaMap = {} as Record<MediaSeedKey, string>
+  const s3StorageConfig = getS3StorageConfig()
 
   for (const [key, asset] of Object.entries(mediaSeedLibrary) as Array<[MediaSeedKey, (typeof mediaSeedLibrary)[MediaSeedKey]]>) {
     const existing = await payload.find({
@@ -129,33 +129,17 @@ export async function seedMediaAssets({ payload, results = [] }: SeedMediaAssetO
     })
 
     if (existing.totalDocs > 0) {
-      const uploaded = await uploadFileToCloudinary(asset.filePath, {
-        folder: 'amazing-hauling',
-        publicId: path.parse(asset.fileName).name,
-        tags: ['amazing-hauling', 'seeded-media'],
-      })
-      const fileStats = await fs.stat(asset.filePath)
-
       const updated = await payload.update({
         collection: 'media',
         id: existing.docs[0].id,
         data: {
           alt: asset.alt,
           caption: asset.caption,
-          filename: asset.fileName,
-          mimeType: asset.fileName.endsWith('.png') ? 'image/png' : 'image/jpeg',
-          filesize: uploaded?.bytes || fileStats.size,
-          width: uploaded?.width,
-          height: uploaded?.height,
-          url: uploaded?.secureUrl,
-          thumbnailURL: uploaded?.secureUrl,
-          cloudinaryPublicId: uploaded?.publicId,
-          cloudinaryVersion: uploaded?.version ? String(uploaded.version) : undefined,
+          prefix: s3StorageConfig?.prefix,
         },
         depth: 0,
-        context: {
-          skipCloudinarySync: true,
-        },
+        filePath: asset.filePath,
+        overwriteExistingFiles: true,
       })
 
       mediaMap[key] = updated.id
@@ -163,32 +147,16 @@ export async function seedMediaAssets({ payload, results = [] }: SeedMediaAssetO
       continue
     }
 
-    const uploaded = await uploadFileToCloudinary(asset.filePath, {
-      folder: 'amazing-hauling',
-      publicId: path.parse(asset.fileName).name,
-      tags: ['amazing-hauling', 'seeded-media'],
-    })
-    const fileStats = await fs.stat(asset.filePath)
-
     const created = await payload.create({
       collection: 'media',
       data: {
         alt: asset.alt,
         caption: asset.caption,
-        filename: asset.fileName,
-        mimeType: asset.fileName.endsWith('.png') ? 'image/png' : 'image/jpeg',
-        filesize: uploaded?.bytes || fileStats.size,
-        width: uploaded?.width,
-        height: uploaded?.height,
-        url: uploaded?.secureUrl,
-        thumbnailURL: uploaded?.secureUrl,
-        cloudinaryPublicId: uploaded?.publicId,
-        cloudinaryVersion: uploaded?.version ? String(uploaded.version) : undefined,
+        prefix: s3StorageConfig?.prefix,
       },
       depth: 0,
-      context: {
-        skipCloudinarySync: true,
-      },
+      filePath: asset.filePath,
+      overwriteExistingFiles: true,
     })
 
     mediaMap[key] = created.id

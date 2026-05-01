@@ -14,7 +14,7 @@ export const SiteSettings: GlobalConfig = {
     {
       name: 'siteDescription',
       type: 'textarea',
-      defaultValue: 'Reliable Dump Truck & Materials Hauling in Jacksonville and Northeast Florida',
+      defaultValue: 'Reliable Dump Trucks & Material Hauling in Jacksonville and Northeast Florida',
     },
     {
       name: 'siteUrl',

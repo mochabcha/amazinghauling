@@ -24,14 +24,7 @@ export const Media: CollectionConfig = {
       type: 'text',
     },
     {
-      name: 'cloudinaryPublicId',
-      type: 'text',
-      admin: {
-        readOnly: true,
-      },
-    },
-    {
-      name: 'cloudinaryVersion',
+      name: 'prefix',
       type: 'text',
       admin: {
         readOnly: true,

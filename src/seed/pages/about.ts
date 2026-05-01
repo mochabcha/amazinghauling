@@ -78,10 +78,10 @@ export const aboutPageSeed = {
       blockType: 'fleet',
       imageKey: 'fleetAlt',
       heading: 'Our Fleet',
-      body: 'Amazing Hauling currently operates three dump trucks and continues to invest in additional equipment as the business grows. Our goal is to expand our fleet while maintaining the same high standards of reliability and professionalism that our clients expect.',
+      body: 'Amazing Hauling currently operates four dump trucks and continues to invest in additional equipment as the business grows. Our goal is to expand our fleet while maintaining the same high standards of reliability and professionalism that our clients expect.',
       metrics: [
-        { icon: 'Truck', value: '3', label: 'Trucks in Operation' },
-        { icon: 'TrendingUp', value: '4+', label: 'Planned Expansion' },
+        { icon: 'Truck', value: '4', label: 'Trucks in Operation' },
+        { icon: 'TrendingUp', value: 'Same-Day', label: 'Fast Response' },
         { icon: 'MapPin', value: 'NE FL', label: 'Service Region' },
         { icon: 'Users', value: '100%', label: 'Family-Owned' },
       ],
