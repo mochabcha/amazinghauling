@@ -5,6 +5,7 @@ import { aboutPageSeed } from './pages/about'
 import { serviceAreasPageSeed } from './pages/service-areas'
 import { subcontractorPageSeed } from './pages/subcontractor'
 import { contactPageSeed } from './pages/contact'
+import { workWithUsPageSeed } from './pages/work-with-us'
 import { seoPageSeeds } from './pages/seo-cities'
 
 const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
@@ -17,6 +18,7 @@ const allPages = [
   serviceAreasPageSeed,
   subcontractorPageSeed,
   contactPageSeed,
+  workWithUsPageSeed,
   ...seoPageSeeds,
 ]
 

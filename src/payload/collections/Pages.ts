@@ -141,6 +141,28 @@ const CtaBannerBlock = {
   ],
 }
 
+const SplitCtaBannerBlock = {
+  slug: 'splitCtaBanner',
+  labels: { singular: 'Split CTA Banner', plural: 'Split CTA Banners' },
+  fields: [
+    { name: 'heading', type: 'text' as const, required: true },
+    { name: 'description', type: 'textarea' as const },
+    {
+      name: 'paths',
+      type: 'array' as const,
+      minRows: 2,
+      maxRows: 2,
+      fields: [
+        { name: 'eyebrow', type: 'text' as const },
+        { name: 'title', type: 'text' as const, required: true },
+        { name: 'description', type: 'textarea' as const },
+        { name: 'ctaLabel', type: 'text' as const, required: true },
+        { name: 'ctaLink', type: 'text' as const, required: true },
+      ],
+    },
+  ],
+}
+
 const AreaCardsBlock = {
   slug: 'areaCards',
   labels: { singular: 'Area Cards', plural: 'Area Cards' },
@@ -167,6 +189,16 @@ const QuoteFormBlock = {
   fields: [
     { name: 'heading', type: 'text' as const },
     { name: 'description', type: 'textarea' as const },
+  ],
+}
+
+const WorkApplicationFormBlock = {
+  slug: 'workApplicationForm',
+  labels: { singular: 'Work Application Form', plural: 'Work Application Forms' },
+  fields: [
+    { name: 'heading', type: 'text' as const },
+    { name: 'description', type: 'textarea' as const },
+    { name: 'sectionId', type: 'text' as const, label: 'Section Anchor ID' },
   ],
 }
 
@@ -220,8 +252,10 @@ export const Pages: CollectionConfig = {
         ServiceCardsBlock,
         ProjectGridBlock,
         CtaBannerBlock,
+        SplitCtaBannerBlock,
         AreaCardsBlock,
         QuoteFormBlock,
+        WorkApplicationFormBlock,
         FleetBlock,
       ],
     },

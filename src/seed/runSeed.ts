@@ -11,6 +11,7 @@ import { seoPageSeeds } from '@/seed/pages/seo-cities'
 import { serviceAreasPageSeed } from '@/seed/pages/service-areas'
 import { servicesPageSeed } from '@/seed/pages/services'
 import { subcontractorPageSeed } from '@/seed/pages/subcontractor'
+import { workWithUsPageSeed } from '@/seed/pages/work-with-us'
 
 const allPages = [
   homePageSeed,
@@ -20,6 +21,7 @@ const allPages = [
   serviceAreasPageSeed,
   subcontractorPageSeed,
   contactPageSeed,
+  workWithUsPageSeed,
   ...seoPageSeeds,
 ]
 
@@ -28,7 +30,7 @@ const headerNavItems = [
   { label: 'Projects', href: '/projects' },
   { label: 'About', href: '/about' },
   { label: 'Service Areas', href: '/service-areas' },
-  { label: 'Subcontractors', href: '/subcontractor-resources' },
+  { label: 'Work With Us', href: '/work-with-us' },
   { label: 'Contact', href: '/contact' },
 ]
 
@@ -49,7 +51,7 @@ const footerColumns = [
       { label: 'About Us', href: '/about' },
       { label: 'Projects', href: '/projects' },
       { label: 'Service Areas', href: '/service-areas' },
-      { label: 'Subcontractor Resources', href: '/subcontractor-resources' },
+      { label: 'Work With Us', href: '/work-with-us' },
       { label: 'Contact Us', href: '/contact' },
     ],
   },

@@ -11,6 +11,8 @@ import { CTABanner } from './organisms/CTABanner'
 import { FleetSection } from './organisms/FleetSection'
 import { ServiceAreasList } from './organisms/ServiceAreasList'
 import { QuoteRequestForm } from './organisms/QuoteRequestForm'
+import { SplitCTABanner } from './organisms/SplitCTABanner'
+import { WorkApplicationForm } from './organisms/WorkApplicationForm'
 import { resolveMediaAlt, resolveMediaUrl } from '@/lib/media'
 
 interface BlockData {
@@ -200,6 +202,31 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks }) => {
               />
             )
 
+          case 'splitCtaBanner': {
+            const paths = (block.paths as Array<{
+              eyebrow?: string
+              title?: string
+              description?: string
+              ctaLabel?: string
+              ctaLink?: string
+            }>) || []
+
+            return (
+              <SplitCTABanner
+                key={key}
+                heading={block.heading as string}
+                description={block.description as string}
+                paths={paths.map((path) => ({
+                  eyebrow: path.eyebrow,
+                  title: path.title || '',
+                  description: path.description,
+                  ctaLabel: path.ctaLabel || 'Learn More',
+                  ctaHref: path.ctaLink || '#',
+                }))}
+              />
+            )
+          }
+
           case 'areaCards': {
             const items = (block.items as Array<{ name?: string; description?: string; href?: string; services?: Array<{ service?: string }> }>) || []
             const additionalAreas = (block.additionalAreas as Array<{ name?: string }>) || []
@@ -225,6 +252,16 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks }) => {
                 key={key}
                 heading={block.heading as string}
                 description={block.description as string}
+              />
+            )
+
+          case 'workApplicationForm':
+            return (
+              <WorkApplicationForm
+                key={key}
+                heading={block.heading as string}
+                description={block.description as string}
+                sectionId={block.sectionId as string}
               />
             )
 

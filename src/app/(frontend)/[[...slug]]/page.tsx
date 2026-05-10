@@ -5,6 +5,7 @@ import { getPayloadClient } from '@/lib/payload'
 import { BlockRenderer } from '@/components/BlockRenderer'
 import { resolveMediaUrl } from '@/lib/media'
 import { getSiteUrl } from '@/lib/site'
+import { withPageFallbacks } from '@/lib/pageFallbacks'
 
 export const dynamic = 'force-dynamic'
 
@@ -25,7 +26,7 @@ async function getPageBySlug(slug: string) {
 export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
   const { slug: slugArr } = await params
   const slug = slugArr?.join('/') || 'home'
-  const page = await getPageBySlug(slug)
+  const page = withPageFallbacks(await getPageBySlug(slug), slug)
 
   if (!page) return { title: 'Page Not Found' }
 
@@ -60,7 +61,7 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
 export default async function DynamicPage({ params }: PageParams) {
   const { slug: slugArr } = await params
   const slug = slugArr?.join('/') || 'home'
-  const page = await getPageBySlug(slug)
+  const page = withPageFallbacks(await getPageBySlug(slug), slug)
 
   if (!page) notFound()
 

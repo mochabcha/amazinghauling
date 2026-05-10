@@ -5,7 +5,6 @@ export const homePageSeed = {
     {
       blockType: 'hero',
       imageKey: 'homeHero',
-      badge: 'Amazing Hauling of North Florida',
       headingLine1: 'Reliable Dump Trucks',
       headingLine2: '& Material Hauling',
       headingLine3: 'in Northeast Florida',
@@ -116,14 +115,25 @@ export const homePageSeed = {
       background: 'cream',
     },
     {
-      blockType: 'ctaBanner',
-      imageKey: 'asphaltPaving',
-      heading: 'Ready to Start Your Project?',
-      description: 'If your job site needs dependable hauling services, Amazing Hauling is ready to help. Request a quote today and let us keep your project moving.',
-      primaryCta: 'Request a Quote',
-      primaryCtaLink: '/contact',
-      secondaryCta: 'Call Now',
-      secondaryCtaLink: 'tel:',
+      blockType: 'splitCtaBanner',
+      heading: 'Choose Your Next Step',
+      description: 'Whether you need hauling support for a jobsite or want to join the Amazing Hauling team, start in the right place.',
+      paths: [
+        {
+          eyebrow: 'For Contractors',
+          title: 'Request a Quote',
+          description: 'Tell us about your project and get dependable hauling support lined up quickly.',
+          ctaLabel: 'Request a Quote',
+          ctaLink: '/contact',
+        },
+        {
+          eyebrow: 'For Drivers & Owner-Operators',
+          title: 'Work With Us',
+          description: 'Apply as a company driver or lease on your truck and let our team review your information.',
+          ctaLabel: 'View Application',
+          ctaLink: '/work-with-us',
+        },
+      ],
     },
   ],
   meta: {

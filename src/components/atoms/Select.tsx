@@ -5,34 +5,27 @@ export interface SelectOption {
   value: string
 }
 
-export interface SelectProps {
+export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   name: string
   options: SelectOption[]
   placeholder?: string
-  value?: string
-  required?: boolean
   className?: string
-  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
 export const Select: React.FC<SelectProps> = ({
   name,
   options,
   placeholder,
-  value,
-  required = false,
   className = '',
-  onChange,
+  ...props
 }) => {
   const classes = ['select', className].filter(Boolean).join(' ')
 
   return (
     <select
       name={name}
-      value={value}
-      required={required}
       className={classes}
-      onChange={onChange}
+      {...props}
     >
       {placeholder && (
         <option value="" disabled>

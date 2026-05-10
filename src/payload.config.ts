@@ -14,6 +14,7 @@ import { SEOPages } from './payload/collections/SEOPages'
 import { Media } from './payload/collections/Media'
 import { FormSubmissions } from './payload/collections/FormSubmissions'
 import { SubcontractorApplications } from './payload/collections/SubcontractorApplications'
+import { WorkApplications } from './payload/collections/WorkApplications'
 import { HeaderGlobal } from './payload/globals/Header'
 import { FooterGlobal } from './payload/globals/Footer'
 import { SiteSettings } from './payload/globals/SiteSettings'
@@ -51,6 +52,7 @@ export default buildConfig({
     Media,
     FormSubmissions,
     SubcontractorApplications,
+    WorkApplications,
   ],
   globals: [
     HeaderGlobal,

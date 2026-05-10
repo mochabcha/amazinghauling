@@ -76,6 +76,7 @@ export interface Config {
     media: Media;
     'form-submissions': FormSubmission;
     'subcontractor-applications': SubcontractorApplication;
+    'work-applications': WorkApplication;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -92,6 +93,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
     'subcontractor-applications': SubcontractorApplicationsSelect<false> | SubcontractorApplicationsSelect<true>;
+    'work-applications': WorkApplicationsSelect<false> | WorkApplicationsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -303,6 +305,23 @@ export interface Page {
             blockType: 'ctaBanner';
           }
         | {
+            heading: string;
+            description?: string | null;
+            paths?:
+              | {
+                  eyebrow?: string | null;
+                  title: string;
+                  description?: string | null;
+                  ctaLabel: string;
+                  ctaLink: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'splitCtaBanner';
+          }
+        | {
             heading?: string | null;
             description?: string | null;
             items?:
@@ -335,6 +354,14 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'quoteForm';
+          }
+        | {
+            heading?: string | null;
+            description?: string | null;
+            sectionId?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'workApplicationForm';
           }
         | {
             heading?: string | null;
@@ -600,6 +627,37 @@ export interface SubcontractorApplication {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "work-applications".
+ */
+export interface WorkApplication {
+  id: string;
+  applicationType: 'company-driver' | 'owner-operator';
+  fullName: string;
+  email: string;
+  phone: string;
+  cityState: string;
+  cdlClass: 'class-a' | 'class-b' | 'permit' | 'other';
+  yearsExperience: number;
+  availableDate: string;
+  currentEmployer?: string | null;
+  endorsements?: string | null;
+  truckCount?: number | null;
+  truckDescription?: string | null;
+  haulingExperience: string;
+  additionalInfo?: string | null;
+  consent: boolean;
+  sourcePage?: string | null;
+  ipAddress?: string | null;
+  userAgent?: string | null;
+  emailDeliveryStatus?: ('pending' | 'sent' | 'failed') | null;
+  emailDeliveredAt?: string | null;
+  emailDeliveryError?: string | null;
+  status?: ('new' | 'reviewing' | 'contacted' | 'closed') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -657,6 +715,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'subcontractor-applications';
         value: string | SubcontractorApplication;
+      } | null)
+    | ({
+        relationTo: 'work-applications';
+        value: string | WorkApplication;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -868,6 +930,24 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        splitCtaBanner?:
+          | T
+          | {
+              heading?: T;
+              description?: T;
+              paths?:
+                | T
+                | {
+                    eyebrow?: T;
+                    title?: T;
+                    description?: T;
+                    ctaLabel?: T;
+                    ctaLink?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
         areaCards?:
           | T
           | {
@@ -901,6 +981,15 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               heading?: T;
               description?: T;
+              id?: T;
+              blockName?: T;
+            };
+        workApplicationForm?:
+          | T
+          | {
+              heading?: T;
+              description?: T;
+              sectionId?: T;
               id?: T;
               blockName?: T;
             };
@@ -1099,6 +1188,36 @@ export interface SubcontractorApplicationsSelect<T extends boolean = true> {
         document?: T;
         id?: T;
       };
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "work-applications_select".
+ */
+export interface WorkApplicationsSelect<T extends boolean = true> {
+  applicationType?: T;
+  fullName?: T;
+  email?: T;
+  phone?: T;
+  cityState?: T;
+  cdlClass?: T;
+  yearsExperience?: T;
+  availableDate?: T;
+  currentEmployer?: T;
+  endorsements?: T;
+  truckCount?: T;
+  truckDescription?: T;
+  haulingExperience?: T;
+  additionalInfo?: T;
+  consent?: T;
+  sourcePage?: T;
+  ipAddress?: T;
+  userAgent?: T;
+  emailDeliveryStatus?: T;
+  emailDeliveredAt?: T;
+  emailDeliveryError?: T;
   status?: T;
   updatedAt?: T;
   createdAt?: T;

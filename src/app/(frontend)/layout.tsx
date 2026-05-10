@@ -2,6 +2,7 @@ import React from 'react'
 import { Header } from '@/components/organisms/Header'
 import { Footer } from '@/components/organisms/Footer'
 import { resolveMediaUrl } from '@/lib/media'
+import { withRequiredFooterLinks, withRequiredNavItems } from '@/lib/pageFallbacks'
 import { getPayloadClient } from '@/lib/payload'
 
 export const dynamic = 'force-dynamic'
@@ -11,7 +12,7 @@ const fallbackNavItems = [
   { label: 'Projects', href: '/projects' },
   { label: 'About', href: '/about' },
   { label: 'Service Areas', href: '/service-areas' },
-  { label: 'Subcontractors', href: '/subcontractor-resources' },
+  { label: 'Work With Us', href: '/work-with-us' },
   { label: 'Contact', href: '/contact' },
 ]
 
@@ -32,7 +33,7 @@ const fallbackFooterColumns = [
       { label: 'About Us', href: '/about' },
       { label: 'Projects', href: '/projects' },
       { label: 'Service Areas', href: '/service-areas' },
-      { label: 'Subcontractor Resources', href: '/subcontractor-resources' },
+      { label: 'Work With Us', href: '/work-with-us' },
       { label: 'Contact Us', href: '/contact' },
     ],
   },
@@ -55,17 +56,19 @@ export default async function FrontendLayout({ children }: { children: React.Rea
     payload.findGlobal({ slug: 'footer', depth: 1 }).catch(() => null),
   ])
 
-  const footerColumns = (footer?.columns || fallbackFooterColumns).map((column) => ({
+  const footerColumns = withRequiredFooterLinks((footer?.columns || fallbackFooterColumns).map((column) => ({
     title: column.title,
     links: column.links || [],
-  }))
+  }))) || fallbackFooterColumns
+
+  const navItems = withRequiredNavItems(header?.navItems || fallbackNavItems)
 
   return (
     <div className="template">
       <Header
         logoSrc={resolveMediaUrl(header?.logo) || '/brand/amazing-hauling-logo.png'}
         companyName={header?.companyName || 'Amazing Hauling'}
-        navItems={header?.navItems || fallbackNavItems}
+        navItems={navItems}
         ctaLabel={header?.ctaLabel || 'Request a Quote'}
         ctaHref={header?.ctaHref || '/contact'}
         phone={header?.phone || undefined}

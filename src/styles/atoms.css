@@ -45,6 +45,7 @@
 .btn--lg { font-size: var(--text-base); padding: var(--space-5) var(--space-10); }
 .btn--sm { font-size: var(--text-xs); padding: var(--space-2) var(--space-5); }
 .btn--full { width: 100%; }
+.btn:disabled { cursor: not-allowed; opacity: 0.65; transform: none; }
 
 /* ===========================
    HEADING ATOMS

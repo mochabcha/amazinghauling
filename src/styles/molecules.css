@@ -85,7 +85,33 @@
    FORM FIELD MOLECULE
    =========================== */
 .form-field { display: flex; flex-direction: column; gap: var(--space-1); }
+.form-field__helper { font-size: var(--text-sm); color: var(--color-gray-500); line-height: var(--leading-relaxed); }
 .form-field__error { font-size: var(--text-sm); color: var(--color-error); }
+
+/* ===========================
+   ACTION PATH PANEL MOLECULE
+   =========================== */
+.action-path-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-6);
+  min-height: 100%;
+  padding: var(--space-10);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 100%),
+    rgba(17,24,39,0.88);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.action-path-panel--emphasized {
+  background:
+    linear-gradient(180deg, rgba(232,146,46,0.22) 0%, rgba(232,146,46,0) 100%),
+    rgba(17,24,39,0.92);
+}
+.action-path-panel__eyebrow { display: inline-flex; }
+.action-path-panel__title { margin: 0; }
+.action-path-panel__description { max-width: 34rem; }
+.action-path-panel__button { align-self: flex-start; }
 
 /* ===========================
    CONTACT INFO ITEM MOLECULE

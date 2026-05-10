@@ -96,3 +96,6 @@ export type { FormShellProps } from './FormShell'
 
 export { HeroShell } from './HeroShell'
 export type { HeroShellProps } from './HeroShell'
+
+export { ActionPathPanel } from './ActionPathPanel'
+export type { ActionPathPanelProps } from './ActionPathPanel'

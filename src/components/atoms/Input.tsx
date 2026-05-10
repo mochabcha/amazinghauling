@@ -1,25 +1,18 @@
 import React from 'react'
 
-export interface InputProps {
+export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   name: string
   type?: 'text' | 'email' | 'tel' | 'number' | 'date' | 'url'
-  placeholder?: string
-  value?: string
-  required?: boolean
   error?: boolean
   className?: string
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export const Input: React.FC<InputProps> = ({
   name,
   type = 'text',
-  placeholder,
-  value,
-  required = false,
   error = false,
   className = '',
-  onChange,
+  ...props
 }) => {
   const classes = [
     'input',
@@ -33,11 +26,8 @@ export const Input: React.FC<InputProps> = ({
     <input
       name={name}
       type={type}
-      placeholder={placeholder}
-      value={value}
-      required={required}
       className={classes}
-      onChange={onChange}
+      {...props}
     />
   )
 }

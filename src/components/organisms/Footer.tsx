@@ -1,14 +1,15 @@
 'use client'
 
 import React from 'react'
+import { usePathname } from 'next/navigation'
 import { useScrollAnimation } from '@/lib/useScrollAnimation'
 import { FooterColumn } from '../molecules/FooterColumn'
 import { FooterBrand } from '../molecules/FooterBrand'
 import { FooterContact } from '../molecules/FooterContact'
 import { FooterBottom } from '../molecules/FooterBottom'
-import { SectionHeader } from '../molecules/SectionHeader'
-import { CTAButtonGroup } from '../molecules/CTAButtonGroup'
-import { ImagePlaceholder } from '../molecules/ImagePlaceholder'
+import { ActionPathPanel } from '../molecules/ActionPathPanel'
+import { Heading } from '../atoms/Heading'
+import { Text } from '../atoms/Text'
 import type { FooterLink } from '../molecules/FooterColumn'
 
 export interface FooterProps {
@@ -45,45 +46,40 @@ export const Footer: React.FC<FooterProps> = ({
 }) => {
   const classes = ['footer', className].filter(Boolean).join(' ')
   const ctaRef = useScrollAnimation()
+  const pathname = usePathname()
+  const hidePrefooter = pathname === '/contact' || pathname === '/work-with-us'
 
   return (
     <footer className={classes}>
-      <div ref={ctaRef} className="footer__cta">
-        <div className="footer__cta-left">
-          <SectionHeader
-            heading="Let's Haul Together"
-            headingLevel={2}
-            light
-          />
-          <CTAButtonGroup
-            primaryLabel="View Our Services"
-            primaryHref="/services"
-            secondaryLabel="Contact Us"
-            secondaryHref="/contact"
-            primaryVariant="primary"
-            secondaryVariant="outline-white"
-          />
-        </div>
-        <div className="footer__cta-right">
-          <div className="footer__cta-media animate-on-scroll">
-            <div className="footer__cta-media-frame anim-clip-right">
-              <ImagePlaceholder
-                src={ctaImageSrc}
-                alt={ctaImageAlt || "Let's Haul Together"}
-                label=""
-                fill
-                gradient="warm"
-              />
-            </div>
+      {!hidePrefooter && (
+        <div ref={ctaRef} className="footer__cta">
+          <div className="footer__cta-header">
+            <Heading level={2} color="white">Choose Your Next Step</Heading>
+            <Text size="lg" color="cream" className="footer__cta-description">
+              Whether you need dependable hauling support or want to join the Amazing Hauling team, start in the right place.
+            </Text>
           </div>
-          <CTAButtonGroup
-            primaryLabel="Contact Us"
-            primaryHref="/contact"
-            primaryVariant="primary"
-            centered
-          />
+          <div className="footer__cta-grid">
+            <ActionPathPanel
+              eyebrow="For Contractors"
+              title="Request a Quote"
+              description="Tell us about your project and get hauling support lined up quickly."
+              ctaLabel="Request a Quote"
+              ctaHref="/contact"
+              emphasized
+              className="animate-on-scroll"
+            />
+            <ActionPathPanel
+              eyebrow="For Drivers & Owner-Operators"
+              title="Work With Us"
+              description="Apply as a company driver or lease on your truck for review by our team."
+              ctaLabel="View Application"
+              ctaHref="/work-with-us"
+              className="animate-on-scroll"
+            />
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="footer__inner">
         <div className="footer__grid">
