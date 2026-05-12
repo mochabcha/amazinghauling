@@ -594,6 +594,12 @@ export interface FormSubmission {
   duration?: string | null;
   trucksNeeded?: string | null;
   additionalDetails?: string | null;
+  sourcePage?: string | null;
+  ipAddress?: string | null;
+  userAgent?: string | null;
+  emailDeliveryStatus?: ('pending' | 'sent' | 'failed') | null;
+  emailDeliveredAt?: string | null;
+  emailDeliveryError?: string | null;
   status?: ('new' | 'contacted' | 'quoted' | 'closed') | null;
   updatedAt: string;
   createdAt: string;
@@ -1162,6 +1168,12 @@ export interface FormSubmissionsSelect<T extends boolean = true> {
   duration?: T;
   trucksNeeded?: T;
   additionalDetails?: T;
+  sourcePage?: T;
+  ipAddress?: T;
+  userAgent?: T;
+  emailDeliveryStatus?: T;
+  emailDeliveredAt?: T;
+  emailDeliveryError?: T;
   status?: T;
   updatedAt?: T;
   createdAt?: T;

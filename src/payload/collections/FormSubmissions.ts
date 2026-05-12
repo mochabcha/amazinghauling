@@ -3,12 +3,14 @@ import type { CollectionConfig } from 'payload'
 export const FormSubmissions: CollectionConfig = {
   slug: 'form-submissions',
   admin: {
-    useAsTitle: 'companyName',
-    defaultColumns: ['name', 'companyName', 'materialType', 'createdAt'],
+    useAsTitle: 'name',
+    defaultColumns: ['name', 'companyName', 'materialType', 'emailDeliveryStatus', 'createdAt'],
   },
   access: {
-    read: () => true,
-    create: () => true,
+    read: ({ req }) => Boolean(req.user),
+    create: () => false,
+    update: ({ req }) => Boolean(req.user),
+    delete: ({ req }) => Boolean(req.user),
   },
   fields: [
     {
@@ -68,6 +70,63 @@ export const FormSubmissions: CollectionConfig = {
       name: 'additionalDetails',
       type: 'textarea',
       label: 'Additional Details',
+    },
+    {
+      name: 'sourcePage',
+      type: 'text',
+      label: 'Source Page',
+      admin: {
+        position: 'sidebar',
+        readOnly: true,
+      },
+    },
+    {
+      name: 'ipAddress',
+      type: 'text',
+      label: 'IP Address',
+      admin: {
+        position: 'sidebar',
+        readOnly: true,
+      },
+    },
+    {
+      name: 'userAgent',
+      type: 'textarea',
+      label: 'User Agent',
+      admin: {
+        readOnly: true,
+      },
+    },
+    {
+      name: 'emailDeliveryStatus',
+      type: 'select',
+      defaultValue: 'pending',
+      admin: {
+        position: 'sidebar',
+        readOnly: true,
+      },
+      options: [
+        { label: 'Pending', value: 'pending' },
+        { label: 'Sent', value: 'sent' },
+        { label: 'Failed', value: 'failed' },
+      ],
+    },
+    {
+      name: 'emailDeliveredAt',
+      type: 'date',
+      label: 'Email Delivered At',
+      admin: {
+        position: 'sidebar',
+        readOnly: true,
+      },
+    },
+    {
+      name: 'emailDeliveryError',
+      type: 'textarea',
+      label: 'Email Delivery Error',
+      admin: {
+        readOnly: true,
+      },
     },
     {
       name: 'status',

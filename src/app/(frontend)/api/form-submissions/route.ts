@@ -1,9 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-import { sendWorkApplicationNotification } from '@/lib/email/workApplications'
+import { sendFormSubmissionNotification } from '@/lib/email/formSubmissions'
 import { getClientIp, isAllowedOrigin, logRejectedSubmission } from '@/lib/formRequests'
+import { validateFormSubmissionPayload } from '@/lib/formSubmissions'
 import { getPayloadClient } from '@/lib/payload'
-import { validateWorkApplicationPayload } from '@/lib/workApplications'
+
+function isTestingModeEnabled() {
+  if (process.env.FORM_SUBMISSION_TEST_MODE === 'true') return true
+  if (process.env.FORM_SUBMISSION_TEST_MODE === 'false') return false
+  return process.env.WORK_APPLICATION_TEST_MODE === 'true'
+}
 
 async function hasRecentDuplicateSubmission(args: {
   email: string
@@ -16,7 +22,7 @@ async function hasRecentDuplicateSubmission(args: {
 
   const [recentEmail, recentPhone, recentIp] = await Promise.all([
     payload.find({
-      collection: 'work-applications',
+      collection: 'form-submissions',
       where: {
         and: [
           { email: { equals: args.email } },
@@ -28,7 +34,7 @@ async function hasRecentDuplicateSubmission(args: {
       overrideAccess: true,
     }),
     payload.find({
-      collection: 'work-applications',
+      collection: 'form-submissions',
       where: {
         and: [
           { phone: { equals: args.phone } },
@@ -41,7 +47,7 @@ async function hasRecentDuplicateSubmission(args: {
     }),
     args.ipAddress
       ? payload.find({
-          collection: 'work-applications',
+          collection: 'form-submissions',
           where: {
             and: [
               { ipAddress: { equals: args.ipAddress } },
@@ -59,10 +65,10 @@ async function hasRecentDuplicateSubmission(args: {
 }
 
 export async function POST(request: NextRequest) {
-  const isTesting = process.env.WORK_APPLICATION_TEST_MODE === 'true'
+  const isTesting = isTestingModeEnabled()
 
   if (!isAllowedOrigin(request)) {
-    logRejectedSubmission('work-applications', 'origin_not_allowed', {
+    logRejectedSubmission('form-submissions', 'origin_not_allowed', {
       origin: request.headers.get('origin'),
       referer: request.headers.get('referer'),
     })
@@ -70,7 +76,7 @@ export async function POST(request: NextRequest) {
   }
 
   if (!request.headers.get('content-type')?.includes('application/json')) {
-    logRejectedSubmission('work-applications', 'unsupported_content_type', {
+    logRejectedSubmission('form-submissions', 'unsupported_content_type', {
       contentType: request.headers.get('content-type'),
     })
     return NextResponse.json({ ok: false, errors: { form: 'Unsupported request type.' } }, { status: 415 })
@@ -81,13 +87,13 @@ export async function POST(request: NextRequest) {
   try {
     body = await request.json()
   } catch {
-    logRejectedSubmission('work-applications', 'invalid_json')
+    logRejectedSubmission('form-submissions', 'invalid_json')
     return NextResponse.json({ ok: false, errors: { form: 'Invalid request payload.' } }, { status: 400 })
   }
 
-  const validation = validateWorkApplicationPayload(body)
+  const validation = validateFormSubmissionPayload(body)
   if (!validation.valid) {
-    logRejectedSubmission('work-applications', 'validation_failed', validation.errors)
+    logRejectedSubmission('form-submissions', 'validation_failed', validation.errors)
     return NextResponse.json({ ok: false, errors: validation.errors }, { status: 422 })
   }
 
@@ -99,7 +105,7 @@ export async function POST(request: NextRequest) {
     phone: validation.data.phone,
     ipAddress,
   })) {
-    logRejectedSubmission('work-applications', 'duplicate_submission', {
+    logRejectedSubmission('form-submissions', 'duplicate_submission', {
       email: validation.data.email,
       phone: validation.data.phone,
       ipAddress,
@@ -112,7 +118,7 @@ export async function POST(request: NextRequest) {
 
   const payload = await getPayloadClient()
   const created = await payload.create({
-    collection: 'work-applications',
+    collection: 'form-submissions',
     depth: 0,
     overrideAccess: true,
     data: {
@@ -125,10 +131,10 @@ export async function POST(request: NextRequest) {
   })
 
   try {
-    await sendWorkApplicationNotification(validation.data)
+    await sendFormSubmissionNotification(validation.data)
 
     await payload.update({
-      collection: 'work-applications',
+      collection: 'form-submissions',
       id: created.id,
       depth: 0,
       overrideAccess: true,
@@ -142,7 +148,7 @@ export async function POST(request: NextRequest) {
     const message = error instanceof Error ? error.message : String(error)
 
     await payload.update({
-      collection: 'work-applications',
+      collection: 'form-submissions',
       id: created.id,
       depth: 0,
       overrideAccess: true,
@@ -156,7 +162,7 @@ export async function POST(request: NextRequest) {
       {
         ok: false,
         errors: {
-          form: 'Your application was saved, but email delivery is not configured yet. Add RESEND_API_KEY and RESEND_FROM_EMAIL to enable notifications.',
+          form: 'Your request was saved, but email delivery is not configured yet. Add RESEND_API_KEY and RESEND_FROM_EMAIL to enable notifications.',
         },
       },
       { status: 500 },
@@ -165,6 +171,6 @@ export async function POST(request: NextRequest) {
 
   return NextResponse.json({
     ok: true,
-    message: 'Application submitted successfully. Our team will review it and follow up soon.',
+    message: 'Request submitted successfully. Our team will follow up soon.',
   })
 }

@@ -1,4 +1,5 @@
 import type { WorkApplicationSubmission } from '@/lib/workApplications'
+import { sendResendEmail } from '@/lib/email/resend'
 
 function escapeHtml(value: string) {
   return value
@@ -121,53 +122,30 @@ function getInternalRecipients() {
 }
 
 export async function sendWorkApplicationNotification(submission: WorkApplicationSubmission) {
-  const resendApiKey = process.env.RESEND_API_KEY
   const fromEmail = process.env.RESEND_FROM_EMAIL || process.env.WORK_APPLICATION_FROM_EMAIL
   const internalRecipients = getInternalRecipients()
 
-  if (!resendApiKey || !fromEmail || internalRecipients.length === 0) {
-    throw new Error('Missing RESEND_API_KEY, RESEND_FROM_EMAIL, or work application recipient configuration.')
+  if (!fromEmail || internalRecipients.length === 0) {
+    throw new Error('Missing RESEND_FROM_EMAIL or work application recipient configuration.')
   }
 
-  const [internalResponse, confirmationResponse] = await Promise.all([
-    fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${resendApiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        from: fromEmail,
-        to: internalRecipients,
-        reply_to: submission.email,
-        subject: `Work With Us Application: ${submission.fullName}`,
-        html: buildHtmlEmail(submission),
-        text: buildTextEmail(submission),
-      }),
+  await Promise.all([
+    sendResendEmail({
+      from: fromEmail,
+      to: internalRecipients,
+      replyTo: submission.email,
+      subject: `Work With Us Application: ${submission.fullName}`,
+      html: buildHtmlEmail(submission),
+      text: buildTextEmail(submission),
+      errorContext: 'internal work application',
     }),
-    fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${resendApiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        from: fromEmail,
-        to: [submission.email],
-        subject: 'We received your Amazing Hauling application',
-        html: buildConfirmationHtmlEmail(submission),
-        text: buildConfirmationTextEmail(submission),
-      }),
+    sendResendEmail({
+      from: fromEmail,
+      to: [submission.email],
+      subject: 'We received your Amazing Hauling application',
+      html: buildConfirmationHtmlEmail(submission),
+      text: buildConfirmationTextEmail(submission),
+      errorContext: 'work application confirmation',
     }),
   ])
-
-  if (!internalResponse.ok) {
-    const errorText = await internalResponse.text()
-    throw new Error(`Resend internal email error ${internalResponse.status}: ${errorText}`)
-  }
-
-  if (!confirmationResponse.ok) {
-    const errorText = await confirmationResponse.text()
-    throw new Error(`Resend confirmation email error ${confirmationResponse.status}: ${errorText}`)
-  }
 }
