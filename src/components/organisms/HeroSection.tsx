@@ -13,6 +13,10 @@ export interface HeroSectionProps {
   primaryCTA?: { label: string; href: string }
   secondaryCTA?: { label: string; href: string }
   backgroundImage?: string
+  layout?: 'standard' | 'cornerMinimal'
+  overlayStyle?: 'default' | 'soft' | 'none'
+  headingSize?: 'default' | 'small'
+  hideCtas?: boolean
   short?: boolean
   className?: string
 }
@@ -25,6 +29,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   primaryCTA = { label: 'Request a Quote', href: '/contact' },
   secondaryCTA,
   backgroundImage,
+  layout = 'standard',
+  overlayStyle = 'default',
+  headingSize = 'default',
+  hideCtas = false,
   short = false,
   className = '',
 }) => {
@@ -35,6 +43,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     <HeroShell
       backgroundImage={backgroundImage}
       backgroundGradient="primary"
+      layout={layout}
+      overlayStyle={overlayStyle}
       short={short}
       className={className}
       innerRef={ref}
@@ -45,6 +55,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         description={description}
         primaryCTA={primaryCTA}
         secondaryCTA={secondaryCTA}
+        layout={layout}
+        headingSize={headingSize}
+        hideCtas={hideCtas}
       />
     </HeroShell>
   )

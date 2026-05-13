@@ -65,9 +65,26 @@ function normalizeHomeLayout(layout: BlockRecord[] | null | undefined) {
 
   const nextLayout = layout.map((block, index) => {
     if (index === 0 && block.blockType === 'hero') {
+      const headingLine1 = typeof block.headingLine1 === 'string' ? block.headingLine1 : ''
+      const headingLine2 = typeof block.headingLine2 === 'string' ? block.headingLine2 : ''
+      const headingLine3 = typeof block.headingLine3 === 'string' ? block.headingLine3 : ''
+      const headingLine = [headingLine1, headingLine2, headingLine3].filter(Boolean).join(' ')
+
       return {
         ...block,
         badge: '',
+        headingLine1: headingLine,
+        headingLine2: '',
+        headingLine3: '',
+        description: '',
+        primaryCta: '',
+        primaryCtaLink: '',
+        secondaryCta: '',
+        secondaryCtaLink: '',
+        layout: 'cornerMinimal',
+        overlayStyle: 'soft',
+        headingSize: 'small',
+        hideCtas: true,
       }
     }
 

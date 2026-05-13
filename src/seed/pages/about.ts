@@ -19,7 +19,7 @@ export const aboutPageSeed = {
       imageKey: 'replacementTruck',
       badge: 'Our Story',
       heading: 'From One Truck to a Growing Fleet',
-      body: 'Founded by Antoine Pearson, Amazing Hauling began with a single truck and a commitment to doing quality work for every customer. Through dedication, reliability, and strong relationships with contractors, the company has grown into a trusted hauling partner supporting construction and development projects across Northeast Florida. Today, Amazing Hauling continues to expand while maintaining the same values that started the business: dependability, integrity, and service. Before starting the company, Antoine worked in the trucking and construction support field, learning how hauling operations support road construction and development projects throughout the region. With that experience, he launched Amazing Hauling with a vision of building a company known for reliable service and strong work ethic. What started as one truck has grown into a fleet supporting contractors across Jacksonville and the surrounding counties. The company continues to grow through hard work, word-of-mouth referrals, and a commitment to doing every job right.',
+      body: 'Amazing Hauling began with a single truck and a commitment to doing quality work for every customer. Through dedication, reliability, and strong relationships with contractors, the company has grown into a trusted hauling partner supporting construction and development projects across Northeast Florida. Today, Amazing Hauling continues to expand while maintaining the same values that started the business: dependability, integrity, and service. Before starting the company, Antoine worked in the trucking and construction support field, learning how hauling operations support road construction and development projects throughout the region. With that experience, he launched Amazing Hauling with a vision of building a company known for reliable service and strong work ethic. What started as one truck has grown into a fleet supporting contractors across Jacksonville and the surrounding counties. The company continues to grow through hard work, word-of-mouth referrals, and a commitment to doing every job right.',
       ctaLabel: 'View Our Work',
       ctaLink: '/projects',
       reverse: false,
@@ -99,7 +99,7 @@ export const aboutPageSeed = {
   ],
   meta: {
     title: 'About Amazing Hauling',
-    description: 'Learn about Amazing Hauling of North Florida. A family-owned hauling company based in Jacksonville, founded by Antoine Pearson, committed to dependability, integrity, and service.',
+    description: 'Learn about Amazing Hauling of North Florida. A family-owned hauling company based in Jacksonville, committed to dependability, integrity, and service.',
     imageKey: 'fleetAlt',
   },
 }

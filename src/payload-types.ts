@@ -188,6 +188,10 @@ export interface Page {
             primaryCtaLink?: string | null;
             secondaryCta?: string | null;
             secondaryCtaLink?: string | null;
+            layout?: ('standard' | 'cornerMinimal') | null;
+            overlayStyle?: ('default' | 'soft' | 'none') | null;
+            headingSize?: ('default' | 'small') | null;
+            hideCtas?: boolean | null;
             short?: boolean | null;
             id?: string | null;
             blockName?: string | null;
@@ -814,6 +818,10 @@ export interface PagesSelect<T extends boolean = true> {
               primaryCtaLink?: T;
               secondaryCta?: T;
               secondaryCtaLink?: T;
+              layout?: T;
+              overlayStyle?: T;
+              headingSize?: T;
+              hideCtas?: T;
               short?: T;
               id?: T;
               blockName?: T;

@@ -14,6 +14,9 @@ export interface HeroContentProps {
   description?: string
   primaryCTA?: HeroCTA
   secondaryCTA?: HeroCTA
+  layout?: 'standard' | 'cornerMinimal'
+  headingSize?: 'default' | 'small'
+  hideCtas?: boolean
   className?: string
 }
 
@@ -23,9 +26,18 @@ export const HeroContent: React.FC<HeroContentProps> = ({
   description,
   primaryCTA = { label: 'Request a Quote', href: '/contact' },
   secondaryCTA,
+  layout = 'standard',
+  headingSize = 'default',
+  hideCtas = false,
   className = '',
 }) => {
-  const classes = ['hero__content', className].filter(Boolean).join(' ')
+  const classes = [
+    'hero__content',
+    layout === 'cornerMinimal' ? 'hero__content--corner-minimal' : '',
+    headingSize === 'small' ? 'hero__content--heading-small' : '',
+    className,
+  ].filter(Boolean).join(' ')
+  const showCtas = !hideCtas && (primaryCTA || secondaryCTA)
 
   return (
     <div className={classes}>
@@ -46,16 +58,18 @@ export const HeroContent: React.FC<HeroContentProps> = ({
           {description}
         </Text>
       )}
-      <div className="anim-hero-cta">
-        <CTAButtonGroup
-          primaryLabel={primaryCTA.label}
-          primaryHref={primaryCTA.href}
-          secondaryLabel={secondaryCTA?.label}
-          secondaryHref={secondaryCTA?.href}
-          primaryVariant="primary"
-          secondaryVariant="outline-white"
-        />
-      </div>
+      {showCtas ? (
+        <div className="anim-hero-cta">
+          <CTAButtonGroup
+            primaryLabel={primaryCTA?.label}
+            primaryHref={primaryCTA?.href}
+            secondaryLabel={secondaryCTA?.label}
+            secondaryHref={secondaryCTA?.href}
+            primaryVariant="primary"
+            secondaryVariant="outline-white"
+          />
+        </div>
+      ) : null}
     </div>
   )
 }

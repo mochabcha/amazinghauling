@@ -37,10 +37,10 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks }) => {
           case 'hero':
             {
               const headingLine1 = block.headingLine1 === 'Reliable Dump Truck'
-                ? 'Reliable Dump Trucks'
+                ? 'Reliable Dump Truck Services'
                 : block.headingLine1 as string
               const headingLine2 = block.headingLine2 === '& Materials Hauling'
-                ? '& Material Hauling'
+                ? '& Material Hauling Across Northeast Florida.'
                 : block.headingLine2 as string
               const headingLine3 = block.headingLine3 as string
               const description = block.badge === 'Amazing Hauling of North Florida'
@@ -65,6 +65,10 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks }) => {
                 primaryCTA={block.primaryCta ? { label: block.primaryCta as string, href: block.primaryCtaLink as string || '/contact' } : undefined}
                 secondaryCTA={block.secondaryCta ? { label: block.secondaryCta as string, href: block.secondaryCtaLink as string || '#' } : undefined}
                 backgroundImage={resolveMediaUrl(block.image)}
+                layout={block.layout as 'standard' | 'cornerMinimal' | undefined}
+                overlayStyle={block.overlayStyle as 'default' | 'soft' | 'none' | undefined}
+                headingSize={block.headingSize as 'default' | 'small' | undefined}
+                hideCtas={Boolean(block.hideCtas)}
                 short={block.short as boolean}
               />
             )

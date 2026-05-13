@@ -14,7 +14,7 @@ Great — here is **Page 4: About Us**, written to highlight **family ownership,
 
 Amazing Hauling of North Florida is a family-owned hauling company based in Jacksonville, Florida, operated under the parent company **Amazing Investments LLC**.
 
-Founded by **Antoine Pearson**, Amazing Hauling began with a single truck and a commitment to doing quality work for every customer.
+Amazing Hauling began with a single truck and a commitment to doing quality work for every customer.
 
 Through dedication, reliability, and strong relationships with contractors, the company has grown into a trusted hauling partner supporting construction and development projects across Northeast Florida.
 
@@ -120,4 +120,3 @@ Request a Quote
 ---
 
 Next page will be **Page 5: Service Areas**, which will also be written in a way that helps the site **rank on Google for Jacksonville hauling searches**.
-

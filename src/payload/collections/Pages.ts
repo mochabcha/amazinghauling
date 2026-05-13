@@ -14,6 +14,35 @@ const HeroBlock = {
     { name: 'primaryCtaLink', type: 'text' as const, label: 'Primary CTA Link' },
     { name: 'secondaryCta', type: 'text' as const, label: 'Secondary CTA Label' },
     { name: 'secondaryCtaLink', type: 'text' as const, label: 'Secondary CTA Link' },
+    {
+      name: 'layout',
+      type: 'select' as const,
+      defaultValue: 'standard',
+      options: [
+        { label: 'Standard', value: 'standard' },
+        { label: 'Corner Minimal', value: 'cornerMinimal' },
+      ],
+    },
+    {
+      name: 'overlayStyle',
+      type: 'select' as const,
+      defaultValue: 'default',
+      options: [
+        { label: 'Default', value: 'default' },
+        { label: 'Soft', value: 'soft' },
+        { label: 'None', value: 'none' },
+      ],
+    },
+    {
+      name: 'headingSize',
+      type: 'select' as const,
+      defaultValue: 'default',
+      options: [
+        { label: 'Default', value: 'default' },
+        { label: 'Small', value: 'small' },
+      ],
+    },
+    { name: 'hideCtas', type: 'checkbox' as const, defaultValue: false, label: 'Hide CTA Buttons' },
     { name: 'short', type: 'checkbox' as const, defaultValue: false, label: 'Short Hero (60vh)' },
   ],
 }
