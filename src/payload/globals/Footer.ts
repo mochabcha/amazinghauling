@@ -51,7 +51,7 @@ export const FooterGlobal: GlobalConfig = {
       type: 'group',
       fields: [
         { name: 'address', type: 'text', defaultValue: 'Jacksonville, Florida' },
-        { name: 'phone', type: 'text' },
+        { name: 'phone', type: 'text', defaultValue: '(904) 419-8559' },
         { name: 'email', type: 'email', defaultValue: 'info@amazinghauling.com' },
         { name: 'hours', type: 'text', defaultValue: 'Monday – Friday, 6:00 AM – 6:00 PM' },
       ],

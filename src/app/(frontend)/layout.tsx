@@ -86,7 +86,7 @@ export default async function FrontendLayout({ children }: { children: React.Rea
         columns={footerColumns}
         contactInfo={{
           address: footer?.contactInfo?.address || 'Jacksonville, Florida',
-          phone: footer?.contactInfo?.phone || undefined,
+          phone: footer?.contactInfo?.phone || '(904) 419-8559',
           email: footer?.contactInfo?.email || 'info@amazinghauling.com',
           hours: footer?.contactInfo?.hours || 'Monday - Friday, 6:00 AM - 6:00 PM',
         }}

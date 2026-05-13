@@ -8,6 +8,7 @@ import { FooterBrand } from '../molecules/FooterBrand'
 import { FooterContact } from '../molecules/FooterContact'
 import { FooterBottom } from '../molecules/FooterBottom'
 import { ActionPathPanel } from '../molecules/ActionPathPanel'
+import { Logo } from '../atoms/Logo'
 import { Heading } from '../atoms/Heading'
 import { Text } from '../atoms/Text'
 import type { FooterLink } from '../molecules/FooterColumn'
@@ -82,30 +83,41 @@ export const Footer: React.FC<FooterProps> = ({
       )}
 
       <div className="footer__inner">
-        <div className="footer__grid">
-          <FooterBrand
+        <div className="footer__logo-row">
+          <Logo
+            src={logoSrc}
             companyName={companyName}
-            logoSrc={logoSrc}
-            tagline={tagline}
-            description={description}
-            certifications={certifications}
+            white
+            href="/"
+            size="xl"
+            className="footer__logo"
           />
+
+          <FooterBrand
+            tagline={tagline}
+            certifications={certifications}
+            className="footer__logo-copy"
+          />
+        </div>
+
+        <div className="footer__grid">
+          <div className="footer__primary">
+            {contactInfo && (
+              <FooterContact
+                address={contactInfo.address}
+                phone={contactInfo.phone}
+                email={contactInfo.email}
+                hours={contactInfo.hours}
+              />
+            )}
+          </div>
 
           {columns.map((col, index) => (
             <FooterColumn key={index} title={col.title} links={col.links} />
           ))}
         </div>
 
-        {contactInfo && (
-          <FooterContact
-            address={contactInfo.address}
-            phone={contactInfo.phone}
-            email={contactInfo.email}
-            hours={contactInfo.hours}
-          />
-        )}
-
-        <FooterBottom copyright={copyright} />
+        <FooterBottom description={description} copyright={copyright} />
       </div>
     </footer>
   )

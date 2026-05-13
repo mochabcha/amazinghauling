@@ -149,17 +149,20 @@ export function withRequiredFooterLinks<T extends { label: string; href: string 
       return column
     }
 
-    if (column.links.some((link) => link.href === '/work-with-us')) {
-      return column
+    const nextLinks = [...column.links]
+
+    if (!nextLinks.some((link) => link.href === '/work-with-us')) {
+      const contactIndex = nextLinks.findIndex((link) => link.href === '/contact')
+
+      if (contactIndex >= 0) {
+        nextLinks.splice(contactIndex, 0, { label: 'Work With Us', href: '/work-with-us' } as T)
+      } else {
+        nextLinks.push({ label: 'Work With Us', href: '/work-with-us' } as T)
+      }
     }
 
-    const nextLinks = [...column.links]
-    const contactIndex = nextLinks.findIndex((link) => link.href === '/contact')
-
-    if (contactIndex >= 0) {
-      nextLinks.splice(contactIndex, 0, { label: 'Work With Us', href: '/work-with-us' } as T)
-    } else {
-      nextLinks.push({ label: 'Work With Us', href: '/work-with-us' } as T)
+    if (!nextLinks.some((link) => link.href === '/privacy')) {
+      nextLinks.push({ label: 'Privacy Policy', href: '/privacy' } as T)
     }
 
     return {

@@ -1,13 +1,14 @@
 import React from 'react'
 import { Text } from '../atoms/Text'
-import { Link } from '../atoms/Link'
 
 export interface FooterBottomProps {
+  description?: string
   copyright?: string
   className?: string
 }
 
 export const FooterBottom: React.FC<FooterBottomProps> = ({
+  description,
   copyright = '© 2026 Amazing Hauling of North Florida. All Rights Reserved.',
   className = '',
 }) => {
@@ -15,8 +16,10 @@ export const FooterBottom: React.FC<FooterBottomProps> = ({
 
   return (
     <div className={classes}>
-      <Text as="span" size="xs" color="gray">{copyright}</Text>
-      <Link href="/privacy" variant="footer">Privacy Policy</Link>
+      <div className="footer__bottom-copy">
+        {description && <Text as="span" size="xs" color="gray">{description}</Text>}
+        <Text as="span" size="xs" color="gray">{copyright}</Text>
+      </div>
     </div>
   )
 }
