@@ -36,7 +36,7 @@ export const ContactTemplate: React.FC<ContactTemplateProps> = ({
 
       <QuoteRequestForm
         heading="Request Hauling Services"
-        description="Need dependable hauling for your next project? Amazing Hauling of North Florida provides reliable dump trucks and material hauling services for contractors, construction companies, and development teams throughout Jacksonville and Northeast Florida. Whether you need dirt hauling, asphalt transport, aggregate delivery, or construction site materials moved, our team is ready to help keep your project moving. Complete the form below and a member of our team will contact you as soon as possible."
+        description="Need dependable hauling for your next project? Amazing Hauling of North Florida provides reliable dump truck services and material hauling for contractors, construction companies, and development teams throughout Jacksonville and Northeast Florida. Whether you need dirt hauling, asphalt transport, aggregate delivery, or construction site materials moved, our team is ready to help keep your project moving. Complete the form below and a member of our team will contact you as soon as possible."
         contactInfo={contactInfo}
       />
 

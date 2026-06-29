@@ -16,7 +16,7 @@ This one is **extremely important** because it functions as the **lead funnel** 
 
 Need dependable hauling for your next project?
 
-Amazing Hauling of North Florida provides reliable dump truck and materials hauling services for contractors, construction companies, and development teams throughout Jacksonville and Northeast Florida.
+Amazing Hauling of North Florida provides reliable dump truck services and material hauling for contractors, construction companies, and development teams throughout Jacksonville and Northeast Florida.
 
 Whether you need dirt hauling, asphalt transport, aggregate delivery, or construction site materials moved, our team is ready to help keep your project moving.
 
@@ -137,4 +137,3 @@ If you'd like, the next thing I can do — and this will **dramatically improve 
 • **Homepage image layout and section design guide** (exact placement for photos, trucks, banners)
 • **Brand tagline system** for trucks, cards, and ads
 • **SEO city pages** (Jacksonville, Fernandina, Orange Park, etc.) that can **triple the site's search visibility**.
-

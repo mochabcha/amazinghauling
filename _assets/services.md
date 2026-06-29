@@ -6,7 +6,7 @@
 
 ---
 
-# Reliable Materials Hauling Services
+# Reliable Hauling Services
 
 Amazing Hauling of North Florida provides dependable dump truck hauling services for contractors, construction crews, and development teams throughout Jacksonville and Northeast Florida.
 

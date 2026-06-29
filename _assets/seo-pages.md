@@ -20,7 +20,7 @@ Below are the **first 5 high-value city pages** for Northeast Florida.
 
 ## Reliable Dump Truck Hauling in Jacksonville, Florida
 
-Amazing Hauling of North Florida provides dependable dump truck and materials hauling services throughout Jacksonville.
+Amazing Hauling of North Florida provides dependable dump truck services and material hauling throughout Jacksonville.
 
 From road construction and asphalt paving to site development and land clearing, contractors rely on dependable hauling partners to keep their projects moving. Amazing Hauling delivers reliable hauling support backed by professional drivers, responsive scheduling, and clear communication.
 
@@ -268,4 +268,3 @@ If you'd like, I can also create **5 MORE high-power SEO city pages** that will 
 * **Green Cove Springs hauling services**
 
 These pages together would create a **10-page regional SEO net**, which dramatically improves Google rankings for a new site.
-
