@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getPayloadClient } from '@/lib/payload'
 import { BlockRenderer } from '@/components/BlockRenderer'
+import { FrontendEditorGate } from '@/components/organisms/FrontendEditor'
 import { resolveMediaUrl } from '@/lib/media'
 import { getSiteUrl } from '@/lib/site'
 import { withPageFallbacks } from '@/lib/pageFallbacks'
@@ -81,6 +82,15 @@ export default async function DynamicPage({ params }: PageParams) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
       />
       <BlockRenderer blocks={layout} />
+      {page.id ? (
+        <FrontendEditorGate
+          document={{
+            id: page.id,
+            slug: page.slug,
+            title: page.title,
+          }}
+        />
+      ) : null}
     </div>
   )
 }

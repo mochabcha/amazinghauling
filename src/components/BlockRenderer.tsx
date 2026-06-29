@@ -13,6 +13,7 @@ import { ServiceAreasList } from './organisms/ServiceAreasList'
 import { QuoteRequestForm } from './organisms/QuoteRequestForm'
 import { SplitCTABanner } from './organisms/SplitCTABanner'
 import { WorkApplicationForm } from './organisms/WorkApplicationForm'
+import { EditorBlockBoundary } from './atoms/EditorBlockBoundary'
 import { resolveMediaAlt, resolveMediaUrl } from '@/lib/media'
 
 interface BlockData {
@@ -32,6 +33,7 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks }) => {
     <div className="block-renderer">
       {blocks.map((block, index) => {
         const key = block.id || `block-${index}`
+        const content = (() => {
 
         switch (block.blockType) {
           case 'hero':
@@ -295,6 +297,15 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks }) => {
           default:
             return null
         }
+        })()
+
+        if (!content) return null
+
+        return (
+          <EditorBlockBoundary blockId={key} blockType={block.blockType} key={key}>
+            {content}
+          </EditorBlockBoundary>
+        )
       })}
     </div>
   )

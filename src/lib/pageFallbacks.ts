@@ -7,6 +7,7 @@ type BlockRecord = {
 }
 
 type PageRecord = {
+  id?: string
   title: string
   slug: string
   layout?: BlockRecord[] | null
