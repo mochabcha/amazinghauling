@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next'
 import React from 'react'
-import '@/styles/globals.css'
 import { getSiteUrlObject } from '@/lib/site'
 
 export const viewport: Viewport = {
